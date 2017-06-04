@@ -7,6 +7,7 @@ namespace LigaManagerServer.Mappings
     {
         public MatchMap()
         {
+            Table("Matches");
             Map(x => x.DateTime).Not.Nullable();
             Map(x => x.MatchDay).Not.Nullable().Default("1");
             Map(x => x.HomeTeamScore).Not.Nullable().Default("0");

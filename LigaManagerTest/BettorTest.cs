@@ -12,7 +12,6 @@ namespace LigaManagerTest
         public void GetBettorTest()
         {
             var bettor = _bettorService.GetBettor("Juergen173");
-            var bettorFirstname = bettor.Firstname;
         }
     }
 }
