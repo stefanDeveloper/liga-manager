@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerBettorClient", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerTest", "LigaManagerTest\LigaManagerTest.csproj", "{8B46C909-3E30-46A6-B31E-FA79A1EF53E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerServerConsole", "LigaManagerServerConsole\LigaManagerServerConsole.csproj", "{D7EC32E1-C265-461E-88FC-6BD92D22C16A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8B46C909-3E30-46A6-B31E-FA79A1EF53E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B46C909-3E30-46A6-B31E-FA79A1EF53E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B46C909-3E30-46A6-B31E-FA79A1EF53E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7EC32E1-C265-461E-88FC-6BD92D22C16A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EC32E1-C265-461E-88FC-6BD92D22C16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EC32E1-C265-461E-88FC-6BD92D22C16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EC32E1-C265-461E-88FC-6BD92D22C16A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

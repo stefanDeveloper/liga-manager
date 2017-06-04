@@ -3,7 +3,7 @@ using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Mappings
 {
-    public class MatchMap : ClassMap<Match>
+    public class MatchMap : BaseMap<Match>
     {
         public MatchMap()
         {

@@ -3,7 +3,7 @@ using FluentNHibernate.Mapping;
 
 namespace LigaManagerServer.Mappings
 {
-    public class BettorMap : ClassMap<Bettor>
+    public class BettorMap : BaseMap<Bettor>
     {
         public BettorMap()
         {

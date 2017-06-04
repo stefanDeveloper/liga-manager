@@ -1,6 +1,4 @@
-﻿using System;
-using LigaManagerServer.Interfaces;
-using LigaManagerServer.Services;
+﻿using LigaManagerServer.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LigaManagerTest
@@ -8,9 +6,10 @@ namespace LigaManagerTest
     [TestClass]
     public class BettorTest
     {
-        private BettorService _bettorService = new BettorService();
+        private readonly BettorService _bettorService = new BettorService();
+
         [TestMethod]
-        public void TestMethod1()
+        public void GetBettorTest()
         {
             var bettor = _bettorService.GetBettor("Juergen173");
             var bettorFirstname = bettor.Firstname;

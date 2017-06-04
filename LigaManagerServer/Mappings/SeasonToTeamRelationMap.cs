@@ -3,7 +3,7 @@ using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Mappings
 {
-    public class SeasonToTeamRelationMap : ClassMap<SeasonToTeamRelation>
+    public class SeasonToTeamRelationMap : BaseMap<SeasonToTeamRelation>
     {
         public SeasonToTeamRelationMap()
         {

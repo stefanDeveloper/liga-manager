@@ -3,11 +3,11 @@ using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Mappings
 {
-    public class TeamMap : BaseMap<Team>
+    public class BaseMap<T> : ClassMap<T> where T : ModelBase
     {
-        public TeamMap()
+        public BaseMap()
         {
-            Map(x => x.Name).Length(300).Not.Nullable();
+            Id(x => x.Id).GeneratedBy.Native();
         }
     }
 }
