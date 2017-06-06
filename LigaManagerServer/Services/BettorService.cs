@@ -9,14 +9,8 @@ namespace LigaManagerServer.Services
 {
     public class BettorService : IBettorService
     {
-        private readonly Repository<Bettor> _repository;
+        private readonly Repository<Bettor> _repository = new Repository<Bettor>();
         private static readonly object StaticLock = new object();
-
-        public BettorService()
-        {
-            var path = Path.Combine(Environment.CurrentDirectory, @"Database\", "LigaManager.db3");
-            _repository = new Repository<Bettor>(path);
-        }
 
         public Bettor GetBettor(string name)
         {

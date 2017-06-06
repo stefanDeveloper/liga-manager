@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace LigaManagerServer.Framework
 {
@@ -8,6 +10,11 @@ namespace LigaManagerServer.Framework
 		{
 			NHibernateHelper.DatabaseFile = databaseFile;
 		}
+
+        public Repository()
+        {
+            NHibernateHelper.DatabaseFile = Path.Combine(Environment.CurrentDirectory, @"Database\", "LigaManager.db3");
+        }
 
 		public List<T> GetAll()
 		{

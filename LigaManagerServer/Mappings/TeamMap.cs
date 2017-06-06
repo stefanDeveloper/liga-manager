@@ -7,6 +7,7 @@ namespace LigaManagerServer.Mappings
     {
         public TeamMap()
         {
+            Table("Teams");
             Map(x => x.Name).Length(300).Not.Nullable();
         }
     }

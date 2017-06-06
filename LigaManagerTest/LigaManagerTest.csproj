@@ -53,7 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BettorTest.cs" />
+    <Compile Include="MatchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeasonTest.cs" />
+    <Compile Include="TeamTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
