@@ -26,7 +26,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var bettors = _repository.GetAll();
-                var find = bettors.Find(x => x.Nickname.Equals(bettor.Nickname));
+                var find = bettors.Find(x => x.Nickname.ToUpper().Equals(bettor.Nickname.ToUpper()));
                 if (find != null) return false;
                 _repository.Save(bettor);
                 return true;

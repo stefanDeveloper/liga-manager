@@ -34,5 +34,11 @@ namespace LigaManagerTest
 
         }
 
+        [TestMethod]
+        public void GetSeasonsToTeamRelationTest()
+        {
+            var seasonToTeamRelations = _teamService.GetSeasonToTeamRelations();
+            if (seasonToTeamRelations == null) Assert.Fail();
+        }
     }
 }

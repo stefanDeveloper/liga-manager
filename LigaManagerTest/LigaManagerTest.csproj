@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetTest.cs" />
     <Compile Include="BettorTest.cs" />
     <Compile Include="MatchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

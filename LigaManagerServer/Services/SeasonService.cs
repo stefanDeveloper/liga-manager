@@ -48,7 +48,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var seasons = _repository.GetAll();
-                var find = seasons.Find(x => x.Name.Equals(season.Name));
+                var find = seasons.Find(x => x.Name.ToUpper().Equals(season.Name.ToUpper()));
                 if (find != null) return false;
                 _repository.Save(season);
                 return true;
