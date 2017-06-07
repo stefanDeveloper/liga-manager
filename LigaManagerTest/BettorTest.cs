@@ -25,7 +25,7 @@ namespace LigaManagerTest
 
             _testBettor2 = new Bettor
             {
-                Nickname = "Test" + DateTime.Now,
+                Nickname = "Test " + DateTime.Now,
                 Lastname = "Test",
                 Firstname = "Test"
             };
@@ -56,11 +56,12 @@ namespace LigaManagerTest
         {
             var isSuccess = _persistenceService.Add(_testBettor2);
             if (!isSuccess) Assert.Fail();
-            /*var bettor = _persistenceService.Get(_testBettor2.Nickname);
+            var bettors = _persistenceService.GetAll();
+            var bettor = bettors.Find(x => x.Nickname.Equals(_testBettor2.Nickname));
             if (!bettor.Equals(_testBettor2))
             {
                 Assert.Fail();
-            }*/
+            }
         }
 
         [TestMethod]
@@ -74,7 +75,7 @@ namespace LigaManagerTest
         public void ChangeBettorTest()
         {
             var bettor = _persistenceService.Get(9);
-            bettor.Nickname = "Juergen17dsa4";
+            bettor.Nickname = "Juergen173 " + DateTime.Now;
             var isSuccess = _persistenceService.Change(bettor);
             if (!isSuccess) Assert.Fail();
         }

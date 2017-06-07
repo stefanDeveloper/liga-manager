@@ -39,7 +39,7 @@ namespace LigaManagerServer.Services
             var all = _repository.GetAll();
             var find = all.Find(x => x.Id.Equals(t.Id));
             if (find == null) return false;
-            _repository.Save(t);
+            _repository.Update(t);
             return true;
         }
 

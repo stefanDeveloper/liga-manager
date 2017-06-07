@@ -48,5 +48,17 @@ namespace LigaManagerServer.Framework
 				}
 			}
 		}
+
+        public void Update(T entity)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Update(entity);
+                    transaction.Commit();
+                }
+            }
+        }
     }
 }

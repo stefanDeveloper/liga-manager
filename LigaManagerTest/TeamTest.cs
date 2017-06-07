@@ -23,7 +23,9 @@ namespace LigaManagerTest
         [TestMethod]
         public void RemoveTeamTest()
         {
-            var isDeleted = _teamService.Delete(new Team {Name = "FC Bayern München"});
+            var team = new Team {Name = "Test " + DateTime.Now};
+            _teamService.Add(team);
+            var isDeleted = _teamService.Delete(team);
             if (!isDeleted) Assert.Fail();
         }
 
