@@ -64,11 +64,7 @@
     <Compile Include="Contracts\IBettorClientService.cs" />
     <Compile Include="Contracts\ILigaManagerService.cs" />
     <Compile Include="Framework\Repository.cs" />
-    <Compile Include="Interfaces\IBetService.cs" />
-    <Compile Include="Interfaces\IBettorService.cs" />
-    <Compile Include="Interfaces\IMatchService.cs" />
-    <Compile Include="Interfaces\ISeasonService.cs" />
-    <Compile Include="Interfaces\ITeamService.cs" />
+    <Compile Include="Interfaces\IPersistenceService.cs" />
     <Compile Include="Mappings\BaseMap.cs" />
     <Compile Include="Mappings\BetMap.cs" />
     <Compile Include="Mappings\BettorMap.cs" />
@@ -85,13 +81,9 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminClientService.cs" />
-    <Compile Include="Services\BetService.cs" />
     <Compile Include="Services\BettorClientService.cs" />
-    <Compile Include="Services\BettorService.cs" />
     <Compile Include="Services\LigaManagerService.cs" />
-    <Compile Include="Services\MatchService.cs" />
-    <Compile Include="Services\SeasonService.cs" />
-    <Compile Include="Services\TeamService.cs" />
+    <Compile Include="Services\PersistenceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

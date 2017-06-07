@@ -9,7 +9,7 @@ namespace LigaManagerTest
     [TestClass]
     public class BettorTest
     {
-        private readonly IBettorService _bettorService = new BettorService();
+        private readonly PersistenceService<Bettor> _persistenceService = new PersistenceService<Bettor>();
         private Bettor _testBettor;
         private Bettor _testBettor2;
 
@@ -34,7 +34,7 @@ namespace LigaManagerTest
         [TestMethod]
         public void GetBettorTest()
         {
-            var bettor = _bettorService.GetBettor("Juergen173");
+            var bettor = _persistenceService.Get(1);
             if (!bettor.Equals(_testBettor))
             {
                 Assert.Fail();
@@ -44,7 +44,7 @@ namespace LigaManagerTest
         [TestMethod]
         public void GetAllBettorsTest()
         {
-            var bettor = _bettorService.GetBettors();
+            var bettor = _persistenceService.GetAll();
             if (bettor == null)
             {
                 Assert.Fail();
@@ -54,20 +54,29 @@ namespace LigaManagerTest
         [TestMethod]
         public void AddBettorTest()
         {
-            var isSuccess = _bettorService.AddBettor(_testBettor2);
+            var isSuccess = _persistenceService.Add(_testBettor2);
             if (!isSuccess) Assert.Fail();
-            var bettor = _bettorService.GetBettor(_testBettor2.Nickname);
+            /*var bettor = _persistenceService.Get(_testBettor2.Nickname);
             if (!bettor.Equals(_testBettor2))
             {
                 Assert.Fail();
-            }
+            }*/
         }
 
         [TestMethod]
         public void EqualBettorTest()
         {
-            var isSuccess = _bettorService.AddBettor(_testBettor);
+            var isSuccess = _persistenceService.Add(_testBettor);
             if (isSuccess) Assert.Fail();
+        }
+
+        [TestMethod]
+        public void ChangeBettorTest()
+        {
+            var bettor = _persistenceService.Get(9);
+            bettor.Nickname = "Juergen17dsa4";
+            var isSuccess = _persistenceService.Change(bettor);
+            if (!isSuccess) Assert.Fail();
         }
     }
 }

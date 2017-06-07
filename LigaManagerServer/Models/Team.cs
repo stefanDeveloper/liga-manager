@@ -6,7 +6,7 @@
 
         protected bool Equals(Team other)
         {
-            return string.Equals(Name, other.Name);
+            return string.Equals(Name.ToUpper(), other.Name.ToUpper());
         }
 
         public override bool Equals(object obj)

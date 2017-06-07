@@ -8,7 +8,7 @@
 
         protected bool Equals(Bettor other)
         {
-            return string.Equals(Nickname, other.Nickname) && string.Equals(Firstname, other.Firstname) && string.Equals(Lastname, other.Lastname);
+            return string.Equals(Nickname.ToUpper(), other.Nickname.ToUpper()) && string.Equals(Firstname, other.Firstname) && string.Equals(Lastname, other.Lastname);
         }
 
         public override bool Equals(object obj)

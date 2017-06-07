@@ -10,26 +10,27 @@ namespace LigaManagerTest
     public class TeamTest
     {
 
-        private readonly ITeamService _teamService = new TeamService();
+        private readonly IPersistenceService<Team> _teamService = new PersistenceService<Team>();
+        private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService = new PersistenceService<SeasonToTeamRelation>();
 
         [TestMethod]
         public void GetTeamsTest()
         {
-            var teams = _teamService.GetTeams();
+            var teams = _teamService.GetAll();
             if (teams == null) Assert.Fail();
         }
 
         [TestMethod]
         public void RemoveTeamTest()
         {
-            var isDeleted = _teamService.DeleteTeam(new Team {Name = "FC Bayern München"});
+            var isDeleted = _teamService.Delete(new Team {Name = "FC Bayern München"});
             if (!isDeleted) Assert.Fail();
         }
 
         [TestMethod]
         public void AddTeamTest()
         {
-            var addTeam = _teamService.AddTeam(new Team {Name = "Test " + DateTime.Now});
+            var addTeam = _teamService.Add(new Team {Name = "Test " + DateTime.Now});
             if (!addTeam) Assert.Fail();
 
         }
@@ -37,7 +38,7 @@ namespace LigaManagerTest
         [TestMethod]
         public void GetSeasonsToTeamRelationTest()
         {
-            var seasonToTeamRelations = _teamService.GetSeasonToTeamRelations();
+            var seasonToTeamRelations = _seasonToTeamRelationService.GetAll();
             if (seasonToTeamRelations == null) Assert.Fail();
         }
     }

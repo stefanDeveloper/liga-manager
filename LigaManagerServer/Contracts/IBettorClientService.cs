@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Contracts
 {
@@ -6,6 +7,9 @@ namespace LigaManagerServer.Contracts
     public interface IBettorClientService : ILigaManagerService
     {
         [OperationContract]
-        void Test();
+        bool Login(string name);
+
+        [OperationContract]
+        bool AddBet(Bet bet);
     }
 }
