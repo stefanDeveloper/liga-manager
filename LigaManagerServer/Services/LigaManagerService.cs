@@ -1,18 +1,35 @@
-﻿using LigaManagerServer.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using LigaManagerServer.Contracts;
+using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Services
 {
     public class LigaManagerService : ILigaManagerService
     {
-        public void Test1()
+        private static readonly object StaticLock = new object();
+        private readonly IPersistenceService<Bettor> _bettorPersistenceService = new PersistenceService<Bettor>();
+        private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
+        private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
+        private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
+        public List<Match> GetMatches(Season season)
         {
-            throw new System.NotImplementedException();
+            lock (StaticLock)
+            {
+                return _matchPersistenceService.GetAll();
+            }
         }
 
-        public void GetMatches(Season season)
+        public List<Bet> GetBets(Bettor bettor)
         {
-            throw new System.NotImplementedException();
+            lock (StaticLock)
+            {
+                var bets = _betPersistenceService.GetAll();
+                var findAll = bets.FindAll(x => x.Bettor.Equals(bettor));
+
+                return findAll;
+            }
         }
     }
 }

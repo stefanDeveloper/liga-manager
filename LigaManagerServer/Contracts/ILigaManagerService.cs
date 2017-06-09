@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Contracts
@@ -7,6 +8,9 @@ namespace LigaManagerServer.Contracts
     public interface ILigaManagerService
     {
         [OperationContract]
-        void GetMatches(Season season);
+        List<Match> GetMatches(Season season);
+
+        [OperationContract]
+        List<Bet> GetBets(Bettor bettor);
     }
 }

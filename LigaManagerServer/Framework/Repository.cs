@@ -13,7 +13,11 @@ namespace LigaManagerServer.Framework
 
         public Repository()
         {
-            NHibernateHelper.DatabaseFile = Path.Combine(Environment.CurrentDirectory, @"Database\", "LigaManager.db3");
+            var path = Path.GetDirectoryName(Path.GetDirectoryName(
+                Path.GetDirectoryName(
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)));
+            var localPath = new Uri(path).LocalPath;
+            NHibernateHelper.DatabaseFile = Path.Combine(localPath, @"Database\", "LigaManager.db3");
         }
 
 		public List<T> GetAll()

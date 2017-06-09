@@ -1,0 +1,26 @@
+﻿<Window x:Class="LigaManagerBettorClient.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LigaManagerBettorClient"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Anmelden" Command="{Binding SignInCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Nickname}" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="10,30,0,0" TextWrapping="Wrap" Text="Liga Manager" VerticalAlignment="Top" Height="32" Width="136"/>
+
+    </Grid>
+</Window>

@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerServer", "LigaManagerServer\LigaManagerServer.csproj", "{FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerAdminClient", "LigaManagerAdminClient\LigaManagerAdminClient.csproj", "{EEF224FA-9555-49EB-8D2B-FD92957969D4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45} = {FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerBettorClient", "LigaManagerBettorClient\LigaManagerBettorClient.csproj", "{A1E2797A-9FE6-4701-BA16-428044C9033D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45} = {FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LigaManagerTest", "LigaManagerTest\LigaManagerTest.csproj", "{8B46C909-3E30-46A6-B31E-FA79A1EF53E2}"
 EndProject

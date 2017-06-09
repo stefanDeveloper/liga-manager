@@ -76,7 +76,7 @@ namespace LigaManagerTest
         {
             var bettor = _persistenceService.Get(9);
             bettor.Nickname = "Juergen173 " + DateTime.Now;
-            var isSuccess = _persistenceService.Change(bettor);
+            var isSuccess = _persistenceService.Update(bettor);
             if (!isSuccess) Assert.Fail();
         }
     }
