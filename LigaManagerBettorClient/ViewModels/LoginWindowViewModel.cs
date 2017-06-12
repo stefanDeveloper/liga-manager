@@ -8,6 +8,7 @@ namespace LigaManagerBettorClient.ViewModels
     {
         public string Nickname { get; set; }
         public ICommand SignInCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
 
     }
 }

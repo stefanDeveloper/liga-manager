@@ -82,4 +82,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Bet" nillable="true" type="tns:Bet" />
+  <xs:complexType name="ArrayOfBettor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bettor" nillable="true" type="tns:Bettor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBettor" nillable="true" type="tns:ArrayOfBettor" />
 </xs:schema>

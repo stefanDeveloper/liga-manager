@@ -11,6 +11,7 @@ namespace LigaManagerBettorClient.Controllers
         private LoginWindowViewModel _loginWindowViewModel;
         private BettorClientServiceClient _bettorClient;
         private LoginWindow _view;
+        private MainWindow _main;
 
         public void Initialize()
         {
@@ -18,25 +19,45 @@ namespace LigaManagerBettorClient.Controllers
             _bettorClient = new BettorClientServiceClient();
             _loginWindowViewModel = new LoginWindowViewModel
             {
-                SignInCommand = new RelayCommand(ExecuteSignInCommand)
+                SignInCommand = new RelayCommand(ExecuteSignInCommand),
+                CloseCommand = new RelayCommand(ExecuteCloseCommand)
             };
 
             _view.DataContext = _loginWindowViewModel;
-            _view.ShowDialog();
+
+            _main = new MainWindow
+            {
+                Content = _view,
+                Height = 300,
+                Width = 315,
+                ResizeMode = ResizeMode.NoResize
+            };
+            _main.Show();
         }
 
         private void ExecuteSignInCommand(object obj)
         {
             var nickname = _loginWindowViewModel.Nickname;
+            if (nickname == null) return;
             var isSuccess = _bettorClient.Login(nickname);
             if (isSuccess)
             {
-
+                var menu = new MenuWindowController()
+                {
+                    MainWindow = _main
+                };
+                menu.Initialize();
             }
             else
             {
-                MessageBox.Show("Der Benutzer ist nicht vorhanden!", "Anmeldung fehlgeschlagen",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Der Benutzer ist nicht vorhanden!", "Anmeldung fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ExecuteCloseCommand(object obj)
+        {
+            _main.Close();
         }
     }
 }

@@ -29,6 +29,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetBettors">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBettorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBettorsResult" nillable="true" type="q5:ArrayOfBettor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -46,7 +58,7 @@
   <xs:element name="AddBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q5:Bet" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q6:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

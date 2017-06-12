@@ -9,414 +9,29 @@
 //------------------------------------------------------------------------------
 
 namespace LigaManagerBettorClient.BettorClientService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModelBase", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(LigaManagerBettorClient.BettorClientService.Match))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(LigaManagerBettorClient.BettorClientService.Team))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(LigaManagerBettorClient.BettorClientService.Bettor))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(LigaManagerBettorClient.BettorClientService.Bet))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(LigaManagerBettorClient.BettorClientService.Season))]
-    public partial class ModelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Match", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    public partial class Match : LigaManagerBettorClient.BettorClientService.ModelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LigaManagerBettorClient.BettorClientService.Team AwayTeamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AwayTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LigaManagerBettorClient.BettorClientService.Team HomeTeamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HomeTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MatchDayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LigaManagerBettorClient.BettorClientService.Season SeasonField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LigaManagerBettorClient.BettorClientService.Team AwayTeam {
-            get {
-                return this.AwayTeamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AwayTeamField, value) != true)) {
-                    this.AwayTeamField = value;
-                    this.RaisePropertyChanged("AwayTeam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AwayTeamScore {
-            get {
-                return this.AwayTeamScoreField;
-            }
-            set {
-                if ((this.AwayTeamScoreField.Equals(value) != true)) {
-                    this.AwayTeamScoreField = value;
-                    this.RaisePropertyChanged("AwayTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateTime {
-            get {
-                return this.DateTimeField;
-            }
-            set {
-                if ((this.DateTimeField.Equals(value) != true)) {
-                    this.DateTimeField = value;
-                    this.RaisePropertyChanged("DateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LigaManagerBettorClient.BettorClientService.Team HomeTeam {
-            get {
-                return this.HomeTeamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HomeTeamField, value) != true)) {
-                    this.HomeTeamField = value;
-                    this.RaisePropertyChanged("HomeTeam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HomeTeamScore {
-            get {
-                return this.HomeTeamScoreField;
-            }
-            set {
-                if ((this.HomeTeamScoreField.Equals(value) != true)) {
-                    this.HomeTeamScoreField = value;
-                    this.RaisePropertyChanged("HomeTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MatchDay {
-            get {
-                return this.MatchDayField;
-            }
-            set {
-                if ((this.MatchDayField.Equals(value) != true)) {
-                    this.MatchDayField = value;
-                    this.RaisePropertyChanged("MatchDay");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LigaManagerBettorClient.BettorClientService.Season Season {
-            get {
-                return this.SeasonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SeasonField, value) != true)) {
-                    this.SeasonField = value;
-                    this.RaisePropertyChanged("Season");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Team", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    public partial class Team : LigaManagerBettorClient.BettorClientService.ModelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bettor", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    public partial class Bettor : LigaManagerBettorClient.BettorClientService.ModelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NicknameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Firstname {
-            get {
-                return this.FirstnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
-                    this.FirstnameField = value;
-                    this.RaisePropertyChanged("Firstname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Lastname {
-            get {
-                return this.LastnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
-                    this.LastnameField = value;
-                    this.RaisePropertyChanged("Lastname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nickname {
-            get {
-                return this.NicknameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NicknameField, value) != true)) {
-                    this.NicknameField = value;
-                    this.RaisePropertyChanged("Nickname");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bet", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    public partial class Bet : LigaManagerBettorClient.BettorClientService.ModelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AwayTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LigaManagerBettorClient.BettorClientService.Bettor BettorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HomeTeamScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LigaManagerBettorClient.BettorClientService.Match MatchField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AwayTeamScore {
-            get {
-                return this.AwayTeamScoreField;
-            }
-            set {
-                if ((this.AwayTeamScoreField.Equals(value) != true)) {
-                    this.AwayTeamScoreField = value;
-                    this.RaisePropertyChanged("AwayTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LigaManagerBettorClient.BettorClientService.Bettor Bettor {
-            get {
-                return this.BettorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BettorField, value) != true)) {
-                    this.BettorField = value;
-                    this.RaisePropertyChanged("Bettor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateTime {
-            get {
-                return this.DateTimeField;
-            }
-            set {
-                if ((this.DateTimeField.Equals(value) != true)) {
-                    this.DateTimeField = value;
-                    this.RaisePropertyChanged("DateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HomeTeamScore {
-            get {
-                return this.HomeTeamScoreField;
-            }
-            set {
-                if ((this.HomeTeamScoreField.Equals(value) != true)) {
-                    this.HomeTeamScoreField = value;
-                    this.RaisePropertyChanged("HomeTeamScore");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public LigaManagerBettorClient.BettorClientService.Match Match {
-            get {
-                return this.MatchField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MatchField, value) != true)) {
-                    this.MatchField = value;
-                    this.RaisePropertyChanged("Match");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Season", Namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models")]
-    [System.SerializableAttribute()]
-    public partial class Season : LigaManagerBettorClient.BettorClientService.ModelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SequenceField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Sequence {
-            get {
-                return this.SequenceField;
-            }
-            set {
-                if ((this.SequenceField.Equals(value) != true)) {
-                    this.SequenceField = value;
-                    this.RaisePropertyChanged("Sequence");
-                }
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BettorClientService.IBettorClientService")]
     public interface IBettorClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetMatches", ReplyAction="http://tempuri.org/ILigaManagerService/GetMatchesResponse")]
-        LigaManagerBettorClient.BettorClientService.Match[] GetMatches(LigaManagerBettorClient.BettorClientService.Season season);
+        LigaManagerServer.Models.Match[] GetMatches(LigaManagerServer.Models.Season season);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetMatches", ReplyAction="http://tempuri.org/ILigaManagerService/GetMatchesResponse")]
-        System.Threading.Tasks.Task<LigaManagerBettorClient.BettorClientService.Match[]> GetMatchesAsync(LigaManagerBettorClient.BettorClientService.Season season);
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Match[]> GetMatchesAsync(LigaManagerServer.Models.Season season);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBets", ReplyAction="http://tempuri.org/ILigaManagerService/GetBetsResponse")]
-        LigaManagerBettorClient.BettorClientService.Bet[] GetBets(LigaManagerBettorClient.BettorClientService.Bettor bettor);
+        LigaManagerServer.Models.Bet[] GetBets(LigaManagerServer.Models.Bettor bettor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBets", ReplyAction="http://tempuri.org/ILigaManagerService/GetBetsResponse")]
-        System.Threading.Tasks.Task<LigaManagerBettorClient.BettorClientService.Bet[]> GetBetsAsync(LigaManagerBettorClient.BettorClientService.Bettor bettor);
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetBetsAsync(LigaManagerServer.Models.Bettor bettor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettors", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorsResponse")]
+        LigaManagerServer.Models.Bettor[] GetBettors();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettors", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Bettor[]> GetBettorsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/Login", ReplyAction="http://tempuri.org/IBettorClientService/LoginResponse")]
         bool Login(string name);
@@ -425,10 +40,10 @@ namespace LigaManagerBettorClient.BettorClientService {
         System.Threading.Tasks.Task<bool> LoginAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/AddBet", ReplyAction="http://tempuri.org/IBettorClientService/AddBetResponse")]
-        bool AddBet(LigaManagerBettorClient.BettorClientService.Bet bet);
+        bool AddBet(LigaManagerServer.Models.Bet bet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/AddBet", ReplyAction="http://tempuri.org/IBettorClientService/AddBetResponse")]
-        System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet);
+        System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerServer.Models.Bet bet);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -458,20 +73,28 @@ namespace LigaManagerBettorClient.BettorClientService {
                 base(binding, remoteAddress) {
         }
         
-        public LigaManagerBettorClient.BettorClientService.Match[] GetMatches(LigaManagerBettorClient.BettorClientService.Season season) {
+        public LigaManagerServer.Models.Match[] GetMatches(LigaManagerServer.Models.Season season) {
             return base.Channel.GetMatches(season);
         }
         
-        public System.Threading.Tasks.Task<LigaManagerBettorClient.BettorClientService.Match[]> GetMatchesAsync(LigaManagerBettorClient.BettorClientService.Season season) {
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Match[]> GetMatchesAsync(LigaManagerServer.Models.Season season) {
             return base.Channel.GetMatchesAsync(season);
         }
         
-        public LigaManagerBettorClient.BettorClientService.Bet[] GetBets(LigaManagerBettorClient.BettorClientService.Bettor bettor) {
+        public LigaManagerServer.Models.Bet[] GetBets(LigaManagerServer.Models.Bettor bettor) {
             return base.Channel.GetBets(bettor);
         }
         
-        public System.Threading.Tasks.Task<LigaManagerBettorClient.BettorClientService.Bet[]> GetBetsAsync(LigaManagerBettorClient.BettorClientService.Bettor bettor) {
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetBetsAsync(LigaManagerServer.Models.Bettor bettor) {
             return base.Channel.GetBetsAsync(bettor);
+        }
+        
+        public LigaManagerServer.Models.Bettor[] GetBettors() {
+            return base.Channel.GetBettors();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Bettor[]> GetBettorsAsync() {
+            return base.Channel.GetBettorsAsync();
         }
         
         public bool Login(string name) {
@@ -482,11 +105,11 @@ namespace LigaManagerBettorClient.BettorClientService {
             return base.Channel.LoginAsync(name);
         }
         
-        public bool AddBet(LigaManagerBettorClient.BettorClientService.Bet bet) {
+        public bool AddBet(LigaManagerServer.Models.Bet bet) {
             return base.Channel.AddBet(bet);
         }
         
-        public System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet) {
+        public System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerServer.Models.Bet bet) {
             return base.Channel.AddBetAsync(bet);
         }
     }

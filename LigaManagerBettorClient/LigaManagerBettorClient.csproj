@@ -75,19 +75,36 @@
     </Compile>
     <Compile Include="Controllers\BettorWindowController.cs" />
     <Compile Include="Controllers\LoginWindowController.cs" />
-    <Compile Include="Controllers\MatchesWindowController.cs" />
+    <Compile Include="Controllers\BetsWindowController.cs" />
+    <Compile Include="Controllers\MenuWindowController.cs" />
     <Compile Include="Controllers\SeasonWindowController.cs" />
     <Compile Include="Frameworks\RelayCommand.cs" />
     <Compile Include="Frameworks\ViewModelBase.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BettorWindowViewModel.cs" />
     <Compile Include="ViewModels\LoginWindowViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ViewModels\MatchesWindowViewModel.cs" />
-    <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
+    <Compile Include="ViewModels\MenuWindowViewModel.cs" />
+    <Compile Include="Views\BettorRankingWindow.xaml.cs">
+      <DependentUpon>BettorRankingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchesWindow.xaml.cs">
+      <DependentUpon>MatchesWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewModels\BetsWindowViewModel.cs" />
+    <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
+    <Compile Include="Views\BetsWindow.xaml.cs">
+      <DependentUpon>BetsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -106,12 +123,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Bet.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Match.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\BettorClientService\LigaManagerServer.Models.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -123,6 +134,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bet.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bettor.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Match.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -138,7 +152,27 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\BetsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BettorRankingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

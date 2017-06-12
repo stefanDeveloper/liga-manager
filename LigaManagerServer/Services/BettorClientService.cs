@@ -1,5 +1,4 @@
-﻿using System;
-using LigaManagerServer.Contracts;
+﻿using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
 

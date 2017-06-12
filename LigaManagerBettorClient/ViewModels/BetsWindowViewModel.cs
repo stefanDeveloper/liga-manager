@@ -2,7 +2,7 @@
 
 namespace LigaManagerBettorClient.ViewModels
 {
-    public class SeasonWindowViewModel : ViewModelBase
+    public class BetsWindowViewModel : ViewModelBase
     {
         
     }

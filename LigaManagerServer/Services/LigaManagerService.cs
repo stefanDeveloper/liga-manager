@@ -31,5 +31,14 @@ namespace LigaManagerServer.Services
                 return findAll;
             }
         }
+
+        public List<Bettor> GetBettors()
+        {
+            lock (StaticLock)
+            {
+                var bettors = _bettorPersistenceService.GetAll();
+                return bettors;
+            }
+        }
     }
 }
