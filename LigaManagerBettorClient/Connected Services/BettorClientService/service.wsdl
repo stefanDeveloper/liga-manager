@@ -25,17 +25,41 @@
   <wsdl:message name="IBettorClientService_GetBettors_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBettorsResponse" />
   </wsdl:message>
-  <wsdl:message name="IBettorClientService_Login_InputMessage">
-    <wsdl:part name="parameters" element="tns:Login" />
+  <wsdl:message name="IBettorClientService_GetBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettor" />
   </wsdl:message>
-  <wsdl:message name="IBettorClientService_Login_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  <wsdl:message name="IBettorClientService_GetBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetSeasons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasons" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetSeasons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_IsValidNickname_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsValidNickname" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_IsValidNickname_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsValidNicknameResponse" />
   </wsdl:message>
   <wsdl:message name="IBettorClientService_AddBet_InputMessage">
     <wsdl:part name="parameters" element="tns:AddBet" />
   </wsdl:message>
   <wsdl:message name="IBettorClientService_AddBet_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddBetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_ChangeBet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBet" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_ChangeBet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetBet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBet" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetBet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBetResponse" />
   </wsdl:message>
   <wsdl:portType name="IBettorClientService">
     <wsdl:operation name="GetMatches">
@@ -50,13 +74,29 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettors" message="tns:IBettorClientService_GetBettors_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorsResponse" message="tns:IBettorClientService_GetBettors_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/Login" message="tns:IBettorClientService_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/LoginResponse" message="tns:IBettorClientService_Login_OutputMessage" />
+    <wsdl:operation name="GetBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettor" message="tns:IBettorClientService_GetBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorResponse" message="tns:IBettorClientService_GetBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasons" message="tns:IBettorClientService_GetSeasons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonsResponse" message="tns:IBettorClientService_GetSeasons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidNickname">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/IsValidNickname" message="tns:IBettorClientService_IsValidNickname_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/IsValidNicknameResponse" message="tns:IBettorClientService_IsValidNickname_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/AddBet" message="tns:IBettorClientService_AddBet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/AddBetResponse" message="tns:IBettorClientService_AddBet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/ChangeBet" message="tns:IBettorClientService_ChangeBet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/ChangeBetResponse" message="tns:IBettorClientService_ChangeBet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetBet" message="tns:IBettorClientService_GetBet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetBetResponse" message="tns:IBettorClientService_GetBet_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBettorClientService" type="tns:IBettorClientService">
@@ -88,8 +128,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Login">
-      <soap:operation soapAction="http://tempuri.org/IBettorClientService/Login" style="document" />
+    <wsdl:operation name="GetBettor">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidNickname">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/IsValidNickname" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -99,6 +157,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddBet">
       <soap:operation soapAction="http://tempuri.org/IBettorClientService/AddBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBet">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/ChangeBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBet">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetBet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -7,9 +7,13 @@ namespace LigaManagerServer.Contracts
     public interface IBettorClientService : ILigaManagerService
     {
         [OperationContract]
-        bool Login(string name);
+        bool IsValidNickname(string name);
 
         [OperationContract]
         bool AddBet(Bet bet);
+        [OperationContract]
+        bool ChangeBet(Bet bet);
+        [OperationContract]
+        Bet GetBet(Match match, Bettor bettor);
     }
 }

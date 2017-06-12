@@ -1,4 +1,6 @@
-﻿using LigaManagerServer.Contracts;
+﻿using System;
+using System.Linq;
+using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
 
@@ -12,7 +14,7 @@ namespace LigaManagerServer.Services
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
 
-        public bool Login(string name)
+        public bool IsValidNickname(string name)
         {
             lock (StaticLock)
             {
@@ -26,7 +28,28 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+
                return _betPersistenceService.Add(bet);
+            }
+        }
+
+        public bool ChangeBet(Bet bet)
+        {
+            lock (StaticLock)
+            {
+                if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
+                    return false;
+                return _betPersistenceService.Update(bet);
+            }
+        }
+
+        public Bet GetBet(Match match, Bettor bettor)
+        {
+            lock (StaticLock)
+            {
+                var bets = _betPersistenceService.GetAll();
+                var betsOfMatch = bets.FindAll(x => x.Bettor.Equals(bettor) && x.Match.Equals(match));
+                return betsOfMatch.Count != 1 ? null : betsOfMatch.First();
             }
         }
     }

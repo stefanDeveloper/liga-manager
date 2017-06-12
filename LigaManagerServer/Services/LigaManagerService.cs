@@ -13,11 +13,14 @@ namespace LigaManagerServer.Services
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
+        private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService = new PersistenceService<SeasonToTeamRelation>();
         public List<Match> GetMatches(Season season)
         {
             lock (StaticLock)
             {
-                return _matchPersistenceService.GetAll();
+                var matches = _matchPersistenceService.GetAll();
+                var matchesOfSeason = matches.FindAll(x => x.Season.Equals(season));
+                return matchesOfSeason;
             }
         }
 
@@ -40,5 +43,25 @@ namespace LigaManagerServer.Services
                 return bettors;
             }
         }
+
+        public Bettor GetBettor(string nickname)
+        {
+            lock (StaticLock)
+            {
+                var bettors = _bettorPersistenceService.GetAll();
+                var bettor = bettors.Find(x => x.Nickname.ToUpper().Equals(nickname.ToUpper()));
+                return bettor;
+            }
+        }
+
+        public List<Season> GetSeasons()
+        {
+            lock (StaticLock)
+            {
+                var seasons = _seasonPersistenceService.GetAll();
+                return seasons;
+            }
+        }
+
     }
 }

@@ -785,7 +785,7 @@ namespace LigaManagerBettorClient.Annotations
   /// </summary>
   /// <example><code>
   /// [ActionName("Foo")]
-  /// public ActionResult Login(string returnUrl) {
+  /// public ActionResult IsValidNickname(string returnUrl) {
   ///   ViewBag.ReturnUrl = Url.Action("Foo"); // OK
   ///   return RedirectToAction("Bar"); // Error: Cannot resolve action
   /// }

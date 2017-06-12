@@ -33,17 +33,41 @@ namespace LigaManagerBettorClient.BettorClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettors", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorsResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.Bettor[]> GetBettorsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/Login", ReplyAction="http://tempuri.org/IBettorClientService/LoginResponse")]
-        bool Login(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettor", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorResponse")]
+        LigaManagerServer.Models.Bettor GetBettor(string nickname);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/Login", ReplyAction="http://tempuri.org/IBettorClientService/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettor", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Bettor> GetBettorAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasons", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonsResponse")]
+        LigaManagerServer.Models.Season[] GetSeasons();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasons", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Season[]> GetSeasonsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/IsValidNickname", ReplyAction="http://tempuri.org/IBettorClientService/IsValidNicknameResponse")]
+        bool IsValidNickname(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/IsValidNickname", ReplyAction="http://tempuri.org/IBettorClientService/IsValidNicknameResponse")]
+        System.Threading.Tasks.Task<bool> IsValidNicknameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/AddBet", ReplyAction="http://tempuri.org/IBettorClientService/AddBetResponse")]
         bool AddBet(LigaManagerServer.Models.Bet bet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/AddBet", ReplyAction="http://tempuri.org/IBettorClientService/AddBetResponse")]
         System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerServer.Models.Bet bet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/ChangeBet", ReplyAction="http://tempuri.org/IBettorClientService/ChangeBetResponse")]
+        bool ChangeBet(LigaManagerServer.Models.Bet bet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/ChangeBet", ReplyAction="http://tempuri.org/IBettorClientService/ChangeBetResponse")]
+        System.Threading.Tasks.Task<bool> ChangeBetAsync(LigaManagerServer.Models.Bet bet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetBet", ReplyAction="http://tempuri.org/IBettorClientService/GetBetResponse")]
+        LigaManagerServer.Models.Bet GetBet(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetBet", ReplyAction="http://tempuri.org/IBettorClientService/GetBetResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Bet> GetBetAsync(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,12 +121,28 @@ namespace LigaManagerBettorClient.BettorClientService {
             return base.Channel.GetBettorsAsync();
         }
         
-        public bool Login(string name) {
-            return base.Channel.Login(name);
+        public LigaManagerServer.Models.Bettor GetBettor(string nickname) {
+            return base.Channel.GetBettor(nickname);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAsync(string name) {
-            return base.Channel.LoginAsync(name);
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Bettor> GetBettorAsync(string nickname) {
+            return base.Channel.GetBettorAsync(nickname);
+        }
+        
+        public LigaManagerServer.Models.Season[] GetSeasons() {
+            return base.Channel.GetSeasons();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Season[]> GetSeasonsAsync() {
+            return base.Channel.GetSeasonsAsync();
+        }
+        
+        public bool IsValidNickname(string name) {
+            return base.Channel.IsValidNickname(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsValidNicknameAsync(string name) {
+            return base.Channel.IsValidNicknameAsync(name);
         }
         
         public bool AddBet(LigaManagerServer.Models.Bet bet) {
@@ -111,6 +151,22 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public System.Threading.Tasks.Task<bool> AddBetAsync(LigaManagerServer.Models.Bet bet) {
             return base.Channel.AddBetAsync(bet);
+        }
+        
+        public bool ChangeBet(LigaManagerServer.Models.Bet bet) {
+            return base.Channel.ChangeBet(bet);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangeBetAsync(LigaManagerServer.Models.Bet bet) {
+            return base.Channel.ChangeBetAsync(bet);
+        }
+        
+        public LigaManagerServer.Models.Bet GetBet(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor) {
+            return base.Channel.GetBet(match, bettor);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Bet> GetBetAsync(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor) {
+            return base.Channel.GetBetAsync(match, bettor);
         }
     }
 }

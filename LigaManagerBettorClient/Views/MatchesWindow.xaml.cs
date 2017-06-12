@@ -18,9 +18,9 @@ namespace LigaManagerBettorClient.Views
     /// <summary>
     /// Interaction logic for MatchesWindow.xaml
     /// </summary>
-    public partial class SeasonWindow : Page
+    public partial class MatchesWindow : Page
     {
-        public SeasonWindow()
+        public MatchesWindow()
         {
             InitializeComponent();
         }

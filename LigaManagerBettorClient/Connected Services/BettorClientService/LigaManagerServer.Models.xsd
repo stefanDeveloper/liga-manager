@@ -88,4 +88,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfBettor" nillable="true" type="tns:ArrayOfBettor" />
+  <xs:complexType name="ArrayOfSeason">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Season" nillable="true" type="tns:Season" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeason" nillable="true" type="tns:ArrayOfSeason" />
 </xs:schema>

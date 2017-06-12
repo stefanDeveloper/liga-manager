@@ -1,4 +1,4 @@
-﻿<Page x:Class="LigaManagerBettorClient.Views.SeasonWindow"
+﻿<Page x:Class="LigaManagerBettorClient.Views.MatchesWindow"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:LigaManagerBettorClient.Views"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="SeasonWindow">
+      Title="MatchesWindow">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,35 +14,55 @@
             <RowDefinition Height="8*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Saison" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="310"/>
-        <ListBox ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="0, 0, 0, 20">
-                        <TextBlock FontWeight="UltraBold" Text="Name:" />
-                        <StackPanel Margin="10, 0, 0, 0" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Firstname}" />
-                            <TextBlock Text=" " />
-                            <TextBlock Text="{Binding Surname}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontWeight="UltraBold" Text="Geschlecht: " />
-                            <TextBlock Text="{Binding Gender}" />
-                        </StackPanel>
-                        <TextBlock FontWeight="UltraBold" Text="Adresse:" />
-                        <StackPanel Margin="10, 0, 0, 0" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Street}" />
-                            <TextBlock Text=" " />
-                            <TextBlock Text="{Binding Address.StreetNumber}" />
-                        </StackPanel>
-                        <StackPanel Margin="10, 0, 0, 0" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Address.PostCode}" />
-                            <TextBlock Text=" " />
-                            <TextBlock Text="{Binding Address.City}" />
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Label Content="Saison" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="125"/>
+        <Label Content="{Binding SelectedSeason.Name}" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="135,40,0,0" VerticalAlignment="Top" Height="75" Width="825"/>
+        <DataGrid x:Name="Matches" ItemsSource="{Binding Matches}" 
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
+            <DataGrid.InputBindings>
+                <MouseBinding
+                    MouseAction="LeftDoubleClick"
+                    Command="{Binding SelectedMatchCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Uhrzeit" Binding="{Binding DateTime, StringFormat=HH:mm}" />
+                <DataGridTextColumn Header="Heim" Binding="{Binding HomeTeam.Name}" />
+                <DataGridTextColumn Header="Auswärts" Binding="{Binding AwayTeam.Name}" />
+                <DataGridTextColumn Header="Heimteam Punkte" Binding="{Binding HomeTeamScore}" />
+                <DataGridTextColumn Header="Auswärtsteam Punkte" Binding="{Binding AwayTeamScore}" />
+            </DataGrid.Columns>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander>
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Spieltag: "/>
+                                                    <TextBlock Text="{Binding Path=Name}"/>
+                                                    <TextBlock Text="Datum: "/>
+                                                    <TextBlock Text="{Binding Path=DateTime, StringFormat=dd.MM.yyyy}"/>
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+        </DataGrid>
     </Grid>
 </Page>

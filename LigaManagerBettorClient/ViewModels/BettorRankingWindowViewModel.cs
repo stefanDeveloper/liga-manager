@@ -4,7 +4,7 @@ using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.ViewModels
 {
-    public class BettorWindowViewModel : ViewModelBase
+    public class BettorRankingWindowViewModel : ViewModelBase
     {
         public List<Bettor> Bettors { get; set; }
     }

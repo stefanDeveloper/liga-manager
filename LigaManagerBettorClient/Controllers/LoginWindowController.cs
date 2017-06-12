@@ -3,6 +3,7 @@ using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
+using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.Controllers
 {
@@ -39,12 +40,14 @@ namespace LigaManagerBettorClient.Controllers
         {
             var nickname = _loginWindowViewModel.Nickname;
             if (nickname == null) return;
-            var isSuccess = _bettorClient.Login(nickname);
+            var isSuccess = _bettorClient.IsValidNickname(nickname);
             if (isSuccess)
             {
+                var bettor = _bettorClient.GetBettor(nickname);
                 var menu = new MenuWindowController()
                 {
-                    MainWindow = _main
+                    MainWindow = _main,
+                    Bettor = bettor
                 };
                 menu.Initialize();
             }

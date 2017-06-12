@@ -73,19 +73,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\BettorWindowController.cs" />
+    <Compile Include="Controllers\BettorRankingWindowController.cs" />
+    <Compile Include="Controllers\DetailMatchWindowController.cs" />
     <Compile Include="Controllers\LoginWindowController.cs" />
-    <Compile Include="Controllers\BetsWindowController.cs" />
+    <Compile Include="Controllers\TeamRankingWindowController.cs" />
     <Compile Include="Controllers\MenuWindowController.cs" />
-    <Compile Include="Controllers\SeasonWindowController.cs" />
+    <Compile Include="Controllers\MatchesWindowController.cs" />
     <Compile Include="Frameworks\RelayCommand.cs" />
     <Compile Include="Frameworks\ViewModelBase.cs" />
+    <Compile Include="Models\RankedBettor.cs" />
+    <Compile Include="Models\RankedTeam.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\BettorWindowViewModel.cs" />
+    <Compile Include="ViewModels\BettorRankingWindowViewModel.cs" />
+    <Compile Include="ViewModels\DetailMatchWindowViewModel.cs" />
     <Compile Include="ViewModels\LoginWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuWindowViewModel.cs" />
     <Compile Include="Views\BettorRankingWindow.xaml.cs">
       <DependentUpon>BettorRankingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailMatchWindow.xaml.cs">
+      <DependentUpon>DetailMatchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -101,10 +108,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\BetsWindowViewModel.cs" />
-    <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
-    <Compile Include="Views\BetsWindow.xaml.cs">
-      <DependentUpon>BetsWindow.xaml</DependentUpon>
+    <Compile Include="ViewModels\TeamRankingWindowViewModel.cs" />
+    <Compile Include="ViewModels\MatchesWindowViewModel.cs" />
+    <Compile Include="Views\TeamRankingWindow.xaml.cs">
+      <DependentUpon>TeamRankingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -137,6 +144,7 @@
     <None Include="Properties\DataSources\LigaManagerServer.Models.Bet.datasource" />
     <None Include="Properties\DataSources\LigaManagerServer.Models.Bettor.datasource" />
     <None Include="Properties\DataSources\LigaManagerServer.Models.Match.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Season.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,11 +160,15 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\BetsWindow.xaml">
+    <Page Include="Views\TeamRankingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BettorRankingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailMatchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +210,7 @@
       <Name>LigaManagerServer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

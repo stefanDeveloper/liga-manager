@@ -5,18 +5,18 @@ using LigaManagerBettorClient.Views;
 
 namespace LigaManagerBettorClient.Controllers
 {
-    public class BettorWindowController
+    public class BettorRankingWindowController
     {
         public MainWindow MainWindow { get; set; }
-        private BettorWindow _view;
-        private BettorWindowViewModel _viewModel;
+        private BettorRankingWindow _view;
+        private BettorRankingWindowViewModel _viewModel;
         private BettorClientServiceClient _bettorClient;
         public void Initialize()
         {
-            _view = new BettorWindow();
+            _view = new BettorRankingWindow();
             _bettorClient = new BettorClientServiceClient();
             var bettors = _bettorClient.GetBettors();
-            _viewModel = new BettorWindowViewModel
+            _viewModel = new BettorRankingWindowViewModel
             {
                 Bettors = bettors.ToList()
             };

@@ -1,4 +1,4 @@
-﻿<Page x:Class="LigaManagerBettorClient.Views.BettorWindow"
+﻿<Page x:Class="LigaManagerBettorClient.Views.BettorRankingWindow"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:LigaManagerBettorClient.Views"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="BettorWindow">
+      Title="BettorRankingWindow">
 
     <Grid>
         <Grid.RowDefinitions>

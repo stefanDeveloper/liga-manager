@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace LigaManagerBettorClient.Views
 {
     /// <summary>
-    /// Interaction logic for BettorRankingWindow.xaml
+    /// Interaction logic for TeamRankingWindow.xaml
     /// </summary>
-    public partial class BettorRankingWindow : Page
+    public partial class BetsWindow : Page
     {
-        public BettorRankingWindow()
+        public BetsWindow()
         {
             InitializeComponent();
         }

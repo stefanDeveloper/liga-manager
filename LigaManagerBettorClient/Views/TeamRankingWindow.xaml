@@ -1,0 +1,31 @@
+﻿<Page x:Class="LigaManagerBettorClient.Views.TeamRankingWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="TeamRankingWindow">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Teamübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="245"/>
+        <DataGrid x:Name="Matches" ItemsSource="{Binding Teams}" 
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Platzierung" Binding="{Binding DateTime, StringFormat=HH:mm}" />
+                <DataGridTextColumn Header="Mannschaft" Binding="{Binding HomeTeam.Name}" />
+                <DataGridTextColumn Header="Anzahl Siege" Binding="{Binding AwayTeam.Name}" />
+                <DataGridTextColumn Header="Anzahl Unentschieden" Binding="{Binding HomeTeamScore}" />
+                <DataGridTextColumn Header="Anzahl Niederlage" Binding="{Binding AwayTeamScore}" />
+                <DataGridTextColumn Header="Tordiffernz" Binding="{Binding AwayTeamScore}" />
+                <DataGridTextColumn Header="Punkte" Binding="{Binding AwayTeamScore}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

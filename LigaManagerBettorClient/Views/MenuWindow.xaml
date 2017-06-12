@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:viewModels="clr-namespace:LigaManagerBettorClient.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="MenuWindow">
@@ -22,7 +21,7 @@
             <RowDefinition/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <ComboBox HorizontalAlignment="Left" Margin="190,30,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="2" Height="22" />
+        <ComboBox ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="190,30,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="2" Height="22" />
         <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold"  HorizontalAlignment="Left" FontSize="38" Margin="10,40,0,0" TextWrapping="Wrap" Text="Liga Manager" VerticalAlignment="Top" Height="70" Width="420" Grid.ColumnSpan="2"/>
         <Button Command="{Binding MatchesCommand}" Content="Zur Spielübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="2" Grid.Column="0"
                 VerticalAlignment="Top" Width="125" Height="50"/>
@@ -30,6 +29,8 @@
                 VerticalAlignment="Top" Width="125" Height="50"/>
         <Button Command="{Binding TeamsCommand}" Content="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
                 VerticalAlignment="Top" Width="125" Height="50"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Bettor.Firstname}" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Height="30" Width="105"/>
 
     </Grid>
 </Page>

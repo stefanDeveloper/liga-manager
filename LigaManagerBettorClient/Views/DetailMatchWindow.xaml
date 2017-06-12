@@ -1,0 +1,35 @@
+﻿<Window x:Class="LigaManagerBettorClient.Views.DetailMatchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LigaManagerBettorClient.Views"
+        mc:Ignorable="d"
+        Title="DetailMatchWindow" Height="600" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="160*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Spiel" FontSize="24" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Height="45" Width="70"/>
+        <TextBlock Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Left" FontSize="24" Margin="85,30,0,0" TextWrapping="Wrap" Text="{Binding Match.HomeTeam.Name}" VerticalAlignment="Top" Height="45" Width="225"/>
+        <Label Grid.Row="0" VerticalContentAlignment="Center" Content=":" FontSize="24" HorizontalAlignment="Left" Margin="312,24,0,0" VerticalAlignment="Top" Height="45" Width="16"/>
+        <TextBlock Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Left" FontSize="24" Margin="330,30,0,0" TextWrapping="Wrap" Text="{Binding Match.AwayTeam.Name}" VerticalAlignment="Top" Height="45" Width="252"/>
+        <Label Content="Am" FontSize="18" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="85,25,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Match.DateTime, StringFormat=dd.MM.yyyy HH:mm}" VerticalAlignment="Top" Width="235"/>
+        <Button x:Name="BetButton" Command="{Binding BetCommand}" Content="Tipp abgeben" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="175" Height="50"/>
+        <Button Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Right" Margin="0,20,10,0" Grid.Row="5" VerticalAlignment="Top" Width="175" Height="50"/>
+        <Label Content="Tipp" FontSize="24" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Height="45" Width="70" Grid.Row="3"/>
+        <Label Content="Ergebnis" FontSize="18" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <TextBlock PreviewTextInput="NumberValidationTextBox" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" FontSize="18" Text="{Binding Match.HomeTeamScore}" Height="23" Margin="85,30,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock PreviewTextInput="NumberValidationTextBox"  FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" FontSize="18" Text="{Binding Match.AwayTeamScore}" Height="23" Margin="330,29,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="HomeTeamBet" Text="{Binding Bet.HomeTeamScore}" TextAlignment="Center" HorizontalAlignment="Left"  Height="23" Margin="85,53,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AwayTeamBet" Text="{Binding Bet.AwayTeamScore}" TextAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="330,53,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Geändert am " HorizontalAlignment="Left" Margin="0,134,0,0" Grid.Row="4" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="75,139,0,0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Bet.DateTime, StringFormat=dd.MM.yyyy HH:mm}" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

@@ -15,5 +15,11 @@ namespace LigaManagerServer.Contracts
 
         [OperationContract]
         List<Bettor> GetBettors();
+
+        [OperationContract]
+        Bettor GetBettor(string nickname);
+
+        [OperationContract]
+        List<Season> GetSeasons();
     }
 }
