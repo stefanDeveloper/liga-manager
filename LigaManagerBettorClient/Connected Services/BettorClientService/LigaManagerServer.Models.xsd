@@ -94,4 +94,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSeason" nillable="true" type="tns:ArrayOfSeason" />
+  <xs:complexType name="ArrayOfSeasonToTeamRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeasonToTeamRelation" nillable="true" type="tns:ArrayOfSeasonToTeamRelation" />
+  <xs:complexType name="SeasonToTeamRelation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Season" nillable="true" type="tns:Season" />
+          <xs:element minOccurs="0" name="Team" nillable="true" type="tns:Team" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
 </xs:schema>

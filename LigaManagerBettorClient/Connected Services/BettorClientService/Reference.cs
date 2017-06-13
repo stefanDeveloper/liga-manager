@@ -45,6 +45,12 @@ namespace LigaManagerBettorClient.BettorClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasons", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonsResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.Season[]> GetSeasonsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
+        LigaManagerServer.Models.SeasonToTeamRelation[] GetTeams(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerServer.Models.Season season);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/IsValidNickname", ReplyAction="http://tempuri.org/IBettorClientService/IsValidNicknameResponse")]
         bool IsValidNickname(string name);
         
@@ -135,6 +141,14 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public System.Threading.Tasks.Task<LigaManagerServer.Models.Season[]> GetSeasonsAsync() {
             return base.Channel.GetSeasonsAsync();
+        }
+        
+        public LigaManagerServer.Models.SeasonToTeamRelation[] GetTeams(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetTeams(season);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetTeamsAsync(season);
         }
         
         public bool IsValidNickname(string name) {

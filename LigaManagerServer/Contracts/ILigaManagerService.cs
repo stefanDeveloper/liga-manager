@@ -21,5 +21,8 @@ namespace LigaManagerServer.Contracts
 
         [OperationContract]
         List<Season> GetSeasons();
+
+        [OperationContract]
+        List<SeasonToTeamRelation> GetTeams(Season season);
     }
 }

@@ -14,6 +14,7 @@ namespace LigaManagerServer.Services
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
         private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService = new PersistenceService<SeasonToTeamRelation>();
+
         public List<Match> GetMatches(Season season)
         {
             lock (StaticLock)
@@ -60,6 +61,16 @@ namespace LigaManagerServer.Services
             {
                 var seasons = _seasonPersistenceService.GetAll();
                 return seasons;
+            }
+        }
+
+        public List<SeasonToTeamRelation> GetTeams(Season season)
+        {
+            lock (StaticLock)
+            {
+                var seasonToTeamRelations = _seasonToTeamRelationService.GetAll();
+                var teamsOfSeason = seasonToTeamRelations.FindAll(x => x.Season.Equals(season));    
+                return teamsOfSeason;
             }
         }
 

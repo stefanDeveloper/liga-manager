@@ -60,6 +60,13 @@ namespace LigaManagerBettorClient.Controllers
 
         public void ExecuteTeamsCommand(object obj)
         {
+            var teamRankingWindowController = new TeamRankingWindowController
+            {
+                MainWindow = MainWindow,
+                SelecetedSeason = _viewModel.SelecetedSeason,
+                Bettor = Bettor
+            };
+            teamRankingWindowController.Initialize();
         }
     }
 }

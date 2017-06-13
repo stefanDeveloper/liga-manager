@@ -13,7 +13,7 @@ namespace LigaManagerServer.Services
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
-
+        private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService = new PersistenceService<SeasonToTeamRelation>();
         public bool IsValidNickname(string name)
         {
             lock (StaticLock)
@@ -52,5 +52,7 @@ namespace LigaManagerServer.Services
                 return betsOfMatch.Count != 1 ? null : betsOfMatch.First();
             }
         }
+
+
     }
 }

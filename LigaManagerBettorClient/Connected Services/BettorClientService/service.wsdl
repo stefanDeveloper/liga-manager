@@ -37,6 +37,12 @@
   <wsdl:message name="IBettorClientService_GetSeasons_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSeasonsResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeams" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettorClientService_IsValidNickname_InputMessage">
     <wsdl:part name="parameters" element="tns:IsValidNickname" />
   </wsdl:message>
@@ -81,6 +87,10 @@
     <wsdl:operation name="GetSeasons">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasons" message="tns:IBettorClientService_GetSeasons_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonsResponse" message="tns:IBettorClientService_GetSeasons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeams" message="tns:IBettorClientService_GetTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeamsResponse" message="tns:IBettorClientService_GetTeams_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsValidNickname">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/IsValidNickname" message="tns:IBettorClientService_IsValidNickname_InputMessage" />
@@ -139,6 +149,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetSeasons">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetTeams" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
