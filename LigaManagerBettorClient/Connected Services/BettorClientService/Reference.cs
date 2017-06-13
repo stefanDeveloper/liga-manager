@@ -27,6 +27,12 @@ namespace LigaManagerBettorClient.BettorClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBets", ReplyAction="http://tempuri.org/ILigaManagerService/GetBetsResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetBetsAsync(LigaManagerServer.Models.Bettor bettor);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllBets", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllBetsResponse")]
+        LigaManagerServer.Models.Bet[] GetAllBets();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllBets", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllBetsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetAllBetsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetBettors", ReplyAction="http://tempuri.org/ILigaManagerService/GetBettorsResponse")]
         LigaManagerServer.Models.Bettor[] GetBettors();
         
@@ -117,6 +123,14 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetBetsAsync(LigaManagerServer.Models.Bettor bettor) {
             return base.Channel.GetBetsAsync(bettor);
+        }
+        
+        public LigaManagerServer.Models.Bet[] GetAllBets() {
+            return base.Channel.GetAllBets();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Bet[]> GetAllBetsAsync() {
+            return base.Channel.GetAllBetsAsync();
         }
         
         public LigaManagerServer.Models.Bettor[] GetBettors() {

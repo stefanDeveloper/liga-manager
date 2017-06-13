@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
@@ -33,6 +32,15 @@ namespace LigaManagerServer.Services
                 var findAll = bets.FindAll(x => x.Bettor.Equals(bettor));
 
                 return findAll;
+            }
+        }
+
+        public List<Bet> GetAllBets()
+        {
+            lock (StaticLock)
+            {
+                var bets = _betPersistenceService.GetAll();
+                return bets;
             }
         }
 

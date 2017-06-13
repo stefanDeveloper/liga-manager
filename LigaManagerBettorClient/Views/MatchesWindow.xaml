@@ -64,5 +64,6 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
         </DataGrid>
+        <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="10,40,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80"/>
     </Grid>
 </Page>

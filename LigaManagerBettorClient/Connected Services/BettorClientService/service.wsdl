@@ -19,6 +19,12 @@
   <wsdl:message name="IBettorClientService_GetBets_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBetsResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllBets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBets" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllBets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBetsResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettorClientService_GetBettors_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBettors" />
   </wsdl:message>
@@ -76,6 +82,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBets" message="tns:IBettorClientService_GetBets_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBetsResponse" message="tns:IBettorClientService_GetBets_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBets" message="tns:IBettorClientService_GetAllBets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBetsResponse" message="tns:IBettorClientService_GetAllBets_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetBettors">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettors" message="tns:IBettorClientService_GetBettors_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorsResponse" message="tns:IBettorClientService_GetBettors_OutputMessage" />
@@ -122,6 +132,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBets">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllBets" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

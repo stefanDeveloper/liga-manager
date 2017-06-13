@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
@@ -11,6 +12,7 @@ namespace LigaManagerBettorClient.Controllers
     {
         public MainWindow MainWindow { get; set; }
         public Bettor Bettor { get; set; }
+
         private MenuWindowViewModel _viewModel;
         private BettorClientServiceClient _bettorClient;
         private MenuWindow _view;
@@ -22,11 +24,11 @@ namespace LigaManagerBettorClient.Controllers
             _viewModel = new MenuWindowViewModel
             {
                 Bettor = Bettor,
-                Seasons = seasons.ToList(),
-                SelecetedSeason = seasons.ToList().First(),
+                Seasons = new ObservableCollection<Season>(seasons.ToList()),
+                SelectedSeason = seasons.ToList().First(),
                 BettorRankingCommand = new RelayCommand(ExecuteBettorRankingCommand),
                 MatchesCommand = new RelayCommand(ExecuteMatchesCommand),
-                TeamsCommand = new RelayCommand(ExecuteTeamsCommand)
+                TeamsCommand = new RelayCommand(ExecuteTeamsCommand),
             };
 
             _view.DataContext = _viewModel;
@@ -41,7 +43,9 @@ namespace LigaManagerBettorClient.Controllers
             var bettorRanking = new BettorRankingWindowController
             {
                 MainWindow = MainWindow,
-                
+                SelectedSeason = _viewModel.SelectedSeason,
+                Bettor = Bettor
+
             };
             bettorRanking.Initialize();
         }
@@ -51,9 +55,9 @@ namespace LigaManagerBettorClient.Controllers
             var matches = new MatchesWindowController
             {
                 MainWindow = MainWindow,
-                SelectedSeason = _viewModel.SelecetedSeason,
-                Bettor = Bettor,
-                
+                SelectedSeason = _viewModel.SelectedSeason,
+                Bettor = Bettor
+
             };
             matches.Initialize();
         }
@@ -63,10 +67,19 @@ namespace LigaManagerBettorClient.Controllers
             var teamRankingWindowController = new TeamRankingWindowController
             {
                 MainWindow = MainWindow,
-                SelecetedSeason = _viewModel.SelecetedSeason,
+                SelectedSeason = _viewModel.SelectedSeason,
                 Bettor = Bettor
             };
             teamRankingWindowController.Initialize();
+        }
+
+        public void ExecuteBackCommand(object obj)
+        {
+            _view.DataContext = _viewModel;
+
+            MainWindow.Content = _view;
+            MainWindow.Width = 1200;
+            MainWindow.Height = 800;
         }
     }
 }

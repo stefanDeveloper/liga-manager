@@ -16,7 +16,18 @@
         </Grid.RowDefinitions>
         <Label Content="Tipper Rangliste" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,10,0,0" VerticalAlignment="Top" Height="60" Width="310"/>
         <DataGrid ItemsSource="{Binding Bettors}" 
-                  CanUserReorderColumns="True" CanUserResizeColumns="True" 
-                  CanUserResizeRows="False" CanUserSortColumns="True" Grid.Row="1"/>
+                  CanUserReorderColumns="True" CanUserResizeColumns="True" AutoGenerateColumns="False"
+                  CanUserResizeRows="False" CanUserSortColumns="True" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Platzierung" Binding="{Binding Place}" />
+                <DataGridTextColumn Header="Nickname" Binding="{Binding Bettor.Nickname}" />
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Bettor.Firstname}" />
+                <DataGridTextColumn Header="Nachname" Binding="{Binding Bettor.Lastname}" />
+                <DataGridTextColumn Header="Punkte" Binding="{Binding Score}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox ItemsSource="{Binding MatchDays}"  SelectedItem="{Binding SelectedMatchDay}" x:Name="MatchDayComboBox" Grid.Row="0" HorizontalAlignment="Left" Margin="1025,38,0,0" VerticalAlignment="Top" Width="165" Height="26"/>
+        <Label Grid.Row="0" Content="Spieltag" HorizontalAlignment="Left" Margin="970,38,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="10,47,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80"/>
     </Grid>
 </Page>

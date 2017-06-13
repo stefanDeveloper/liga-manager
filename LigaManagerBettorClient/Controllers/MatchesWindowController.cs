@@ -33,13 +33,24 @@ namespace LigaManagerBettorClient.Controllers
             {
                 SelectedSeason = SelectedSeason,
                 Matches = listCollectionView,
-                SelectedMatchCommand = new RelayCommand(ExecuteSelectedMatchCommand)
+                SelectedMatchCommand = new RelayCommand(ExecuteSelectedMatchCommand),
+                BackCommand = new RelayCommand(ExecuteBackCommand)
             };
 
             _view.DataContext = _viewModel;
             MainWindow.Width = 1200;
             MainWindow.Height = 800;
             MainWindow.Content = _view;
+        }
+
+        private void ExecuteBackCommand(object obj)
+        {
+            var menuWindow = new MenuWindowController
+            {
+                Bettor = Bettor,
+                MainWindow = MainWindow
+            };
+            menuWindow.Initialize();
         }
 
 

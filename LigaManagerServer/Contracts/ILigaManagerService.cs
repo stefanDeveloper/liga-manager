@@ -14,6 +14,9 @@ namespace LigaManagerServer.Contracts
         List<Bet> GetBets(Bettor bettor);
 
         [OperationContract]
+        List<Bet> GetAllBets();
+
+        [OperationContract]
         List<Bettor> GetBettors();
 
         [OperationContract]

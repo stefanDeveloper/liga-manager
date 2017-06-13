@@ -29,6 +29,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllBets">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBetsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllBetsResult" nillable="true" type="q5:ArrayOfBet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBettors">
     <xs:complexType>
       <xs:sequence />
@@ -37,7 +49,7 @@
   <xs:element name="GetBettorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBettorsResult" nillable="true" type="q5:ArrayOfBettor" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBettorsResult" nillable="true" type="q6:ArrayOfBettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -51,7 +63,7 @@
   <xs:element name="GetBettorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBettorResult" nillable="true" type="q6:Bettor" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBettorResult" nillable="true" type="q7:Bettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -63,21 +75,21 @@
   <xs:element name="GetSeasonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetSeasonsResult" nillable="true" type="q7:ArrayOfSeason" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetSeasonsResult" nillable="true" type="q8:ArrayOfSeason" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTeams">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q8:Season" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q9:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetTeamsResult" nillable="true" type="q9:ArrayOfSeasonToTeamRelation" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetTeamsResult" nillable="true" type="q10:ArrayOfSeasonToTeamRelation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +110,7 @@
   <xs:element name="AddBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q10:Bet" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q11:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -112,7 +124,7 @@
   <xs:element name="ChangeBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q11:Bet" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q12:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -126,15 +138,15 @@
   <xs:element name="GetBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="match" nillable="true" type="q12:Match" />
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bettor" nillable="true" type="q13:Bettor" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="match" nillable="true" type="q13:Match" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bettor" nillable="true" type="q14:Bettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetBetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBetResult" nillable="true" type="q14:Bet" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBetResult" nillable="true" type="q15:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

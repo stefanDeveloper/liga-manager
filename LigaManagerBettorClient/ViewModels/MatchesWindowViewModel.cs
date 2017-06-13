@@ -11,6 +11,7 @@ namespace LigaManagerBettorClient.ViewModels
         public Season SelectedSeason { get; set; }  
         public ListCollectionView Matches { get; set; }
         public Match SelectedMatch { get; set; }
-        public ICommand SelectedMatchCommand { get; set; }  
+        public ICommand SelectedMatchCommand { get; set; }
+        public ICommand BackCommand { get; set; }
     }
 }

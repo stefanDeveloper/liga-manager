@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
+using System.Windows.Input;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.Models;
 
@@ -9,8 +9,9 @@ namespace LigaManagerBettorClient.ViewModels
 {
     public class TeamRankingWindowViewModel : ViewModelBase
     {
+        public ICommand BackCommand { get; set; }
         public List<RankedTeam> Teams { get; set; }
-        public event EventHandler<string> InnerButtonClick;
+        public event EventHandler<string> SelectionMatchDayChanged;
         private string _selectedMatchDay;
         public string SelectedMatchDay
         {
@@ -20,7 +21,7 @@ namespace LigaManagerBettorClient.ViewModels
                 if (_selectedMatchDay != value)
                 {
                     _selectedMatchDay = value;
-                    InnerButtonClick?.Invoke(this, _selectedMatchDay);
+                    SelectionMatchDayChanged?.Invoke(this, _selectedMatchDay);
                 }
             }
         }
