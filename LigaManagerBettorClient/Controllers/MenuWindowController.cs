@@ -21,6 +21,7 @@ namespace LigaManagerBettorClient.Controllers
             _view = new MenuWindow();
             _bettorClient = new BettorClientServiceClient();
             var seasons = _bettorClient.GetSeasons();
+
             _viewModel = new MenuWindowViewModel
             {
                 Bettor = Bettor,

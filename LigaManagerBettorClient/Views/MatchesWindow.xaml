@@ -25,6 +25,7 @@
                     Command="{Binding SelectedMatchCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum" Binding="{Binding DateTime, StringFormat=dd.MM.yyyy}" />
                 <DataGridTextColumn Header="Uhrzeit" Binding="{Binding DateTime, StringFormat=HH:mm}" />
                 <DataGridTextColumn Header="Heim" Binding="{Binding HomeTeam.Name}" />
                 <DataGridTextColumn Header="Auswärts" Binding="{Binding AwayTeam.Name}" />
@@ -50,8 +51,6 @@
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Spieltag: "/>
                                                     <TextBlock Text="{Binding Path=Name}"/>
-                                                    <TextBlock Text="Datum: "/>
-                                                    <TextBlock Text="{Binding Path=DateTime, StringFormat=dd.MM.yyyy}"/>
                                                 </StackPanel>
                                             </Expander.Header>
                                             <ItemsPresenter />
