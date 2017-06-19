@@ -1,6 +1,4 @@
-﻿using LigaManagerServer.Models;
-
-namespace LigaManagerBettorClient.Models
+﻿namespace LigaManagerServer.Models
 {
     public class RankedTeam
     {

@@ -60,10 +60,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\MenuWindowController.cs" />
+    <Compile Include="Framework\RelayCommand.cs" />
+    <Compile Include="Framework\ViewModelBase.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BettorWindowViewModel.cs" />
     <Compile Include="ViewModels\MatchesWindowViewModel.cs" />
+    <Compile Include="ViewModels\MenuWindowViewModel.cs" />
     <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
     <Compile Include="ViewModels\TeamWindowViewModel.cs" />
+    <Compile Include="Views\BettorWindow.xaml.cs">
+      <DependentUpon>BettorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeasonWindow.xaml.cs">
+      <DependentUpon>SeasonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamWindow.xaml.cs">
+      <DependentUpon>TeamWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\AdminClientService\Reference.cs">
@@ -95,7 +115,16 @@
     <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bettor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Match.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Season.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\AdminClientService\LigaManagerServer.Models.xsd">
@@ -117,7 +146,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="Data\Images\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -136,6 +165,28 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\BettorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SeasonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using LigaManagerAdminClient.Controllers;
+using LigaManagerAdminClient.Views;
 
 namespace LigaManagerAdminClient
 {
@@ -13,5 +9,10 @@ namespace LigaManagerAdminClient
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var menuWindow = new MenuWindowController();
+            menuWindow.Initialize(new MainWindow());
+        }
     }
 }

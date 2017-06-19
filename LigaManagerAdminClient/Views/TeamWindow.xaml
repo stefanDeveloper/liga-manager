@@ -1,0 +1,39 @@
+﻿<Page x:Class="LigaManagerAdminClient.Views.TeamWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LigaManagerAdminClient.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="TeamWindow">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Mannschaftsübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="420" Grid.RowSpan="2"/>
+        <DataGrid ItemsSource="{Binding Bettors}" 
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80"/>
+            <Button Command="{Binding AddCommand}" Content="Hinzufügen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="4"/>
+            <Button Command="{Binding ChangeCommand}" Content="Ändern" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
+            <Button Command="{Binding DeleteCommand}" Content="Löschen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="3"/>
+        </Grid>
+    </Grid>
+</Page>

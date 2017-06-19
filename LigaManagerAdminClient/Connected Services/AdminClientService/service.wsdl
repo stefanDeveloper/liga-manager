@@ -19,6 +19,36 @@
   <wsdl:message name="IAdminClientService_GetBets_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBetsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllBets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBets" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllBets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettors" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettor" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasons" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeams" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
+  </wsdl:message>
   <wsdl:message name="IAdminClientService_AddBettor_InputMessage">
     <wsdl:part name="parameters" element="tns:AddBettor" />
   </wsdl:message>
@@ -106,6 +136,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBets" message="tns:IAdminClientService_GetBets_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBetsResponse" message="tns:IAdminClientService_GetBets_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBets" message="tns:IAdminClientService_GetAllBets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBetsResponse" message="tns:IAdminClientService_GetAllBets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBettors">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettors" message="tns:IAdminClientService_GetBettors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorsResponse" message="tns:IAdminClientService_GetBettors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettor" message="tns:IAdminClientService_GetBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorResponse" message="tns:IAdminClientService_GetBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasons" message="tns:IAdminClientService_GetSeasons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonsResponse" message="tns:IAdminClientService_GetSeasons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeams" message="tns:IAdminClientService_GetTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeamsResponse" message="tns:IAdminClientService_GetTeams_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddBettor">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddBettor" message="tns:IAdminClientService_AddBettor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddBettorResponse" message="tns:IAdminClientService_AddBettor_OutputMessage" />
@@ -172,6 +222,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetBets">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBettors">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBettors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBettor">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetTeams" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
