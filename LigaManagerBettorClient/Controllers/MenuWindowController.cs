@@ -10,21 +10,25 @@ namespace LigaManagerBettorClient.Controllers
 {
     public class MenuWindowController
     {
-        public MainWindow MainWindow { get; set; }
-        public Bettor Bettor { get; set; }
-
+        private MainWindow _mainWindow;
+        private Bettor _bettor;
         private MenuWindowViewModel _viewModel;
         private BettorClientServiceClient _bettorClient;
         private MenuWindow _view;
-        public void Initialize()
+
+        public void Initialize(MainWindow mainWindow, Bettor bettor)
         {
             _view = new MenuWindow();
             _bettorClient = new BettorClientServiceClient();
+            _mainWindow = mainWindow;
+            _bettor = bettor;
+            // Get all seasons
             var seasons = _bettorClient.GetSeasons();
 
+            #region View and ViewModel
             _viewModel = new MenuWindowViewModel
             {
-                Bettor = Bettor,
+                Bettor = _bettor,
                 Seasons = new ObservableCollection<Season>(seasons.ToList()),
                 SelectedSeason = seasons.ToList().First(),
                 BettorRankingCommand = new RelayCommand(ExecuteBettorRankingCommand),
@@ -33,54 +37,40 @@ namespace LigaManagerBettorClient.Controllers
             };
 
             _view.DataContext = _viewModel;
+            #endregion
 
-            MainWindow.Content = _view;
-            MainWindow.Width = 1200;
-            MainWindow.Height = 800;
+            _mainWindow.Content = _view;
+            _mainWindow.Width = 1200;
+            _mainWindow.Height = 800;
         }
 
+        #region ExecuteCommands
         public void ExecuteBettorRankingCommand(object obj)
         {
-            var bettorRanking = new BettorRankingWindowController
-            {
-                MainWindow = MainWindow,
-                SelectedSeason = _viewModel.SelectedSeason,
-                Bettor = Bettor
-
-            };
-            bettorRanking.Initialize();
+            var bettorRanking = new BettorRankingWindowController();
+            bettorRanking.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
         }
 
         public void ExecuteMatchesCommand(object obj)
         {
-            var matches = new MatchesWindowController
-            {
-                MainWindow = MainWindow,
-                SelectedSeason = _viewModel.SelectedSeason,
-                Bettor = Bettor
-
-            };
-            matches.Initialize();
+            var matches = new MatchesWindowController();
+            matches.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
         }
 
         public void ExecuteTeamsCommand(object obj)
         {
-            var teamRankingWindowController = new TeamRankingWindowController
-            {
-                MainWindow = MainWindow,
-                SelectedSeason = _viewModel.SelectedSeason,
-                Bettor = Bettor
-            };
-            teamRankingWindowController.Initialize();
+            var teamRankingWindowController = new TeamRankingWindowController();
+            teamRankingWindowController.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
         }
 
         public void ExecuteBackCommand(object obj)
         {
             _view.DataContext = _viewModel;
 
-            MainWindow.Content = _view;
-            MainWindow.Width = 1200;
-            MainWindow.Height = 800;
+            _mainWindow.Content = _view;
+            _mainWindow.Width = 1200;
+            _mainWindow.Height = 800;
         }
+        #endregion
     }
 }

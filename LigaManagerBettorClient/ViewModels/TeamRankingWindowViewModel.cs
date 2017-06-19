@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using LigaManagerBettorClient.Frameworks;
-using LigaManagerBettorClient.Models;
+using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.ViewModels
 {
@@ -15,7 +15,7 @@ namespace LigaManagerBettorClient.ViewModels
         private string _selectedMatchDay;
         public string SelectedMatchDay
         {
-            get => _selectedMatchDay;
+            get { return _selectedMatchDay; }
             set
             {
                 if (_selectedMatchDay != value)

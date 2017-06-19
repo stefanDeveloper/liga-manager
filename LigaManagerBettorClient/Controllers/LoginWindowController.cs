@@ -3,7 +3,6 @@ using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
-using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.Controllers
 {
@@ -12,12 +11,14 @@ namespace LigaManagerBettorClient.Controllers
         private LoginWindowViewModel _loginWindowViewModel;
         private BettorClientServiceClient _bettorClient;
         private LoginWindow _view;
-        private MainWindow _main;
+        private MainWindow _mainWindow;
 
         public void Initialize()
         {
             _view = new LoginWindow();
             _bettorClient = new BettorClientServiceClient();
+
+            #region View and ViewModel
             _loginWindowViewModel = new LoginWindowViewModel
             {
                 SignInCommand = new RelayCommand(ExecuteSignInCommand),
@@ -25,15 +26,16 @@ namespace LigaManagerBettorClient.Controllers
             };
 
             _view.DataContext = _loginWindowViewModel;
+            #endregion
 
-            _main = new MainWindow
+            _mainWindow = new MainWindow
             {
                 Content = _view,
                 Height = 300,
                 Width = 315,
                 ResizeMode = ResizeMode.NoResize
             };
-            _main.Show();
+            _mainWindow.Show();
         }
 
         private void ExecuteSignInCommand(object obj)
@@ -44,12 +46,8 @@ namespace LigaManagerBettorClient.Controllers
             if (isSuccess)
             {
                 var bettor = _bettorClient.GetBettor(nickname);
-                var menu = new MenuWindowController()
-                {
-                    MainWindow = _main,
-                    Bettor = bettor
-                };
-                menu.Initialize();
+                var menu = new MenuWindowController();
+                menu.Initialize(_mainWindow, bettor);
             }
             else
             {
@@ -60,7 +58,7 @@ namespace LigaManagerBettorClient.Controllers
 
         private void ExecuteCloseCommand(object obj)
         {
-            _main.Close();
+            _mainWindow.Close();
         }
     }
 }

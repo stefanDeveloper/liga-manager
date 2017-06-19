@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
-using LigaManagerBettorClient.Models;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
 using LigaManagerServer.Models;
@@ -18,20 +17,25 @@ namespace LigaManagerBettorClient.Controllers
         private TeamRankingWindowViewModel _viewModel;
         private BettorClientServiceClient _bettorClient;
 
-        public MainWindow MainWindow { get; set; }
-        public Season SelectedSeason { get; set; }
-        public Bettor Bettor { get; set; }
+        private MainWindow _mainWindow;
+        private Season _selectedSeason;
+        private Bettor _bettor;
 
 
-        public void Initialize()
+        public void Initialize(MainWindow mainWindow, Season selectedSeason, Bettor bettor)
         {
             _view = new TeamRankingWindow();
             _bettorClient = new BettorClientServiceClient();
-            var matches = _bettorClient.GetMatches(SelectedSeason);
+            _mainWindow = mainWindow;
+            _selectedSeason = selectedSeason;
+            _bettor = bettor;
+
+            #region View and ViewModel
+            var matches = _bettorClient.GetMatches(_selectedSeason);
             var max = matches.ToList().Max(x => x.MatchDay);
 
             var rankedTeams = GetRankedTeams(0);
-            var matchDays = new ObservableCollection<string> {"Aktuell"};
+            var matchDays = new ObservableCollection<string> { "Aktuell" };
             for (var i = 1; i <= max; i++)
             {
                 matchDays.Add("Spieltag: " + i);
@@ -45,21 +49,17 @@ namespace LigaManagerBettorClient.Controllers
             };
             _viewModel.SelectionMatchDayChanged += UpdateMatchDay;
             _view.DataContext = _viewModel;
-            
+            #endregion
 
-            MainWindow.Width = 1200;
-            MainWindow.Height = 800;
-            MainWindow.Content = _view;
+            _mainWindow.Width = 1200;
+            _mainWindow.Height = 800;
+            _mainWindow.Content = _view;
         }
 
         private void ExecuteBackCommand(object obj)
         {
-            var menuWindow = new MenuWindowController
-            {
-                Bettor = Bettor,
-                MainWindow = MainWindow
-            };
-            menuWindow.Initialize();
+            var menuWindow = new MenuWindowController();
+            menuWindow.Initialize(_mainWindow, _bettor);
         }
 
         private void UpdateMatchDay(object sender, string s)
@@ -79,14 +79,14 @@ namespace LigaManagerBettorClient.Controllers
             List<RankedTeam> result;
             if (matchday == 0)
             {
-                var matches = _bettorClient.GetMatches(SelectedSeason);
-                var seasonToTeamRelations = _bettorClient.GetTeams(SelectedSeason);
+                var matches = _bettorClient.GetMatches(_selectedSeason);
+                var seasonToTeamRelations = _bettorClient.GetTeams(_selectedSeason);
                 result = CalucalteRankedTeams(matches.ToList(), seasonToTeamRelations.ToList());
             }
             else
             {
-                var matches = _bettorClient.GetMatches(SelectedSeason);
-                var seasonToTeamRelations = _bettorClient.GetTeams(SelectedSeason);
+                var matches = _bettorClient.GetMatches(_selectedSeason);
+                var seasonToTeamRelations = _bettorClient.GetTeams(_selectedSeason);
                 var filteredMatches = matches.ToList().Where(x => x.MatchDay == matchday);
                 result = CalucalteRankedTeams(filteredMatches.ToList(), seasonToTeamRelations.ToList());
             }

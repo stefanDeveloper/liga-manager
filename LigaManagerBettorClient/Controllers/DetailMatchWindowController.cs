@@ -1,5 +1,4 @@
 ﻿using System;
-using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
@@ -11,15 +10,15 @@ namespace LigaManagerBettorClient.Controllers
     {
         private DetailMatchWindow _view;
         private DetailMatchWindowViewModel _viewModel;
-        private BettorClientServiceClient _bettorClient;
         public Match Match { get; set; }
         public Bet Bet { get; set; }
 
         public Bet ShowMatch()
         {
             _view = new DetailMatchWindow();
-            _bettorClient = new BettorClientServiceClient();
-            _viewModel = new DetailMatchWindowViewModel()
+
+            #region View and ViewModel
+            _viewModel = new DetailMatchWindowViewModel
             {
                 Bet = Bet,
                 Match = Match,
@@ -27,8 +26,10 @@ namespace LigaManagerBettorClient.Controllers
                 CancelCommand = new RelayCommand(ExecuteCancelCommand)
             };
             _view.DataContext = _viewModel;
+            #endregion
 
-            if (Match.DateTime < DateTime.Now)
+            // check if the bet is valid
+            if (Match.DateTime < DateTime.Now.AddMinutes(30))
             {
                 _view.AwayTeamBet.IsEnabled = false;
                 _view.HomeTeamBet.IsEnabled = false;
@@ -39,7 +40,7 @@ namespace LigaManagerBettorClient.Controllers
         private void ExecuteBetCommand(object obj)
         {
             _view.DialogResult = true;
-            if (Bet != null)
+            if (Bet != null && Match.DateTime < DateTime.Now.AddMinutes(30))
             {
                 Bet.DateTime = DateTime.Now;
                 _view.Close();

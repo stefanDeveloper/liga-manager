@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using LigaManagerBettorClient.Frameworks;
-using PropertyChanged;
 
 namespace LigaManagerBettorClient.ViewModels
 {

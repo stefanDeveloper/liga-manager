@@ -19,7 +19,7 @@ namespace LigaManagerBettorClient.ViewModels
         private Season _selectedSeason;
         public Season SelectedSeason
         {
-            get => _selectedSeason;
+            get { return _selectedSeason; }
             set
             {
                 if (_selectedSeason != value)
