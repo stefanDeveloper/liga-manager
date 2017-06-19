@@ -1,7 +1,7 @@
-﻿using LigaManagerAdminClient.AdminClientService;
-using LigaManagerAdminClient.ViewModels;
+﻿using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
+using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {
@@ -10,7 +10,7 @@ namespace LigaManagerAdminClient.Controllers
         private AddBettorWindow _view;
         private AddBettorWindowViewModel _viewModel;
 
-        public Bet Bet { get; set; }
+        public Bettor Bettor { get; set; }
 
         public Bettor ShowBettor()
         {

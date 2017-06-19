@@ -124,21 +124,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bet.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bettor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Match.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Season.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\AdminClientService\LigaManagerServer.Models.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -149,6 +134,11 @@
     <None Include="Connected Services\AdminClientService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bet.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bettor.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Match.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Season.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.SeasonToTeamRelation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -211,6 +201,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LigaManagerServer\LigaManagerServer.csproj">
+      <Project>{fe7a1f9f-ccfd-4ebb-a312-ddcd772bcd45}</Project>
+      <Name>LigaManagerServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

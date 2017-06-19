@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using LigaManagerAdminClient.AdminClientService;
 using LigaManagerBettorClient.Frameworks;
+using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.ViewModels
 {

@@ -6,6 +6,7 @@ using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
+using Bettor = LigaManagerServer.Models.Bettor;
 
 namespace LigaManagerAdminClient.Controllers
 {
@@ -41,7 +42,6 @@ namespace LigaManagerAdminClient.Controllers
 
             mainWindow.Content = _view;
         }
-
         #region ExecuteCommands
         private void ExecuteBackCommand(object obj)
         {
@@ -49,14 +49,56 @@ namespace LigaManagerAdminClient.Controllers
             menuWindow.Initialize(_mainWindow);
         }
 
-        private void ExecuteAddCommand(object obj)
+        private async void ExecuteAddCommand(object obj)
         {
-            
+            var addBettorWindow = new AddBettorWindowController
+            {
+                Bettor =  new Bettor()
+            };
+
+            var showBettor = addBettorWindow.ShowBettor();
+            // it could be possible that the bettor is null
+            if (showBettor == null) return;
+            // add bettor
+            var addBettorAsync = await _adminClient.AddBettorAsync(showBettor);
+
+            if (addBettorAsync)
+            {
+
+            }
+            else
+            {
+                
+            }
         }
 
-        private void ExecuteChangeCommand(object obj)
+        private async void ExecuteChangeCommand(object obj)
         {
+            if (_viewModel.SelectedBettor == null)
+            {
+                MessageBox.Show("Bitte wählen Sie einen Tipper aus!", "Kein Tipper ausgewählt",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            var addBettorWindow = new AddBettorWindowController
+            {
+                Bettor = _viewModel.SelectedBettor
+            };
 
+            var showBettor = addBettorWindow.ShowBettor();
+            // it could be possible that the bettor is null
+            if (showBettor == null) return;
+            // add bettor
+            var addBettorAsync = await _adminClient.UpdateBettorAsync(showBettor);
+
+            if (addBettorAsync)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void ExecuteDeleteCommand(object obj)
