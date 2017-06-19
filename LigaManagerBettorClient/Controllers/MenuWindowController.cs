@@ -40,8 +40,8 @@ namespace LigaManagerBettorClient.Controllers
             #endregion
 
             _mainWindow.Content = _view;
-            _mainWindow.Width = 1200;
-            _mainWindow.Height = 800;
+            _mainWindow.Width = 800;
+            _mainWindow.Height = 600;
         }
 
         #region ExecuteCommands
@@ -66,10 +66,7 @@ namespace LigaManagerBettorClient.Controllers
         public void ExecuteBackCommand(object obj)
         {
             _view.DataContext = _viewModel;
-
             _mainWindow.Content = _view;
-            _mainWindow.Width = 1200;
-            _mainWindow.Height = 800;
         }
         #endregion
     }

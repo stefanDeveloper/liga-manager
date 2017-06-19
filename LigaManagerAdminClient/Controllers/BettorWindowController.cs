@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using LigaManagerAdminClient.AdminClientService;
+using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
@@ -15,10 +16,12 @@ namespace LigaManagerAdminClient.Controllers
         private MainWindow _mainWindow;
         private AdminClientServiceClient _adminClient;
 
-        public void Initialize(MainWindow mainWindow)
+        public async void Initialize(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             _adminClient = new AdminClientServiceClient();
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // Get all bettors
             var bettors = _adminClient.GetBettors();
 

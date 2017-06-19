@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LigaManagerBettorClient.Views"
         mc:Ignorable="d"
-        Title="Liga Manager" Height="300" Width="300">
+        Title="Liga Manager" Height="600" Width="800">
     <Grid>
     </Grid>
 </Window>

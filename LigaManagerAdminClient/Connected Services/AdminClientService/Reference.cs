@@ -446,6 +446,12 @@ namespace LigaManagerAdminClient.AdminClientService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AdminClientService.IAdminClientService")]
     public interface IAdminClientService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/IsOpen", ReplyAction="http://tempuri.org/ILigaManagerService/IsOpenResponse")]
+        bool IsOpen();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/IsOpen", ReplyAction="http://tempuri.org/ILigaManagerService/IsOpenResponse")]
+        System.Threading.Tasks.Task<bool> IsOpenAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetMatches", ReplyAction="http://tempuri.org/ILigaManagerService/GetMatchesResponse")]
         LigaManagerAdminClient.AdminClientService.Match[] GetMatches(LigaManagerAdminClient.AdminClientService.Season season);
         
@@ -487,6 +493,12 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
         System.Threading.Tasks.Task<LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerAdminClient.AdminClientService.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
+        LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[] GetAllTeams();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
+        System.Threading.Tasks.Task<LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[]> GetAllTeamsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddBettor", ReplyAction="http://tempuri.org/IAdminClientService/AddBettorResponse")]
         bool AddBettor(LigaManagerAdminClient.AdminClientService.Bettor bettor);
@@ -594,6 +606,14 @@ namespace LigaManagerAdminClient.AdminClientService {
                 base(binding, remoteAddress) {
         }
         
+        public bool IsOpen() {
+            return base.Channel.IsOpen();
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsOpenAsync() {
+            return base.Channel.IsOpenAsync();
+        }
+        
         public LigaManagerAdminClient.AdminClientService.Match[] GetMatches(LigaManagerAdminClient.AdminClientService.Season season) {
             return base.Channel.GetMatches(season);
         }
@@ -648,6 +668,14 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         public System.Threading.Tasks.Task<LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerAdminClient.AdminClientService.Season season) {
             return base.Channel.GetTeamsAsync(season);
+        }
+        
+        public LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[] GetAllTeams() {
+            return base.Channel.GetAllTeams();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation[]> GetAllTeamsAsync() {
+            return base.Channel.GetAllTeamsAsync();
         }
         
         public bool AddBettor(LigaManagerAdminClient.AdminClientService.Bettor bettor) {

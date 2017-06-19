@@ -7,6 +7,12 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IAdminClientService_IsOpen_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpen" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_IsOpen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpenResponse" />
+  </wsdl:message>
   <wsdl:message name="IAdminClientService_GetMatches_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMatches" />
   </wsdl:message>
@@ -48,6 +54,12 @@
   </wsdl:message>
   <wsdl:message name="IAdminClientService_GetTeams_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeams" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeamsResponse" />
   </wsdl:message>
   <wsdl:message name="IAdminClientService_AddBettor_InputMessage">
     <wsdl:part name="parameters" element="tns:AddBettor" />
@@ -128,6 +140,10 @@
     <wsdl:part name="parameters" element="tns:GenerateMatchesResponse" />
   </wsdl:message>
   <wsdl:portType name="IAdminClientService">
+    <wsdl:operation name="IsOpen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpen" message="tns:IAdminClientService_IsOpen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpenResponse" message="tns:IAdminClientService_IsOpen_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatches" message="tns:IAdminClientService_GetMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatchesResponse" message="tns:IAdminClientService_GetMatches_OutputMessage" />
@@ -155,6 +171,10 @@
     <wsdl:operation name="GetTeams">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeams" message="tns:IAdminClientService_GetTeams_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeamsResponse" message="tns:IAdminClientService_GetTeams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeams" message="tns:IAdminClientService_GetAllTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse" message="tns:IAdminClientService_GetAllTeams_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddBettor">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddBettor" message="tns:IAdminClientService_AddBettor_InputMessage" />
@@ -211,6 +231,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAdminClientService" type="tns:IAdminClientService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsOpen">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/IsOpen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetMatches">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetMatches" style="document" />
       <wsdl:input>
@@ -267,6 +296,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTeams">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetTeams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllTeams" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

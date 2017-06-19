@@ -15,11 +15,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Saisonübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="310"/>
-        <DataGrid ItemsSource="{Binding Bettors}" 
-                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
+        <DataGrid ItemsSource="{Binding Seasons}" 
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedSeason}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nickname" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">
@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80"/>
+            <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="0"/>
             <Button Command="{Binding AddCommand}" Content="Hinzufügen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="4"/>
             <Button Command="{Binding ChangeCommand}" Content="Ändern" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
             <Button Command="{Binding DeleteCommand}" Content="Löschen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="3"/>

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.ServiceModel;
+using System.Windows;
 using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
@@ -38,14 +40,18 @@ namespace LigaManagerBettorClient.Controllers
             _mainWindow.Show();
         }
 
-        private void ExecuteSignInCommand(object obj)
+        private async void ExecuteSignInCommand(object obj)
         {
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
+             
+            // Check if nickname exists.
             var nickname = _loginWindowViewModel.Nickname;
             if (nickname == null) return;
-            var isSuccess = _bettorClient.IsValidNickname(nickname);
+            var isSuccess = await  _bettorClient.IsValidNicknameAsync(nickname);
             if (isSuccess)
             {
-                var bettor = _bettorClient.GetBettor(nickname);
+                var bettor = await _bettorClient.GetBettorAsync(nickname);
                 var menu = new MenuWindowController();
                 menu.Initialize(_mainWindow, bettor);
             }

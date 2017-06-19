@@ -111,4 +111,37 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
+  <xs:complexType name="ArrayOfRankedBettor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RankedBettor" nillable="true" type="tns:RankedBettor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRankedBettor" nillable="true" type="tns:ArrayOfRankedBettor" />
+  <xs:complexType name="RankedBettor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bettor" nillable="true" type="tns:Bettor" />
+      <xs:element minOccurs="0" name="Place" type="xs:int" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RankedBettor" nillable="true" type="tns:RankedBettor" />
+  <xs:complexType name="ArrayOfRankedTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RankedTeam" nillable="true" type="tns:RankedTeam" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRankedTeam" nillable="true" type="tns:ArrayOfRankedTeam" />
+  <xs:complexType name="RankedTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GoalDifference" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfLooses" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfMatches" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfTieds" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfWins" type="xs:int" />
+      <xs:element minOccurs="0" name="Place" type="xs:int" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+      <xs:element minOccurs="0" name="Team" nillable="true" type="tns:Team" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RankedTeam" nillable="true" type="tns:RankedTeam" />
 </xs:schema>

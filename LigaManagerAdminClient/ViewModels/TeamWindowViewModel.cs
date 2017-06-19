@@ -6,8 +6,8 @@ namespace LigaManagerAdminClient.ViewModels
 {
     public class TeamWindowViewModel
     {
-        public List<Team> Teams { get; set; }
-        public Team SelectedTeam { get; set; }
+        public List<SeasonToTeamRelation> Teams { get; set; }
+        public SeasonToTeamRelation SelectedTeam { get; set; }
         public ICommand BackCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand ChangeCommand { get; set; }

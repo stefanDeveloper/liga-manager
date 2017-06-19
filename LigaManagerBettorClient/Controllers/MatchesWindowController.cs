@@ -26,9 +26,12 @@ namespace LigaManagerBettorClient.Controllers
             _selectedSeason = selectedSeason;
             _bettor = bettor;
 
+            #region View and ViewModel
+            // Get all Matches and order them by DateTime
             var matches = _bettorClient.GetMatches(_selectedSeason);
             var sortedMatches = matches.ToList().OrderBy(a => a.DateTime).ToList();
 
+            // Group List by MatchDay's
             var listCollectionView = new ListCollectionView(sortedMatches);
             listCollectionView.GroupDescriptions?.Add(new PropertyGroupDescription("MatchDay"));
 
@@ -36,13 +39,14 @@ namespace LigaManagerBettorClient.Controllers
             {
                 SelectedSeason = _selectedSeason,
                 Matches = listCollectionView,
+                SelectedMatch = sortedMatches.First(),
                 SelectedMatchCommand = new RelayCommand(ExecuteSelectedMatchCommand),
                 BackCommand = new RelayCommand(ExecuteBackCommand)
             };
 
             _view.DataContext = _viewModel;
-            _mainWindow.Width = 1200;
-            _mainWindow.Height = 800;
+            #endregion
+
             _mainWindow.Content = _view;
         }
 

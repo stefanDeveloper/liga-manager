@@ -7,6 +7,12 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IBettorClientService_IsOpen_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpen" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_IsOpen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpenResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettorClientService_GetMatches_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMatches" />
   </wsdl:message>
@@ -49,6 +55,12 @@
   <wsdl:message name="IBettorClientService_GetTeams_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeams" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeamsResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettorClientService_IsValidNickname_InputMessage">
     <wsdl:part name="parameters" element="tns:IsValidNickname" />
   </wsdl:message>
@@ -73,7 +85,35 @@
   <wsdl:message name="IBettorClientService_GetBet_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBetResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllRankedBettors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRankedBettors" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllRankedBettors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRankedBettorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetRankedBettors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankedBettors" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetRankedBettors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankedBettorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllRankedTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRankedTeams" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetAllRankedTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRankedTeamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetRankedTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankedTeams" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_GetRankedTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankedTeamsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBettorClientService">
+    <wsdl:operation name="IsOpen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpen" message="tns:IBettorClientService_IsOpen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpenResponse" message="tns:IBettorClientService_IsOpen_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatches" message="tns:IBettorClientService_GetMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatchesResponse" message="tns:IBettorClientService_GetMatches_OutputMessage" />
@@ -102,6 +142,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeams" message="tns:IBettorClientService_GetTeams_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeamsResponse" message="tns:IBettorClientService_GetTeams_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeams" message="tns:IBettorClientService_GetAllTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse" message="tns:IBettorClientService_GetAllTeams_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="IsValidNickname">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/IsValidNickname" message="tns:IBettorClientService_IsValidNickname_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/IsValidNicknameResponse" message="tns:IBettorClientService_IsValidNickname_OutputMessage" />
@@ -118,9 +162,34 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetBet" message="tns:IBettorClientService_GetBet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetBetResponse" message="tns:IBettorClientService_GetBet_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllRankedBettors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetAllRankedBettors" message="tns:IBettorClientService_GetAllRankedBettors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetAllRankedBettorsResponse" message="tns:IBettorClientService_GetAllRankedBettors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRankedBettors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetRankedBettors" message="tns:IBettorClientService_GetRankedBettors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetRankedBettorsResponse" message="tns:IBettorClientService_GetRankedBettors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRankedTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetAllRankedTeams" message="tns:IBettorClientService_GetAllRankedTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetAllRankedTeamsResponse" message="tns:IBettorClientService_GetAllRankedTeams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRankedTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetRankedTeams" message="tns:IBettorClientService_GetRankedTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/GetRankedTeamsResponse" message="tns:IBettorClientService_GetRankedTeams_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBettorClientService" type="tns:IBettorClientService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsOpen">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/IsOpen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetMatches">
       <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetMatches" style="document" />
       <wsdl:input>
@@ -184,6 +253,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllTeams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="IsValidNickname">
       <soap:operation soapAction="http://tempuri.org/IBettorClientService/IsValidNickname" style="document" />
       <wsdl:input>
@@ -213,6 +291,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetBet">
       <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRankedBettors">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetAllRankedBettors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRankedBettors">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetRankedBettors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRankedTeams">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetAllRankedTeams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRankedTeams">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/GetRankedTeams" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

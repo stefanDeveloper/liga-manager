@@ -15,6 +15,12 @@ namespace LigaManagerBettorClient.BettorClientService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BettorClientService.IBettorClientService")]
     public interface IBettorClientService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/IsOpen", ReplyAction="http://tempuri.org/ILigaManagerService/IsOpenResponse")]
+        bool IsOpen();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/IsOpen", ReplyAction="http://tempuri.org/ILigaManagerService/IsOpenResponse")]
+        System.Threading.Tasks.Task<bool> IsOpenAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetMatches", ReplyAction="http://tempuri.org/ILigaManagerService/GetMatchesResponse")]
         LigaManagerServer.Models.Match[] GetMatches(LigaManagerServer.Models.Season season);
         
@@ -57,6 +63,12 @@ namespace LigaManagerBettorClient.BettorClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerServer.Models.Season season);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
+        LigaManagerServer.Models.SeasonToTeamRelation[] GetAllTeams();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllTeamsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/IsValidNickname", ReplyAction="http://tempuri.org/IBettorClientService/IsValidNicknameResponse")]
         bool IsValidNickname(string name);
         
@@ -80,6 +92,30 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetBet", ReplyAction="http://tempuri.org/IBettorClientService/GetBetResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.Bet> GetBetAsync(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetAllRankedBettors", ReplyAction="http://tempuri.org/IBettorClientService/GetAllRankedBettorsResponse")]
+        LigaManagerServer.Models.RankedBettor[] GetAllRankedBettors(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetAllRankedBettors", ReplyAction="http://tempuri.org/IBettorClientService/GetAllRankedBettorsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.RankedBettor[]> GetAllRankedBettorsAsync(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetRankedBettors", ReplyAction="http://tempuri.org/IBettorClientService/GetRankedBettorsResponse")]
+        LigaManagerServer.Models.RankedBettor[] GetRankedBettors(LigaManagerServer.Models.Season season, int matchday);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetRankedBettors", ReplyAction="http://tempuri.org/IBettorClientService/GetRankedBettorsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.RankedBettor[]> GetRankedBettorsAsync(LigaManagerServer.Models.Season season, int matchday);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetAllRankedTeams", ReplyAction="http://tempuri.org/IBettorClientService/GetAllRankedTeamsResponse")]
+        LigaManagerServer.Models.RankedTeam[] GetAllRankedTeams(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetAllRankedTeams", ReplyAction="http://tempuri.org/IBettorClientService/GetAllRankedTeamsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.RankedTeam[]> GetAllRankedTeamsAsync(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetRankedTeams", ReplyAction="http://tempuri.org/IBettorClientService/GetRankedTeamsResponse")]
+        LigaManagerServer.Models.RankedTeam[] GetRankedTeams(LigaManagerServer.Models.Season season, int matchday);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetRankedTeams", ReplyAction="http://tempuri.org/IBettorClientService/GetRankedTeamsResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.RankedTeam[]> GetRankedTeamsAsync(LigaManagerServer.Models.Season season, int matchday);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -107,6 +143,14 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public BettorClientServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool IsOpen() {
+            return base.Channel.IsOpen();
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsOpenAsync() {
+            return base.Channel.IsOpenAsync();
         }
         
         public LigaManagerServer.Models.Match[] GetMatches(LigaManagerServer.Models.Season season) {
@@ -165,6 +209,14 @@ namespace LigaManagerBettorClient.BettorClientService {
             return base.Channel.GetTeamsAsync(season);
         }
         
+        public LigaManagerServer.Models.SeasonToTeamRelation[] GetAllTeams() {
+            return base.Channel.GetAllTeams();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllTeamsAsync() {
+            return base.Channel.GetAllTeamsAsync();
+        }
+        
         public bool IsValidNickname(string name) {
             return base.Channel.IsValidNickname(name);
         }
@@ -195,6 +247,38 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public System.Threading.Tasks.Task<LigaManagerServer.Models.Bet> GetBetAsync(LigaManagerServer.Models.Match match, LigaManagerServer.Models.Bettor bettor) {
             return base.Channel.GetBetAsync(match, bettor);
+        }
+        
+        public LigaManagerServer.Models.RankedBettor[] GetAllRankedBettors(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetAllRankedBettors(season);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.RankedBettor[]> GetAllRankedBettorsAsync(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetAllRankedBettorsAsync(season);
+        }
+        
+        public LigaManagerServer.Models.RankedBettor[] GetRankedBettors(LigaManagerServer.Models.Season season, int matchday) {
+            return base.Channel.GetRankedBettors(season, matchday);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.RankedBettor[]> GetRankedBettorsAsync(LigaManagerServer.Models.Season season, int matchday) {
+            return base.Channel.GetRankedBettorsAsync(season, matchday);
+        }
+        
+        public LigaManagerServer.Models.RankedTeam[] GetAllRankedTeams(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetAllRankedTeams(season);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.RankedTeam[]> GetAllRankedTeamsAsync(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetAllRankedTeamsAsync(season);
+        }
+        
+        public LigaManagerServer.Models.RankedTeam[] GetRankedTeams(LigaManagerServer.Models.Season season, int matchday) {
+            return base.Channel.GetRankedTeams(season, matchday);
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.RankedTeam[]> GetRankedTeamsAsync(LigaManagerServer.Models.Season season, int matchday) {
+            return base.Channel.GetRankedTeamsAsync(season, matchday);
         }
     }
 }
