@@ -100,7 +100,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var matches = GetMatches(season);
-                var seasonToTeamRelations = GetTeams(season);
+                var seasonToTeamRelations = GetSeasonToTeamRelation(season);
                 var result = CalucalteRankedTeams(matches.ToList(), seasonToTeamRelations.ToList());
                 return SetPlace(result);
             }
@@ -111,7 +111,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var matches = GetMatches(season);
-                var seasonToTeamRelations = GetTeams(season);
+                var seasonToTeamRelations = GetSeasonToTeamRelation(season);
                 var filteredMatches = matches.ToList().Where(x => x.MatchDay == matchday);
                 var result = CalucalteRankedTeams(filteredMatches.ToList(), seasonToTeamRelations.ToList());
 

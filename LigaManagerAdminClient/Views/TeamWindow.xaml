@@ -19,7 +19,7 @@
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedTeam}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Team.Name}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">

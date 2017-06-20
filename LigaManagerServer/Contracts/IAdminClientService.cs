@@ -38,6 +38,11 @@ namespace LigaManagerServer.Contracts
         bool UpdateMatch(Match match);
 
         [OperationContract]
+        bool AddSeasonToTeamRelation(SeasonToTeamRelation seasonToTeamRelation);
+        [OperationContract]
+        bool DeleteSeasonToTeamRelation(SeasonToTeamRelation seasonToTeamRelation);
+
+        [OperationContract]
         void GenerateMatches();
     }
 }

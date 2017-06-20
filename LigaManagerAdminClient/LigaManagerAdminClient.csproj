@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\AbstractListWindowController.cs" />
     <Compile Include="Controllers\AddBettorWindowController.cs" />
     <Compile Include="Controllers\AddSeasonWindowController.cs" />
     <Compile Include="Controllers\AddTeamWindowController.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Framework\AdminClientHelper.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
+    <Compile Include="Models\SeasonCheckBox.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\AddBettorWindowViewModel.cs" />
     <Compile Include="ViewModels\AddSeasonWindowViewModel.cs" />
@@ -113,10 +115,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\BettorWindowController.cs" />
+    <Compile Include="Controllers\BettorListWindowController.cs" />
     <Compile Include="Controllers\MatchesWindowController.cs" />
-    <Compile Include="Controllers\SeasonWindowController.cs" />
-    <Compile Include="Controllers\TeamWindowController.cs" />
+    <Compile Include="Controllers\SeasonListWindowController.cs" />
+    <Compile Include="Controllers\TeamListWindowController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +152,7 @@
     <None Include="Properties\DataSources\LigaManagerServer.Models.Match.datasource" />
     <None Include="Properties\DataSources\LigaManagerServer.Models.Season.datasource" />
     <None Include="Properties\DataSources\LigaManagerServer.Models.SeasonToTeamRelation.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Team.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

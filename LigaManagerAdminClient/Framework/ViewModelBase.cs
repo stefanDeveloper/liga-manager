@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using LigaManagerAdminClient.Annotations;
-using PropertyChanged;
 
 namespace LigaManagerAdminClient.Framework
 {

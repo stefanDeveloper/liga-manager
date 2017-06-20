@@ -57,17 +57,23 @@ namespace LigaManagerAdminClient.AdminClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasons", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonsResponse")]
         System.Threading.Tasks.Task<LigaManagerServer.Models.Season[]> GetSeasonsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
-        LigaManagerServer.Models.SeasonToTeamRelation[] GetTeams(LigaManagerServer.Models.Season season);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelationResponse")]
+        LigaManagerServer.Models.SeasonToTeamRelation[] GetSeasonToTeamRelation(LigaManagerServer.Models.Season season);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetTeamsResponse")]
-        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerServer.Models.Season season);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation", ReplyAction="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelationResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetSeasonToTeamRelationAsync(LigaManagerServer.Models.Season season);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelationResponse")]
+        LigaManagerServer.Models.SeasonToTeamRelation[] GetAllSeasonToTeamRelation();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelationResponse")]
+        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllSeasonToTeamRelationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
-        LigaManagerServer.Models.SeasonToTeamRelation[] GetAllTeams();
+        LigaManagerServer.Models.Team[] GetAllTeams();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILigaManagerService/GetAllTeams", ReplyAction="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse")]
-        System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllTeamsAsync();
+        System.Threading.Tasks.Task<LigaManagerServer.Models.Team[]> GetAllTeamsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddBettor", ReplyAction="http://tempuri.org/IAdminClientService/AddBettorResponse")]
         bool AddBettor(LigaManagerServer.Models.Bettor bettor);
@@ -140,6 +146,18 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/UpdateMatch", ReplyAction="http://tempuri.org/IAdminClientService/UpdateMatchResponse")]
         System.Threading.Tasks.Task<bool> UpdateMatchAsync(LigaManagerServer.Models.Match match);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation", ReplyAction="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelationResponse")]
+        bool AddSeasonToTeamRelation(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation", ReplyAction="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelationResponse")]
+        System.Threading.Tasks.Task<bool> AddSeasonToTeamRelationAsync(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation", ReplyAction="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelationResponse")]
+        bool DeleteSeasonToTeamRelation(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation", ReplyAction="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelationResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSeasonToTeamRelationAsync(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/GenerateMatches", ReplyAction="http://tempuri.org/IAdminClientService/GenerateMatchesResponse")]
         void GenerateMatches();
@@ -231,19 +249,27 @@ namespace LigaManagerAdminClient.AdminClientService {
             return base.Channel.GetSeasonsAsync();
         }
         
-        public LigaManagerServer.Models.SeasonToTeamRelation[] GetTeams(LigaManagerServer.Models.Season season) {
-            return base.Channel.GetTeams(season);
+        public LigaManagerServer.Models.SeasonToTeamRelation[] GetSeasonToTeamRelation(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetSeasonToTeamRelation(season);
         }
         
-        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetTeamsAsync(LigaManagerServer.Models.Season season) {
-            return base.Channel.GetTeamsAsync(season);
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetSeasonToTeamRelationAsync(LigaManagerServer.Models.Season season) {
+            return base.Channel.GetSeasonToTeamRelationAsync(season);
         }
         
-        public LigaManagerServer.Models.SeasonToTeamRelation[] GetAllTeams() {
+        public LigaManagerServer.Models.SeasonToTeamRelation[] GetAllSeasonToTeamRelation() {
+            return base.Channel.GetAllSeasonToTeamRelation();
+        }
+        
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllSeasonToTeamRelationAsync() {
+            return base.Channel.GetAllSeasonToTeamRelationAsync();
+        }
+        
+        public LigaManagerServer.Models.Team[] GetAllTeams() {
             return base.Channel.GetAllTeams();
         }
         
-        public System.Threading.Tasks.Task<LigaManagerServer.Models.SeasonToTeamRelation[]> GetAllTeamsAsync() {
+        public System.Threading.Tasks.Task<LigaManagerServer.Models.Team[]> GetAllTeamsAsync() {
             return base.Channel.GetAllTeamsAsync();
         }
         
@@ -341,6 +367,22 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         public System.Threading.Tasks.Task<bool> UpdateMatchAsync(LigaManagerServer.Models.Match match) {
             return base.Channel.UpdateMatchAsync(match);
+        }
+        
+        public bool AddSeasonToTeamRelation(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation) {
+            return base.Channel.AddSeasonToTeamRelation(seasonToTeamRelation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddSeasonToTeamRelationAsync(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation) {
+            return base.Channel.AddSeasonToTeamRelationAsync(seasonToTeamRelation);
+        }
+        
+        public bool DeleteSeasonToTeamRelation(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation) {
+            return base.Channel.DeleteSeasonToTeamRelation(seasonToTeamRelation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSeasonToTeamRelationAsync(LigaManagerServer.Models.SeasonToTeamRelation seasonToTeamRelation) {
+            return base.Channel.DeleteSeasonToTeamRelationAsync(seasonToTeamRelation);
         }
         
         public void GenerateMatches() {

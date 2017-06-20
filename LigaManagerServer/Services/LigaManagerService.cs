@@ -2,6 +2,7 @@
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
+using NHibernate.Event;
 
 namespace LigaManagerServer.Services
 {
@@ -81,7 +82,7 @@ namespace LigaManagerServer.Services
             }
         }
 
-        public List<SeasonToTeamRelation> GetTeams(Season season)
+        public List<SeasonToTeamRelation> GetSeasonToTeamRelation(Season season)
         {
             lock (StaticLock)
             {
@@ -91,11 +92,20 @@ namespace LigaManagerServer.Services
             }
         }
 
-        public List<SeasonToTeamRelation> GetAllTeams()
+        public List<SeasonToTeamRelation> GetAllSeasonToTeamRelation()
         {
             lock (StaticLock)
             {
                 var teams = _seasonToTeamRelationService.GetAll();
+                return teams;
+            }
+        }
+
+        public List<Team> GetAllTeams()
+        {
+            lock (StaticLock)
+            {
+                var teams = _teamPersistenceService.GetAll();
                 return teams;
             }
         }

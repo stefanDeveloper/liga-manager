@@ -17,18 +17,18 @@
             <RowDefinition Height="20*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding SeasonToTeamRelations}" 
+        <DataGrid ItemsSource="{Binding Seasons}" Margin="10,0,10,0" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
-                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
+                  CanUserResizeRows="False" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" />
-                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" />
-                <DataGridTextColumn Header="Hinzugefügt" Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" IsReadOnly="True"  />
+                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" IsReadOnly="True"  />
+                <DataGridCheckBoxColumn Header="Hinzugefügt" Binding="{Binding IsAdded}" IsReadOnly="False"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
                VerticalAlignment="Top" Width="80" Height="26"/>
-        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="349"/>
+        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Team.Name}" VerticalAlignment="Top" Width="349"/>
         <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3"
                 Grid.Column="0" VerticalAlignment="Top" Width="75" Height="22"/>
         <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="239,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455" Height="22"/>

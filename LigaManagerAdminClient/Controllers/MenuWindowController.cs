@@ -32,19 +32,19 @@ namespace LigaManagerAdminClient.Controllers
 
         private void ExecuteBettorCommand(object obj)
         {
-            var bettorWindow = new BettorWindowController();
+            var bettorWindow = new BettorListWindowController();
             bettorWindow.Initialize(_mainWindow);
         }
 
         private void ExecuteTeamCommand(object obj)
         {
-            var teamWindow = new TeamWindowController();
+            var teamWindow = new TeamListWindowController();
             teamWindow.Initialize(_mainWindow);
         }
 
         private void ExecuteSeasonCommand(object obj)
         {
-            var seasonWindow = new SeasonWindowController();
+            var seasonWindow = new SeasonListWindowController();
             seasonWindow.Initialize(_mainWindow);
         }
     }

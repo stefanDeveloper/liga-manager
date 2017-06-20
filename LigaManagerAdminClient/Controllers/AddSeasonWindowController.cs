@@ -1,4 +1,5 @@
-﻿using LigaManagerAdminClient.AdminClientService;
+﻿using System.Windows;
+using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
@@ -31,6 +32,12 @@ namespace LigaManagerAdminClient.Controllers
 
         public void ExecuteOkCommand(object obj)
         {
+            if (_view.NameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Saison konnte nicht hinzugefügt werden, da der Name nicht ausgefüllt ist!", "Hinzufügen fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _view.DialogResult = true;
             _view.Close();
         }

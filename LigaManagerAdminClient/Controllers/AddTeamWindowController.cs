@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
+using LigaManagerAdminClient.Models;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
@@ -12,7 +14,7 @@ namespace LigaManagerAdminClient.Controllers
         private AddTeamWindowViewModel _viewModel;
 
         public Team Team { get; set; }
-        public List<Season> Seasons { get; set; }
+        public List<SeasonCheckBox> Seasons { get; set; }
 
         public Team ShowTeam()
         {
@@ -22,6 +24,8 @@ namespace LigaManagerAdminClient.Controllers
             {
                 OkCommand = new RelayCommand(ExecuteOkCommand),
                 CancelCommand = new RelayCommand(ExecuteCancelCommand),
+                Seasons = Seasons,
+                Team = Team
             };
             _view.DataContext = _viewModel;
             #endregion
@@ -31,6 +35,12 @@ namespace LigaManagerAdminClient.Controllers
 
         public void ExecuteOkCommand(object obj)
         {
+            if (_view.NameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Mannschaft konnte nicht hinzugefügt werden, da der Name nicht ausgefüllt ist!", "Hinzufügen fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _view.DialogResult = true;
             _view.Close();
         }

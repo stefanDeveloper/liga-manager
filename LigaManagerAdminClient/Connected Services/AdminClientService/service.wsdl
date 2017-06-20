@@ -49,11 +49,17 @@
   <wsdl:message name="IAdminClientService_GetSeasons_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSeasonsResponse" />
   </wsdl:message>
-  <wsdl:message name="IAdminClientService_GetTeams_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeams" />
+  <wsdl:message name="IAdminClientService_GetSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonToTeamRelation" />
   </wsdl:message>
-  <wsdl:message name="IAdminClientService_GetTeams_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
+  <wsdl:message name="IAdminClientService_GetSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeasonToTeamRelationResponse" />
   </wsdl:message>
   <wsdl:message name="IAdminClientService_GetAllTeams_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllTeams" />
@@ -133,6 +139,18 @@
   <wsdl:message name="IAdminClientService_UpdateMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonToTeamRelationResponse" />
+  </wsdl:message>
   <wsdl:message name="IAdminClientService_GenerateMatches_InputMessage">
     <wsdl:part name="parameters" element="tns:GenerateMatches" />
   </wsdl:message>
@@ -168,9 +186,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasons" message="tns:IAdminClientService_GetSeasons_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonsResponse" message="tns:IAdminClientService_GetSeasons_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTeams">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeams" message="tns:IAdminClientService_GetTeams_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetTeamsResponse" message="tns:IAdminClientService_GetTeams_OutputMessage" />
+    <wsdl:operation name="GetSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation" message="tns:IAdminClientService_GetSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelationResponse" message="tns:IAdminClientService_GetSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation" message="tns:IAdminClientService_GetAllSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelationResponse" message="tns:IAdminClientService_GetAllSeasonToTeamRelation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllTeams">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeams" message="tns:IAdminClientService_GetAllTeams_InputMessage" />
@@ -223,6 +245,14 @@
     <wsdl:operation name="UpdateMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/UpdateMatch" message="tns:IAdminClientService_UpdateMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/UpdateMatchResponse" message="tns:IAdminClientService_UpdateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation" message="tns:IAdminClientService_AddSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelationResponse" message="tns:IAdminClientService_AddSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation" message="tns:IAdminClientService_DeleteSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelationResponse" message="tns:IAdminClientService_DeleteSeasonToTeamRelation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GenerateMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/GenerateMatches" message="tns:IAdminClientService_GenerateMatches_InputMessage" />
@@ -294,8 +324,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTeams">
-      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetTeams" style="document" />
+    <wsdl:operation name="GetSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -413,6 +452,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateMatch">
       <soap:operation soapAction="http://tempuri.org/IAdminClientService/UpdateMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

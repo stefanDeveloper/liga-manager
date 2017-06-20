@@ -1,4 +1,6 @@
-﻿using LigaManagerAdminClient.ViewModels;
+﻿using System;
+using System.Windows;
+using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerServer.Models;
@@ -30,6 +32,14 @@ namespace LigaManagerAdminClient.Controllers
 
         public void ExecuteOkCommand(object obj)
         {
+            if (_view.FirstnameTextBox.Text.Equals(string.Empty) ||
+                _view.LastnameTextBox.Text.Equals(string.Empty) ||
+                _view.NicknameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Tipper konnte nicht hinzugefügt werden, da entweder der Vorname, Nachname oder Nickname nicht ausgefüllt ist!", "Hinzufügen fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _view.DialogResult = true;
             _view.Close();
         }

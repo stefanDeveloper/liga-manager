@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Height="22"/>
         <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="107,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455" Height="22"/>
-        <TextBox x:Name="NicknameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Bettor.Nickname}" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="NicknameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Bettor.Nickname, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" VerticalAlignment="Top" Width="172" />
         <TextBox x:Name="FirstnameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Bettor.Firstname}" VerticalAlignment="Top" Width="172"/>
         <TextBox x:Name="LastnameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Bettor.Lastname}" VerticalAlignment="Top" Width="172"/>
         <Label Content="Nickname" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
