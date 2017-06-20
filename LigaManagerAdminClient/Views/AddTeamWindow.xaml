@@ -4,26 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Mannschaft" Height="300" Width="300">
+        Title="Mannschaft" Height="500" Width="500
+        ">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding SeasonToTeamRelations}" 
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" />
+                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" />
+                <DataGridTextColumn Header="Hinzugefügt" Binding="{Binding Lastname}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
-               VerticalAlignment="Top" Width="80"/>
-        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="25,10,0,0" Grid.Row="5"
-                Grid.Column="0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="107,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455"/>
+               VerticalAlignment="Top" Width="80" Height="26"/>
+        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="349"/>
+        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3"
+                Grid.Column="0" VerticalAlignment="Top" Width="75" Height="22"/>
+        <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="239,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455" Height="22"/>
+        <Label Content="Saison" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" Grid.Column="0"
+            VerticalAlignment="Top" Width="80" Height="26"/>
 
     </Grid>
 </Window>

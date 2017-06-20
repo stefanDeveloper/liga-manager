@@ -39,7 +39,7 @@ namespace LigaManagerBettorClient.Controllers
             {
                 SelectedSeason = _selectedSeason,
                 Matches = listCollectionView,
-                SelectedMatch = sortedMatches.First(),
+                SelectedMatch = sortedMatches.FirstOrDefault(),
                 SelectedMatchCommand = new RelayCommand(ExecuteSelectedMatchCommand),
                 BackCommand = new RelayCommand(ExecuteBackCommand)
             };

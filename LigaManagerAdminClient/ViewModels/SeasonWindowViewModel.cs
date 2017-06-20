@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using LigaManagerAdminClient.Framework;
 using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.ViewModels
 {
-    public class SeasonWindowViewModel
+    public class SeasonWindowViewModel : ViewModelBase
     {
         public List<Season> Seasons { get; set; }
         public Season SelectedSeason { get; set; }

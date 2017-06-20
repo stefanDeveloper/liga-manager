@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
-using Bettor = LigaManagerServer.Models.Bettor;
+using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {
@@ -59,17 +58,26 @@ namespace LigaManagerAdminClient.Controllers
             var showBettor = addBettorWindow.ShowBettor();
             // it could be possible that the bettor is null
             if (showBettor == null) return;
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
             var addBettorAsync = await _adminClient.AddBettorAsync(showBettor);
 
             if (addBettorAsync)
             {
-
+                ReloadBettors();
             }
             else
             {
-                
+                MessageBox.Show("Tipper konnte nicht hinzugefügt werden, da der Nickname schon vergeben ist!", "Hinzufügen fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private async void ReloadBettors()
+        {
+            var bettors = await _adminClient.GetBettorsAsync();
+            _viewModel.Bettors = bettors.ToList();
         }
 
         private async void ExecuteChangeCommand(object obj)
@@ -88,36 +96,47 @@ namespace LigaManagerAdminClient.Controllers
             var showBettor = addBettorWindow.ShowBettor();
             // it could be possible that the bettor is null
             if (showBettor == null) return;
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
             var addBettorAsync = await _adminClient.UpdateBettorAsync(showBettor);
 
             if (addBettorAsync)
             {
-
+                ReloadBettors();
             }
             else
             {
-
+                MessageBox.Show("Der Benutzer konnte nicht geändert werden!", "Änderung fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void ExecuteDeleteCommand(object obj)
+        private async void ExecuteDeleteCommand(object obj)
         {
+            if (_viewModel.SelectedBettor == null)
+            {
+                MessageBox.Show("Bitte wählen Sie einen Tipper aus!", "Kein Tipper ausgewählt",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             // Check if the user really want to delete the bettor
             var messageBoxResult = MessageBox.Show("Sind Sie sicher, dass der Benutzer gelöscht werden soll!", "Benutzer löschen",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes) return;
-
-            var allBets = _adminClient.GetAllBets();
-            var findAll = allBets.ToList().FindAll(x => x.DateTime > DateTime.Now && x.Bettor.Equals(_viewModel.SelectedBettor));
-            // if the user has any current bets, it's not possible to delete him
-            if (findAll.Count != 0)
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
+            // delete bettor
+            var isDeleted = _adminClient.DeleteBettor(_viewModel.SelectedBettor);
+            if (isDeleted)
             {
-                MessageBox.Show("Der Benutzer konnte nicht gelöscht werden, da noch Tipps vorhanden sind!", "Benutzer löschen",
+                ReloadBettors();
+            }
+            else
+            {
+                MessageBox.Show("Tipper konnte nicht gelöscht werden!", "Löschen fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            } 
-            _adminClient.DeleteBettor(_viewModel.SelectedBettor);
+            }
         }
         #endregion
     }

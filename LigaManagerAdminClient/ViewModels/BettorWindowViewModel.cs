@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using LigaManagerBettorClient.Frameworks;
+using LigaManagerAdminClient.Framework;
 using LigaManagerServer.Models;
+
 
 namespace LigaManagerAdminClient.ViewModels
 {
@@ -13,5 +14,5 @@ namespace LigaManagerAdminClient.ViewModels
         public ICommand AddCommand { get; set; }
         public ICommand ChangeCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-    }   
+    }
 }

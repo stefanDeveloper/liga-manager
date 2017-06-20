@@ -40,7 +40,7 @@ namespace LigaManagerBettorClient.Controllers
             _viewModel = new BettorRankingWindowViewModel
             {
                 Bettors = rankedBettors.ToList(),
-                SelectedMatchDay = matchDays.First(),
+                SelectedMatchDay = matchDays.FirstOrDefault(),
                 MatchDays = matchDays,
                 BackCommand = new RelayCommand(ExecuteBackCommand)
             };

@@ -2,9 +2,9 @@
 {
     public class Season : ModelBase
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Sequence { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public int Sequence { get; set; } = 1;
 
         protected bool Equals(Season other)
         {

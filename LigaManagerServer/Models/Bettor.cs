@@ -1,10 +1,12 @@
-﻿namespace LigaManagerServer.Models
+﻿using System;
+
+namespace LigaManagerServer.Models
 {
     public class Bettor : ModelBase
     {
-        public string Nickname { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string Nickname { get; set; } = string.Empty;
+        public string Firstname { get; set; } = string.Empty;
+        public string Lastname { get; set; } = string.Empty;
 
         protected bool Equals(Bettor other)
         {

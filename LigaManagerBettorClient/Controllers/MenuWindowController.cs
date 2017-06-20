@@ -30,7 +30,7 @@ namespace LigaManagerBettorClient.Controllers
             {
                 Bettor = _bettor,
                 Seasons = new ObservableCollection<Season>(seasons.ToList()),
-                SelectedSeason = seasons.ToList().First(),
+                SelectedSeason = seasons.ToList().FirstOrDefault(),
                 BettorRankingCommand = new RelayCommand(ExecuteBettorRankingCommand),
                 MatchesCommand = new RelayCommand(ExecuteMatchesCommand),
                 TeamsCommand = new RelayCommand(ExecuteTeamsCommand),

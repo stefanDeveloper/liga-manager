@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using LigaManagerAdminClient.Annotations;
+using PropertyChanged;
 
-namespace LigaManagerBettorClient.Frameworks
+namespace LigaManagerAdminClient.Framework
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

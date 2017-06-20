@@ -20,10 +20,13 @@
         </Grid.RowDefinitions>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
             VerticalAlignment="Top" Width="80"/>
-        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="25,10,0,0" Grid.Row="5"
+        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Season.Name}" VerticalAlignment="Top" Width="172"/>
+        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="5"
                 Grid.Column="0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="107,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455"/>
+        <TextBox x:Name="DescriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Season.Description}" VerticalAlignment="Top" Width="172"/>
+        <Label Content="Beschreibung" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="2" Grid.Column="0"
+            VerticalAlignment="Top" Width="85"/>
 
     </Grid>
 </Window>

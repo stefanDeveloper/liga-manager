@@ -1,13 +1,12 @@
 ﻿using System.Windows.Input;
 using LigaManagerAdminClient.Framework;
-using LigaManagerBettorClient.Frameworks;
-using Bettor = LigaManagerServer.Models.Bettor;
+using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.ViewModels
 {
-    public class AddBettorWindowViewModel : ViewModelBase
+    public class AddSeasonWindowViewModel :ViewModelBase
     {
-        public Bettor Bettor { get; set; }  
+        public Season Season { get; set; }
         public ICommand OkCommand { get; set; }
         public ICommand CancelCommand { get; set; }
     }

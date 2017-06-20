@@ -1,31 +1,32 @@
-﻿using LigaManagerAdminClient.ViewModels;
+﻿using LigaManagerAdminClient.AdminClientService;
+using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {
-    public class AddBettorWindowController
+    public class AddSeasonWindowController
     {
-        private AddBettorWindow _view;
-        private AddBettorWindowViewModel _viewModel;
+        private AddSeasonWindow _view;
+        private AddSeasonWindowViewModel _viewModel;
 
-        public Bettor Bettor { get; set; }
+        public Season Season { get; set; }  
 
-        public Bettor ShowBettor()
+        public Season ShowSeason()
         {
-            #region View and ViewModel
-            _view = new AddBettorWindow();
-            _viewModel = new AddBettorWindowViewModel
+            #region View And ViewModel
+            _view = new AddSeasonWindow();
+            _viewModel = new AddSeasonWindowViewModel
             {
+                Season = Season,
                 OkCommand = new RelayCommand(ExecuteOkCommand),
                 CancelCommand = new RelayCommand(ExecuteCancelCommand),
-                Bettor = Bettor
             };
             _view.DataContext = _viewModel;
             #endregion
 
-            return _view.ShowDialog() == true ? _viewModel.Bettor : null;
+            return _view.ShowDialog() == true ? _viewModel.Season : null;
         }
 
         public void ExecuteOkCommand(object obj)

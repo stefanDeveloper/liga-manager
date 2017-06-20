@@ -1,4 +1,5 @@
-﻿using LigaManagerServer.Contracts;
+﻿using System;
+using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
 
@@ -35,8 +36,9 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var bets = _betPersistenceService.GetAll();
-                var findAll = bets.FindAll(x => x.Bettor.Equals(bettor));
-                if (findAll.Count > 0) return false;
+                var findAll = bets.FindAll(x => x.Bettor.Equals(bettor) && x.DateTime > DateTime.Now.AddMinutes(30));
+                // if the user has any current bets, all of them will be deleted
+                findAll.ForEach(x => _betPersistenceService.Delete(x));
                 return _bettorPersistenceService.Delete(bettor);
             }
         }
@@ -64,6 +66,7 @@ namespace LigaManagerServer.Services
                 var isSuccess = _teamPersistenceService.Delete(team);
                 if (!isSuccess) return false;
                 var matches = _matchPersistenceService.GetAll();
+                // deleted all matches of a team
                 matches.ForEach(x =>
                 {
                     if (x.HomeTeam.Equals(team))
@@ -86,12 +89,15 @@ namespace LigaManagerServer.Services
             {
                 var seasonToTeamRelations = _seasonToTeamRelationService.GetAll();
                 var teamsOfSeason = seasonToTeamRelations.FindAll(x => x.Season.Equals(season));
-                if (teamsOfSeason.Count > 0) return false;
+                // delete all SeasonToTeamRelations
+                teamsOfSeason.ForEach(x => _seasonToTeamRelationService.Delete(x));
 
                 var matches = _matchPersistenceService.GetAll();
                 var matchesOfSeason = matches.FindAll(x => x.Season.Equals(season));
-                if (matchesOfSeason.Count > 0) return false;
+                // delete all matches of a season
+                matchesOfSeason.ForEach(x => _matchPersistenceService.Delete(x));
 
+                // delete season
                 var isSuccess = _seasonPersistenceService.Delete(season);
                 return isSuccess;
             }

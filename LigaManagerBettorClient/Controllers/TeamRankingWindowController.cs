@@ -39,7 +39,7 @@ namespace LigaManagerBettorClient.Controllers
             }
             _viewModel = new TeamRankingWindowViewModel
             {
-                SelectedMatchDay = matchDays.First(),
+                SelectedMatchDay = matchDays.FirstOrDefault(),
                 MatchDays = matchDays,
                 Teams = rankedTeams.ToList(),
                 BackCommand = new RelayCommand(ExecuteBackCommand)
