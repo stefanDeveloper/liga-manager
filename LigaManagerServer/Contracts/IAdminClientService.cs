@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Contracts
@@ -43,6 +44,6 @@ namespace LigaManagerServer.Contracts
         bool DeleteSeasonToTeamRelation(SeasonToTeamRelation seasonToTeamRelation);
 
         [OperationContract]
-        void GenerateMatches();
+        void GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime);
     }
 }

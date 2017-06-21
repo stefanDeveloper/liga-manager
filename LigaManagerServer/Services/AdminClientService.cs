@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using FluentNHibernate.Conventions;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
+using NHibernate.Event;
+using NHibernate.Util;
 
 namespace LigaManagerServer.Services
 {
@@ -162,10 +166,107 @@ namespace LigaManagerServer.Services
             }
         }
 
-        public void GenerateMatches()
+        public void GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime)
         {
-            //TODO Generate Matches for an Season
-            throw new System.NotImplementedException();
+            lock (StaticLock)
+            {
+                var seasonToTeamRelations = _seasonToTeamRelationService.GetAll();
+                var teamsOfSeason = seasonToTeamRelations.FindAll(x => x.Season.Equals(season));
+                
+                var dateTimes = CreateDateTimes(beginDateTime, endDateTime, new List<DateTime>());
+                var matchesOfSeason = new List<Match>();
+                foreach (var seasonToTeamRelation in teamsOfSeason)
+                {
+                    foreach (var teams in teamsOfSeason)
+                    {
+                        if (seasonToTeamRelation.Equals(teams)) continue;
+                        var match = new Match
+                        {
+                            HomeTeam = seasonToTeamRelation.Team,
+                            AwayTeam = teams.Team,
+                            Season = seasonToTeamRelation.Season,
+                        };
+                        
+                        matchesOfSeason.Add(match);
+                    }
+                }
+                var result = GenerateMatches(new List<Match>(), matchesOfSeason, dateTimes, 1);
+            }
+        }
+
+        private List<Match> GenerateMatches(List<Match> result, List<Match> matches, List<DateTime> dayOfWeeks, int matchDay)
+        {
+            if (!matches.IsEmpty())
+            {
+                foreach (var dateTime in dayOfWeeks)
+                {
+                    foreach (var match in matches)
+                    {
+                        if (dateTime.DayOfWeek == DayOfWeek.Friday)
+                        {
+                            var currentMatch = match;
+                            matches.Remove(match);
+                            currentMatch.DateTime = dateTime;
+                            currentMatch.MatchDay = matchDay;
+                            result.Add(currentMatch);
+                            // remove from group
+                            dayOfWeeks.Remove(dateTime);
+                            return GenerateMatches(result, matches, dayOfWeeks, matchDay);
+
+                        }
+                        else if (dateTime.DayOfWeek == DayOfWeek.Sunday)
+                        {
+                            var currentMatch = match;
+                            matches.Remove(match);
+                            currentMatch.DateTime = dateTime;
+                            currentMatch.MatchDay = matchDay;
+                            result.Add(currentMatch);
+                            dayOfWeeks.Remove(dateTime);
+                            return GenerateMatches(result, matches, dayOfWeeks, dateTime.Hour == 17 ? ++matchDay : matchDay);
+                        }
+                    }
+                }
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+
+        }
+
+        /// <summary>
+        /// Generates all validate DateTimes during the TimeSpan of the season.
+        /// </summary>
+        /// <param name="beginn"></param>
+        /// <param name="end"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        private List<DateTime> CreateDateTimes(DateTime beginn, DateTime end, List<DateTime> result)
+        {
+            if (!beginn.Equals(end))
+            {
+                if (DayOfWeek.Friday == beginn.DayOfWeek)
+                {
+                    result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 20,30,0));
+                }
+                else if (DayOfWeek.Sunday == beginn.DayOfWeek)
+                {
+                    result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 15, 30, 0));
+                    result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 17, 30, 0));
+                }
+                else if (DayOfWeek.Saturday == beginn.DayOfWeek)
+                {
+                    result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 15, 30, 0));
+                }
+
+                return CreateDateTimes(beginn.AddDays(1), end, result);
+            }
+            else
+            {
+                return result;
+            }
+
         }
     }
 }

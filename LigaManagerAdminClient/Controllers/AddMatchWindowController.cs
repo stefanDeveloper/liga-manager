@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ServiceModel.Channels;
 using System.Windows;
-using System.Windows.Data;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;

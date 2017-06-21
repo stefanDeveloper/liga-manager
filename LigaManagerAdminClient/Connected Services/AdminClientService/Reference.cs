@@ -591,10 +591,10 @@ namespace LigaManagerAdminClient.AdminClientService {
         System.Threading.Tasks.Task<bool> DeleteSeasonToTeamRelationAsync(LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation seasonToTeamRelation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/GenerateMatches", ReplyAction="http://tempuri.org/IAdminClientService/GenerateMatchesResponse")]
-        void GenerateMatches();
+        void GenerateMatches(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/GenerateMatches", ReplyAction="http://tempuri.org/IAdminClientService/GenerateMatchesResponse")]
-        System.Threading.Tasks.Task GenerateMatchesAsync();
+        System.Threading.Tasks.Task GenerateMatchesAsync(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -816,12 +816,12 @@ namespace LigaManagerAdminClient.AdminClientService {
             return base.Channel.DeleteSeasonToTeamRelationAsync(seasonToTeamRelation);
         }
         
-        public void GenerateMatches() {
-            base.Channel.GenerateMatches();
+        public void GenerateMatches(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime) {
+            base.Channel.GenerateMatches(season, beginDateTime, endDateTime);
         }
         
-        public System.Threading.Tasks.Task GenerateMatchesAsync() {
-            return base.Channel.GenerateMatchesAsync();
+        public System.Threading.Tasks.Task GenerateMatchesAsync(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime) {
+            return base.Channel.GenerateMatchesAsync(season, beginDateTime, endDateTime);
         }
     }
 }

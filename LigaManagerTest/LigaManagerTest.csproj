@@ -50,6 +50,9 @@
     <Reference Include="System.Data.SQLite, Version=1.0.105.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.1\lib\net451\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BetTest.cs" />
@@ -57,16 +60,57 @@
     <Compile Include="MatchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeasonTest.cs" />
+    <Compile Include="Service References\AdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="TeamTest.cs" />
+    <Compile Include="AdminClientTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bet.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Bettor.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Match.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Season.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.SeasonToTeamRelation.datasource" />
+    <None Include="Properties\DataSources\LigaManagerServer.Models.Team.datasource" />
+    <None Include="Service References\AdminService\LigaManagerServer.Models.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\service.wsdl" />
+    <None Include="Service References\AdminService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LigaManagerServer\LigaManagerServer.csproj">
       <Project>{FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45}</Project>
       <Name>LigaManagerServer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

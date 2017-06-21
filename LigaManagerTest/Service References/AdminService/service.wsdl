@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminClientService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdminClientService_IsOpen_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpen" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_IsOpen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsOpenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatches" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBets" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllBets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBets" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllBets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettors" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettor" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasons" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeams" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GetAllTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTeamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBettor" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBettor" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteBettor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBettor" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteBettor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBettorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeam" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTeam" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeam" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeason_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeason" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeason_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeason" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateSeason_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeason" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateSeason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMatch" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMatch" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMatch" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_UpdateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeasonToTeamRelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonToTeamRelation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_DeleteSeasonToTeamRelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeasonToTeamRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GenerateMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateMatches" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_GenerateMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateMatchesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdminClientService">
+    <wsdl:operation name="IsOpen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpen" message="tns:IAdminClientService_IsOpen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpenResponse" message="tns:IAdminClientService_IsOpen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatches" message="tns:IAdminClientService_GetMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetMatchesResponse" message="tns:IAdminClientService_GetMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBets">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBets" message="tns:IAdminClientService_GetBets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBetsResponse" message="tns:IAdminClientService_GetBets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBets" message="tns:IAdminClientService_GetAllBets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllBetsResponse" message="tns:IAdminClientService_GetAllBets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBettors">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettors" message="tns:IAdminClientService_GetBettors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorsResponse" message="tns:IAdminClientService_GetBettors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettor" message="tns:IAdminClientService_GetBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetBettorResponse" message="tns:IAdminClientService_GetBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasons" message="tns:IAdminClientService_GetSeasons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonsResponse" message="tns:IAdminClientService_GetSeasons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation" message="tns:IAdminClientService_GetSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelationResponse" message="tns:IAdminClientService_GetSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation" message="tns:IAdminClientService_GetAllSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelationResponse" message="tns:IAdminClientService_GetAllSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeams" message="tns:IAdminClientService_GetAllTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILigaManagerService/GetAllTeamsResponse" message="tns:IAdminClientService_GetAllTeams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddBettor" message="tns:IAdminClientService_AddBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddBettorResponse" message="tns:IAdminClientService_AddBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/UpdateBettor" message="tns:IAdminClientService_UpdateBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/UpdateBettorResponse" message="tns:IAdminClientService_UpdateBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBettor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteBettor" message="tns:IAdminClientService_DeleteBettor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteBettorResponse" message="tns:IAdminClientService_DeleteBettor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddTeam" message="tns:IAdminClientService_AddTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddTeamResponse" message="tns:IAdminClientService_AddTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/UpdateTeam" message="tns:IAdminClientService_UpdateTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/UpdateTeamResponse" message="tns:IAdminClientService_UpdateTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteTeam" message="tns:IAdminClientService_DeleteTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteTeamResponse" message="tns:IAdminClientService_DeleteTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeason" message="tns:IAdminClientService_DeleteSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeasonResponse" message="tns:IAdminClientService_DeleteSeason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSeason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddSeason" message="tns:IAdminClientService_AddSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddSeasonResponse" message="tns:IAdminClientService_AddSeason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/UpdateSeason" message="tns:IAdminClientService_UpdateSeason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/UpdateSeasonResponse" message="tns:IAdminClientService_UpdateSeason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteMatch" message="tns:IAdminClientService_DeleteMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteMatchResponse" message="tns:IAdminClientService_DeleteMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddMatch" message="tns:IAdminClientService_AddMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddMatchResponse" message="tns:IAdminClientService_AddMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/UpdateMatch" message="tns:IAdminClientService_UpdateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/UpdateMatchResponse" message="tns:IAdminClientService_UpdateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation" message="tns:IAdminClientService_AddSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelationResponse" message="tns:IAdminClientService_AddSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonToTeamRelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation" message="tns:IAdminClientService_DeleteSeasonToTeamRelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelationResponse" message="tns:IAdminClientService_DeleteSeasonToTeamRelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/GenerateMatches" message="tns:IAdminClientService_GenerateMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/GenerateMatchesResponse" message="tns:IAdminClientService_GenerateMatches_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAdminClientService" type="tns:IAdminClientService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsOpen">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/IsOpen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatches">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBets">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBets">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBettors">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBettors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBettor">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasons">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeams">
+      <soap:operation soapAction="http://tempuri.org/ILigaManagerService/GetAllTeams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBettor">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBettor">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/UpdateBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBettor">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteBettor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeam">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/UpdateTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeam">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeason">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteSeason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeason">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddSeason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeason">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/UpdateSeason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMatch">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMatch">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMatch">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/UpdateMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeasonToTeamRelation">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/DeleteSeasonToTeamRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMatches">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/GenerateMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminClientService">
+    <wsdl:port name="BasicHttpBinding_IAdminClientService" binding="tns:BasicHttpBinding_IAdminClientService">
+      <soap:address location="http://localhost/LigaManagerServer/AdminClientService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

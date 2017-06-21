@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Season">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sequence" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Season" nillable="true" type="tns:Season" />
+  <xs:complexType name="ModelBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ModelBase" nillable="true" type="tns:ModelBase" />
+  <xs:complexType name="ArrayOfMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Match" nillable="true" type="tns:Match" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMatch" nillable="true" type="tns:ArrayOfMatch" />
+  <xs:complexType name="Match">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AwayTeam" nillable="true" type="tns:Team" />
+          <xs:element minOccurs="0" name="AwayTeamScore" type="xs:int" />
+          <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HomeTeam" nillable="true" type="tns:Team" />
+          <xs:element minOccurs="0" name="HomeTeamScore" type="xs:int" />
+          <xs:element minOccurs="0" name="MatchDay" type="xs:int" />
+          <xs:element minOccurs="0" name="Season" nillable="true" type="tns:Season" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:complexType name="Team">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Team" nillable="true" type="tns:Team" />
+  <xs:complexType name="Bettor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Bettor" nillable="true" type="tns:Bettor" />
+  <xs:complexType name="ArrayOfBet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bet" nillable="true" type="tns:Bet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBet" nillable="true" type="tns:ArrayOfBet" />
+  <xs:complexType name="Bet">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AwayTeamScore" type="xs:int" />
+          <xs:element minOccurs="0" name="Bettor" nillable="true" type="tns:Bettor" />
+          <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HomeTeamScore" type="xs:int" />
+          <xs:element minOccurs="0" name="Match" nillable="true" type="tns:Match" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Bet" nillable="true" type="tns:Bet" />
+  <xs:complexType name="ArrayOfBettor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bettor" nillable="true" type="tns:Bettor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBettor" nillable="true" type="tns:ArrayOfBettor" />
+  <xs:complexType name="ArrayOfSeason">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Season" nillable="true" type="tns:Season" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeason" nillable="true" type="tns:ArrayOfSeason" />
+  <xs:complexType name="ArrayOfSeasonToTeamRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeasonToTeamRelation" nillable="true" type="tns:ArrayOfSeasonToTeamRelation" />
+  <xs:complexType name="SeasonToTeamRelation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Season" nillable="true" type="tns:Season" />
+          <xs:element minOccurs="0" name="Team" nillable="true" type="tns:Team" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
+  <xs:complexType name="ArrayOfTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Team" nillable="true" type="tns:Team" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeam" nillable="true" type="tns:ArrayOfTeam" />
+</xs:schema>
