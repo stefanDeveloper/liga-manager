@@ -1,6 +1,4 @@
-﻿using System;
-using System.ServiceModel;
-using System.Windows;
+﻿using System.Windows;
 using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;

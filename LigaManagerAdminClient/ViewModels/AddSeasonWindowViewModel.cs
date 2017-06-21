@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
+using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
-using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.ViewModels
 {

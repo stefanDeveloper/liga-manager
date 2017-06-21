@@ -5,7 +5,6 @@ using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
-using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {
@@ -13,12 +12,11 @@ namespace LigaManagerAdminClient.Controllers
     {
         private BettorWindow _view;
         private BettorWindowViewModel _viewModel;
-        private MainWindow _mainWindow;
         private AdminClientServiceClient _adminClient;
 
         public override async void Initialize(MainWindow mainWindow)
         {
-            _mainWindow = mainWindow;
+            MainWindow = mainWindow;
             _adminClient = new AdminClientServiceClient();
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
@@ -26,7 +24,6 @@ namespace LigaManagerAdminClient.Controllers
             var bettors = _adminClient.GetBettors();
 
             #region View and ViewModel
-
             _view = new BettorWindow();
             _viewModel = new BettorWindowViewModel
             {
@@ -38,10 +35,9 @@ namespace LigaManagerAdminClient.Controllers
             };
 
             _view.DataContext = _viewModel;
-
             #endregion
 
-            mainWindow.Content = _view;
+            MainWindow.Content = _view;
         }
 
         #region ExecuteCommands

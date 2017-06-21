@@ -1,7 +1,11 @@
-﻿namespace LigaManagerServer.Models
+﻿using System.Runtime.Serialization;
+
+namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class Team : ModelBase
     {
+        [DataMember]
         public string Name { get; set; } = string.Empty;
 
         protected bool Equals(Team other)

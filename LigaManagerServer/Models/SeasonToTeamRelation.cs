@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class SeasonToTeamRelation : ModelBase
     {
+        [DataMember]
         public Season Season { get; set; }
+        [DataMember]
         public Team Team { get; set; }
 
         protected bool Equals(SeasonToTeamRelation other)

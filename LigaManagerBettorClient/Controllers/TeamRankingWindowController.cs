@@ -4,7 +4,6 @@ using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
-using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.Controllers
 {
@@ -29,13 +28,15 @@ namespace LigaManagerBettorClient.Controllers
 
             #region View and ViewModel
             var matches = _bettorClient.GetMatches(_selectedSeason);
-            var max = matches.ToList().Max(x => x.MatchDay);
-
-            var rankedTeams = _bettorClient.GetAllRankedTeams(_selectedSeason);
             var matchDays = new ObservableCollection<string> { "Aktuell" };
-            for (var i = 1; i <= max; i++)
+            var rankedTeams = _bettorClient.GetAllRankedTeams(_selectedSeason);
+            if (matches.Any())
             {
-                matchDays.Add("Spieltag: " + i);
+                var max = matches.Max(x => x.MatchDay);
+                for (var i = 1; i <= max; i++)
+                {
+                    matchDays.Add("Spieltag: " + i);
+                }
             }
             _viewModel = new TeamRankingWindowViewModel
             {

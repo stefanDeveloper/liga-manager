@@ -1,15 +1,24 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class Match : ModelBase
     {
+        [DataMember]
         public int MatchDay { get; set; }
+        [DataMember]
         public DateTime DateTime { get; set; }
+        [DataMember]
         public int HomeTeamScore { get; set; }
+        [DataMember]
         public int AwayTeamScore { get; set; }
+        [DataMember]
         public Team HomeTeam { get; set; }
+        [DataMember]
         public Team AwayTeam { get; set; }
+        [DataMember]
         public Season Season { get; set; }
 
         protected bool Equals(Match other)

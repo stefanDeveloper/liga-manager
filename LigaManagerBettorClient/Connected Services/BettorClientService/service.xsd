@@ -91,17 +91,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTeams">
+  <xs:element name="GetSeasonToTeamRelation">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q9:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTeamsResponse">
+  <xs:element name="GetSeasonToTeamRelationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetTeamsResult" nillable="true" type="q10:ArrayOfSeasonToTeamRelation" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetSeasonToTeamRelationResult" nillable="true" type="q10:ArrayOfSeasonToTeamRelation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSeasonToTeamRelation">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSeasonToTeamRelationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllSeasonToTeamRelationResult" nillable="true" type="q11:ArrayOfSeasonToTeamRelation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -113,7 +125,7 @@
   <xs:element name="GetAllTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q11:ArrayOfSeasonToTeamRelation" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllTeamsResult" nillable="true" type="q12:ArrayOfTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,7 +146,7 @@
   <xs:element name="AddBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q12:Bet" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q13:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -148,7 +160,7 @@
   <xs:element name="ChangeBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q13:Bet" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bet" nillable="true" type="q14:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,36 +174,36 @@
   <xs:element name="GetBet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="match" nillable="true" type="q14:Match" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bettor" nillable="true" type="q15:Bettor" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="match" nillable="true" type="q15:Match" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="bettor" nillable="true" type="q16:Bettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetBetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBetResult" nillable="true" type="q16:Bet" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetBetResult" nillable="true" type="q17:Bet" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllRankedBettors">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q17:Season" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q18:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllRankedBettorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllRankedBettorsResult" nillable="true" type="q18:ArrayOfRankedBettor" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllRankedBettorsResult" nillable="true" type="q19:ArrayOfRankedBettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRankedBettors">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q19:Season" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q20:Season" />
         <xs:element minOccurs="0" name="matchday" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -199,28 +211,28 @@
   <xs:element name="GetRankedBettorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetRankedBettorsResult" nillable="true" type="q20:ArrayOfRankedBettor" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetRankedBettorsResult" nillable="true" type="q21:ArrayOfRankedBettor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllRankedTeams">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q21:Season" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q22:Season" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllRankedTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllRankedTeamsResult" nillable="true" type="q22:ArrayOfRankedTeam" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetAllRankedTeamsResult" nillable="true" type="q23:ArrayOfRankedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRankedTeams">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q23:Season" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="season" nillable="true" type="q24:Season" />
         <xs:element minOccurs="0" name="matchday" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -228,7 +240,7 @@
   <xs:element name="GetRankedTeamsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetRankedTeamsResult" nillable="true" type="q24:ArrayOfRankedTeam" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="GetRankedTeamsResult" nillable="true" type="q25:ArrayOfRankedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

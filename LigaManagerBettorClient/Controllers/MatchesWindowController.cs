@@ -5,7 +5,6 @@ using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
-using LigaManagerServer.Models;
 
 namespace LigaManagerBettorClient.Controllers
 {

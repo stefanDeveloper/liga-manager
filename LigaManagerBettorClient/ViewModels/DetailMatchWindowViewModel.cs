@@ -1,5 +1,5 @@
-﻿using LigaManagerBettorClient.Frameworks;
-using LigaManagerServer.Models;
+﻿using LigaManagerBettorClient.BettorClientService;
+using LigaManagerBettorClient.Frameworks;
 
 namespace LigaManagerBettorClient.ViewModels
 {

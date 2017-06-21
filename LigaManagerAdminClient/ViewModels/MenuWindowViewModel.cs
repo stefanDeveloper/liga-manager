@@ -7,6 +7,8 @@ namespace LigaManagerAdminClient.ViewModels
     {
         public ICommand BettorCommand { get; set; }
         public ICommand TeamCommand { get; set; }
-        public ICommand SeasonCommand { get; set; }   
+        public ICommand SeasonCommand { get; set; }
+        public ICommand MatchesCommand { get; set; }     
     }
 }
+    

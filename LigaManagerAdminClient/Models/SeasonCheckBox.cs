@@ -1,4 +1,4 @@
-﻿using LigaManagerServer.Models;
+﻿using LigaManagerAdminClient.AdminClientService;
 
 namespace LigaManagerAdminClient.Models
 {

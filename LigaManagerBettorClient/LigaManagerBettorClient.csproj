@@ -130,6 +130,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Bet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Bettor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Match.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.RankedBettor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.RankedTeam.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Season.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.SeasonToTeamRelation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BettorClientService\LigaManagerBettorClient.BettorClientService.Team.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\BettorClientService\LigaManagerServer.Models.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -207,12 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LigaManagerServer\LigaManagerServer.csproj">
-      <Project>{FE7A1F9F-CCFD-4EBB-A312-DDCD772BCD45}</Project>
-      <Name>LigaManagerServer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

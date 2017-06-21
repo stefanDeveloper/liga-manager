@@ -20,7 +20,8 @@ namespace LigaManagerAdminClient.Controllers
             {
                 BettorCommand = new RelayCommand(ExecuteBettorCommand),
                 TeamCommand = new RelayCommand(ExecuteTeamCommand),
-                SeasonCommand = new RelayCommand(ExecuteSeasonCommand)
+                SeasonCommand = new RelayCommand(ExecuteSeasonCommand),
+                MatchesCommand = new RelayCommand(ExecuteMatchesCommand)
             };
 
             _view.DataContext = _viewModel;
@@ -45,6 +46,12 @@ namespace LigaManagerAdminClient.Controllers
         private void ExecuteSeasonCommand(object obj)
         {
             var seasonWindow = new SeasonListWindowController();
+            seasonWindow.Initialize(_mainWindow);
+        }
+
+        private void ExecuteMatchesCommand(object obj)
+        {
+            var seasonWindow = new MatchesWindowController();
             seasonWindow.Initialize(_mainWindow);
         }
     }

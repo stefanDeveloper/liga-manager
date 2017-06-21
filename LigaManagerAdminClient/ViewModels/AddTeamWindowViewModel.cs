@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.Models;
-using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.ViewModels
 {

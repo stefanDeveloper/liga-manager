@@ -111,6 +111,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SeasonToTeamRelation" nillable="true" type="tns:SeasonToTeamRelation" />
+  <xs:complexType name="ArrayOfTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Team" nillable="true" type="tns:Team" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeam" nillable="true" type="tns:ArrayOfTeam" />
   <xs:complexType name="ArrayOfRankedBettor">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="RankedBettor" nillable="true" type="tns:RankedBettor" />

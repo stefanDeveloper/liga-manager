@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class Bettor : ModelBase
     {
+        [DataMember]
         public string Nickname { get; set; } = string.Empty;
+        [DataMember]
         public string Firstname { get; set; } = string.Empty;
+        [DataMember]
         public string Lastname { get; set; } = string.Empty;
 
         protected bool Equals(Bettor other)

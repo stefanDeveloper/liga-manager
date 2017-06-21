@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="0" Width="0"/>
         <Button Content="Anmelden" Command="{Binding SignInCommand}" HorizontalAlignment="Left" Margin="160,25,0,0" VerticalAlignment="Top" Width="130" Grid.Row="3" Height="29"/>
-        <TextBox x:Name="LoginTextBox" TextAlignment="Left" HorizontalAlignment="Left" FontSize="18" Height="29" Margin="10,45,0,0" TextWrapping="Wrap" Text="{Binding Nickname}" VerticalAlignment="Top" Width="280" Grid.Row="2"/>
+        <TextBox x:Name="LoginTextBox" TextAlignment="Left" HorizontalAlignment="Left" FontSize="18" Height="35" Margin="10,45,0,0" TextWrapping="Wrap" Text="{Binding Nickname}" VerticalAlignment="Top" Width="280" Grid.Row="2"/>
         <TextBlock Grid.Row="0" FontWeight="Bold"  HorizontalAlignment="Left" FontSize="24" Margin="10,30,0,0" TextWrapping="Wrap" Text="Liga Manager" VerticalAlignment="Top" Height="37" Width="280"/>
         <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="10,10,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Height="32" Width="136" Grid.Row="1"/>
         <Button Content="Beenden" Command="{Binding CloseCommand}" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="130" Grid.Row="3" Height="29"/>

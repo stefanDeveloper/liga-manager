@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Models;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
-using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {

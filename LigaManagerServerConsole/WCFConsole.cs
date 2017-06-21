@@ -5,9 +5,9 @@ using System.Web.Services.Description;
 
 namespace LigaManagerServerConsole
 {
-    class WCFConsole
+    public class WcfConsole
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var baseAddress = new Uri("http://localhost:80/LigaManagerServer/");
             // Create the ServiceHost.

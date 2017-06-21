@@ -29,7 +29,7 @@
                 VerticalAlignment="Top" Width="125" Height="50"/>
         <Button Command="{Binding TeamsCommand}" Content="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
                 VerticalAlignment="Top" Width="125" Height="50"/>
-        <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="135"/>
         <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="{Binding Bettor.Firstname}" HorizontalAlignment="Left" Margin="135,110,0,0" VerticalAlignment="Top" Height="30" Width="105"/>
         <Label Content="Saison" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left" Margin="5,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
 

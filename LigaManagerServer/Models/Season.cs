@@ -1,9 +1,15 @@
-﻿namespace LigaManagerServer.Models
+﻿using System.Runtime.Serialization;
+
+namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class Season : ModelBase
     {
+        [DataMember]
         public string Name { get; set; } = string.Empty;
+        [DataMember]
         public string Description { get; set; } = string.Empty;
+        [DataMember]
         public int Sequence { get; set; } = 1;
 
         protected bool Equals(Season other)

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
+using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
-using LigaManagerServer.Models;
 
 namespace LigaManagerAdminClient.Controllers
 {

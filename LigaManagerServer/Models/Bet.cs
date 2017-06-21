@@ -1,13 +1,20 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace LigaManagerServer.Models
 {
+    [DataContract]
     public class Bet : ModelBase
     {
+        [DataMember]
         public DateTime DateTime { get; set; }
+        [DataMember]
         public int HomeTeamScore { get; set; }
+        [DataMember]
         public int AwayTeamScore { get; set; }
+        [DataMember]
         public Match Match { get; set; }
+        [DataMember]
         public Bettor Bettor { get; set; }
 
         protected bool Equals(Bet other)

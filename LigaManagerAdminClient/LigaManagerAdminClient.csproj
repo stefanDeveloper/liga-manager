@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Controllers\AbstractListWindowController.cs" />
     <Compile Include="Controllers\AddBettorWindowController.cs" />
+    <Compile Include="Controllers\AddMatchWindowController.cs" />
     <Compile Include="Controllers\AddSeasonWindowController.cs" />
     <Compile Include="Controllers\AddTeamWindowController.cs" />
     <Compile Include="Controllers\MenuWindowController.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Models\SeasonCheckBox.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\AddBettorWindowViewModel.cs" />
+    <Compile Include="ViewModels\AddMatchWindowViewModel.cs" />
     <Compile Include="ViewModels\AddSeasonWindowViewModel.cs" />
     <Compile Include="ViewModels\AddTeamWindowViewModel.cs" />
     <Compile Include="ViewModels\BettorWindowViewModel.cs" />
@@ -86,6 +88,9 @@
     <Compile Include="ViewModels\TeamWindowViewModel.cs" />
     <Compile Include="Views\AddBettorWindow.xaml.cs">
       <DependentUpon>AddBettorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddMatchWindow.xaml.cs">
+      <DependentUpon>AddMatchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddSeasonWindow.xaml.cs">
       <DependentUpon>AddSeasonWindow.xaml</DependentUpon>
@@ -98,6 +103,9 @@
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchesWindow.xaml.cs">
+      <DependentUpon>MatchesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
@@ -136,6 +144,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Bettor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Match.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Season.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.SeasonToTeamRelation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AdminClientService\LigaManagerAdminClient.AdminClientService.Team.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\AdminClientService\LigaManagerServer.Models.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -161,9 +187,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
@@ -187,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddSeasonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,13 +249,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LigaManagerServer\LigaManagerServer.csproj">
-      <Project>{fe7a1f9f-ccfd-4ebb-a312-ddcd772bcd45}</Project>
-      <Name>LigaManagerServer</Name>
-    </ProjectReference>
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FodyWeavers.xml" />
+    <Resource Include="Data\Images\soccer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />

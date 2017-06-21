@@ -29,5 +29,7 @@
         <Button Command="{Binding TeamCommand}" Content="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
                 VerticalAlignment="Top" Width="125" Height="50"/>
         <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="140" Grid.RowSpan="2"/>
+        <Button Command="{Binding MatchesCommand}" Content="Zur Spielübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="5" Grid.Column="0"
+            VerticalAlignment="Top" Width="125" Height="50"/>
     </Grid>
 </Page>
