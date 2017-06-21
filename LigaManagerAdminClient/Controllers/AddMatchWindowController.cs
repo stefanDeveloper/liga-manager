@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.ServiceModel.Channels;
+using System.Windows;
+using System.Windows.Data;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
@@ -11,32 +15,48 @@ namespace LigaManagerAdminClient.Controllers
         private AddMatchWindow _view;
         private AddMatchWindowViewModel _viewModel;
 
-        public Match Bettor { get; set; }
+        public Match Match { get; set; }
+        public List<Team> HomeTeams { get; set; }
+        public List<Team> AwayTeams { get; set; }
 
-        public Match ShowBettor()
-        {
+
+        public Match ShowMatch()
+        {   
             #region View and ViewModel
             _view = new AddMatchWindow();
             _viewModel = new AddMatchWindowViewModel
             {
-                
+                 SelectedMatch = Match,
+                 DateTime = Match.DateTime,
+                 SelectedAwayTeam = Match.AwayTeam,
+                 SelectedHomeTeam = Match.HomeTeam,
+                 HomeTeams = HomeTeams,
+                 AwayTeams = AwayTeams,
+                 OkCommand = new RelayCommand(ExecuteOkCommand),
+                 CancelCommand = new RelayCommand(ExecuteCancelCommand)
+                 
             };
+            _view.TimeControl.DateTimeValue = Match.DateTime;
             _view.DataContext = _viewModel;
             #endregion
 
-            return _view.ShowDialog() == true ? _viewModel.Match : null;
+            return _view.ShowDialog() == true ? _viewModel.SelectedMatch : null;
         }
 
         public void ExecuteOkCommand(object obj)
         {
-            /*if (_view.FirstnameTextBox.Text.Equals(string.Empty) ||
-                _view.LastnameTextBox.Text.Equals(string.Empty) ||
-                _view.NicknameTextBox.Text.Equals(string.Empty))
+            if (_view.AwayTeamComboBox.SelectedValue == null ||
+                _view.HomeTeamComboBox.SelectedValue == null)
             {
-                MessageBox.Show("Tipper konnte nicht hinzugefügt werden, da entweder der Vorname, Nachname oder Nickname nicht ausgefüllt ist!", "Hinzufügen fehlgeschlagen",
+                MessageBox.Show("Spiel konnte nicht hinzugefügt werden, da die Angaben nicht korrekt ausgefüllt sind!", "Hinzufügen fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            }*/
+            }
+            Match.AwayTeam = _viewModel.SelectedAwayTeam;
+            Match.HomeTeam = _viewModel.SelectedHomeTeam;
+            Match.DateTime = new DateTime(year: _viewModel.DateTime.Year, month: _viewModel.DateTime.Month, day: _viewModel.DateTime.Day
+                , hour: _view.TimeControl.DateTimeValue.Value.Hour, minute: _view.TimeControl.DateTimeValue.Value.Minute, second: _view.TimeControl.DateTimeValue.Value.Second);
+
             _view.DialogResult = true;
             _view.Close();
         }

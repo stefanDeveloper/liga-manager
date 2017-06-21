@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding Seasons}" Margin="10,0,10,0" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
-                  CanUserResizeRows="False" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
+                  CanUserResizeRows="False" CanUserSortColumns="True" SelectionMode="Single" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" IsReadOnly="True"  />
                 <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" IsReadOnly="True"  />

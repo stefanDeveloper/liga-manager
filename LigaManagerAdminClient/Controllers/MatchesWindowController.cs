@@ -34,26 +34,35 @@ namespace LigaManagerAdminClient.Controllers
                 ChangeCommand = new RelayCommand(ExecuteChangeCommand),
             };
             _view.DataContext = _viewModel;
+            _viewModel.SelectionSeasonChanged += UpdateSeason;
             #endregion
 
             MainWindow.Content = _view;
         }
 
+        private void UpdateSeason(object sender, Season e)
+        {
+            ReloadModels();
+        }
+
         protected override async void ExecuteAddCommand(object obj)
         {
-            var addBettorWindow = new AddBettorWindowController
+            var teams = await _adminClient.GetAllTeamsAsync();
+            var addBettorWindow = new AddMatchWindowController
             {
-                Bettor = new Bettor()
+                Match = new Match(),
+                AwayTeams = teams.ToList(),
+                HomeTeams = teams.ToList()
             };
 
-            var showBettor = addBettorWindow.ShowBettor();
+            var showMatch = addBettorWindow.ShowMatch();
             // it could be possible that the bettor is null
-            if (showBettor == null) return;
+            if (showMatch == null) return;
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
-            var isAdded = await _adminClient.AddBettorAsync(showBettor);
-            UpdateModels(isAdded, "Tipper konnte nicht hinzugefügt werden, da der Nickname schon vergeben ist!",
+            var isAdded = await _adminClient.AddMatchAsync(showMatch);
+            UpdateModels(isAdded, "Spiel konnte nicht hinzugefügt werden!",
                 "Hinzufügen fehlgeschlagen");
         }
 
@@ -61,44 +70,52 @@ namespace LigaManagerAdminClient.Controllers
         {
             if (_viewModel.SelectedMatch == null)
             {
-                MessageBox.Show("Bitte wählen Sie einen Tipper aus!", "Kein Tipper ausgewählt",
+                MessageBox.Show("Bitte wählen Sie ein Spiel aus!", "Kein Spiel ausgewählt",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var addBettorWindow = new AddBettorWindowController
+            var teams = await _adminClient.GetAllTeamsAsync();
+            var homeTeams = teams.Where(x => !x.Name.ToUpper()
+                .Equals(_viewModel.SelectedMatch.AwayTeam.Name.ToUpper()));
+            var awayTeams = teams.Where(x => !x.Name.ToUpper()
+                .Equals(_viewModel.SelectedMatch.HomeTeam.Name.ToUpper()));
+
+            var addBettorWindow = new AddMatchWindowController
             {
-                Bettor = _viewModel.SelectedBettor
+                Match = _viewModel.SelectedMatch,
+                AwayTeams = awayTeams.ToList(),
+                HomeTeams = homeTeams.ToList()
             };
 
-            var showBettor = addBettorWindow.ShowBettor();
+            var showMatch = addBettorWindow.ShowMatch();
             // it could be possible that the bettor is null
-            if (showBettor == null) return;
+            if (showMatch == null) return;
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
-            var isUpdated = await _adminClient.UpdateBettorAsync(showBettor);
-            UpdateModels(isUpdated, "Der Benutzer konnte nicht geändert werden!", "Änderung fehlgeschlagen");
+            var isUpdated = await _adminClient.UpdateMatchAsync(showMatch);
+            UpdateModels(isUpdated, "Das Spiel konnte nicht geändert werden!", "Änderung fehlgeschlagen");
         }
 
         protected override async void ExecuteDeleteCommand(object obj)
         {
             if (_viewModel.SelectedMatch == null)
             {
-                MessageBox.Show("Bitte wählen Sie einen Tipper aus!", "Kein Tipper ausgewählt",
+                MessageBox.Show("Bitte wählen Sie ein Spiel aus!", "Kein Spiel ausgewählt",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             // Check if the user really want to delete the bettor
-            var messageBoxResult = MessageBox.Show("Sind Sie sicher, dass der Benutzer gelöscht werden soll!",
+            var messageBoxResult = MessageBox.Show("Sind Sie sicher, dass das Spiel gelöscht werden soll!",
                 "Benutzer löschen",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult != MessageBoxResult.Yes) return;
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // delete bettor
-            var isDeleted = _adminClient.DeleteBettor(_viewModel.SelectedBettor);
-            UpdateModels(isDeleted, "Tipper konnte nicht gelöscht werden!", "Löschen fehlgeschlagen");
+            var isDeleted = _adminClient.DeleteMatch(_viewModel.SelectedMatch);
+            UpdateModels(isDeleted, "Spiel konnte nicht gelöscht werden!", "Löschen fehlgeschlagen");
         }
 
         protected override async void ReloadModels()

@@ -17,7 +17,7 @@
         <Label Content="Mannschaftsübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="420" Grid.RowSpan="2"/>
         <DataGrid ItemsSource="{Binding Teams}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedTeam}"
-                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" SelectionMode="Single" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
             </DataGrid.Columns>

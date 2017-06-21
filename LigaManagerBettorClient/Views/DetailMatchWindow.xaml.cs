@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LigaManagerBettorClient.Views
 {
@@ -25,10 +14,14 @@ namespace LigaManagerBettorClient.Views
             InitializeComponent();
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            var textBox = (TextBox) sender;
+            if (Regex.IsMatch(textBox.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
         }
     }
 }

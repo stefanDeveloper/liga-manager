@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Label Content="Teamübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="285"/>
         <DataGrid x:Name="Matches" ItemsSource="{Binding Teams}" 
-                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
+                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectionMode="Single" SelectedItem="{Binding SelectedMatch}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Platzierung" Binding="{Binding Place}" />

@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Label Content="Spielübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="310"/>
         <DataGrid ItemsSource="{Binding Matches}" 
-                  CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
+                  CanUserReorderColumns="True" CanUserResizeColumns="True" SelectionMode="Single" AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding DateTime, StringFormat=dd.MM.yyyy}" />

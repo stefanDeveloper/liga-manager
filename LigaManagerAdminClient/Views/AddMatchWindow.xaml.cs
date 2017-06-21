@@ -23,5 +23,15 @@ namespace LigaManagerAdminClient.Views
         {
             InitializeComponent();
         }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
     }
 }

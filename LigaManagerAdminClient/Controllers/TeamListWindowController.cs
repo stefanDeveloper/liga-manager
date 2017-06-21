@@ -97,12 +97,7 @@ namespace LigaManagerAdminClient.Controllers
                 result.Add(new SeasonCheckBox
                 {
                     Season = x,
-                    IsAdded = seasonToTeamRelation.ToList()
-                        .Contains(new SeasonToTeamRelation
-                        {
-                            Team = _viewModel.SelectedTeam,
-                            Season = x
-                        })
+                    IsAdded = seasonToTeamRelation.Any(y => y.Season.Name.ToUpper().Equals(x.Name.ToUpper()) && y.Team.Name.ToUpper().Equals(_viewModel.SelectedTeam.Name.ToUpper()) )
                 });
             });
             var addBettorWindow = new AddTeamWindowController
@@ -119,7 +114,7 @@ namespace LigaManagerAdminClient.Controllers
             // add bettor
             var isAdded = await _adminClient.UpdateTeamAsync(showTeam);
             var allTeamsAsync = await _adminClient.GetAllTeamsAsync();
-            var team = allTeamsAsync.ToList().Find(x => x.Equals(showTeam));
+            var team = allTeamsAsync.ToList().Find(x => x.Name.ToUpper().Equals(showTeam.Name.ToUpper()));
             addBettorWindow.Seasons.ForEach(x =>
             {
                 if (x.IsAdded)

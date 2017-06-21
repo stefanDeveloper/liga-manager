@@ -3,10 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LigaManagerAdminClient.Views"
-        mc:Ignorable="d"
-        Title="AddMatchWindow" Height="300" Width="300">
+        xmlns:views="clr-namespace:LigaManagerAdminClient.Views"
+        mc:Ignorable="d" Name="MatchWindow"
+        Title="Spiel hinzufügen" Height="600" Width="500">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Calendar x:Name="MatchDateCalendar" SelectedDate="{Binding DateTime}" DisplayDate="{Binding DateTime}" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Grid.Column="1" Height="165" Width="220" Margin="0,43,0,0"/>
+        <ComboBox x:Name="HomeTeamComboBox" ItemsSource="{Binding HomeTeams}" SelectedValue="{Binding SelectedHomeTeam.Name}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Width="226" />
+        <ComboBox x:Name="AwayTeamComboBox" ItemsSource="{Binding AwayTeams}" SelectedValue="{Binding SelectedAwayTeam.Name}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Grid.Column="1"/>
+        <Label Content="Heimschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1"
+               Grid.Column="0" Width="220"/>
+        <Label Content="Auswärtsmannschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1" Width="220" Grid.Column="1"/>
+        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Width="90" Height="22"/>
+        <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="146,10,0,10" Grid.Row="4" VerticalAlignment="Top" Width="90" Height="22" Grid.Column="1"/>
+        <Label Content="Datum" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Grid.Row="3"
+            Grid.Column="1" Width="220" Margin="10,10,0,0"/>
+        <Label Content="Uhrzeit" HorizontalAlignment="Left" HorizontalContentAlignment="Center"  Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="3"
+               Grid.Column="0" Width="220"/>
+        <views:TimeControl x:Name="TimeControl" Grid.Row="3" Grid.Column="0" Margin="50,65,50,65" DateTimeValue="{Binding SelectedMatch.DateTime}"/>
+        <TextBox x:Name="AwayTeamScore" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="50,30,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedMatch.AwayTeamScore}" VerticalAlignment="Top" Width="120" ToolTip="Spieltip"/>
+        <TextBox x:Name="HomeTeamScore" HorizontalContentAlignment="Center" TextChanged="OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="50,30,0,0" Grid.Row="2"
+                 Grid.Column="0" TextWrapping="Wrap" Text="{Binding SelectedMatch.HomeTeamScore}" VerticalAlignment="Top" Width="120" ToolTip="Spieltip"/>
+
     </Grid>
 </Window>
