@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Mapping;
-using LigaManagerServer.Models;
+﻿using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Mappings
 {

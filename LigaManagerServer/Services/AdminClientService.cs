@@ -5,8 +5,6 @@ using FluentNHibernate.Conventions;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
-using NHibernate.Event;
-using NHibernate.Util;
 
 namespace LigaManagerServer.Services
 {
@@ -113,6 +111,7 @@ namespace LigaManagerServer.Services
             {
                 var seasons = _seasonPersistenceService.GetAll();
                 var max = seasons.Max(x => x.Sequence);
+                //increase season
                 season.Sequence = max + 1;
                 return _seasonPersistenceService.Add(season);
             }
@@ -191,48 +190,83 @@ namespace LigaManagerServer.Services
                     }
                 }
                 var result = GenerateMatches(new List<Match>(), matchesOfSeason, dateTimes, 1);
+                result.Sort((x,y) => x.DateTime.CompareTo(y.DateTime));
+                var matches = _matchPersistenceService.GetAll();
+                var filteredResult = result.FindAll(x =>
+                {
+                    var finded = matches.FindAll(y => x.Season.Equals(y.Season) && x.HomeTeam.Equals(y.HomeTeam) &&
+                                      x.AwayTeam.Equals(y.AwayTeam));
+
+                    if (finded.IsEmpty())
+                    {
+                        return true;
+                    }
+                    return false;
+                });
+                if (filteredResult.Any())
+                    filteredResult.ForEach(x => _matchPersistenceService.Add(x));
             }
         }
-
-        private List<Match> GenerateMatches(List<Match> result, List<Match> matches, List<DateTime> dayOfWeeks, int matchDay)
+        /// <summary>
+        /// Generate all Matches of a Season, including first match and return match.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="matches"></param>
+        /// <param name="dateTimes"></param>
+        /// <param name="matchDay"></param>
+        /// <returns></returns>
+        private List<Match> GenerateMatches(List<Match> result, List<Match> matches, List<DateTime> dateTimes, int matchDay)
         {
-            if (!matches.IsEmpty())
+            if (matches.IsEmpty()) return result;
+            foreach (var dateTime in dateTimes)
             {
-                foreach (var dateTime in dayOfWeeks)
+                foreach (var match in matches)
                 {
-                    foreach (var match in matches)
+                    // first we fill all matches for friday and sunday
+                    if (dateTime.DayOfWeek == DayOfWeek.Friday || dateTime.DayOfWeek == DayOfWeek.Sunday)
                     {
-                        if (dateTime.DayOfWeek == DayOfWeek.Friday)
-                        {
-                            var currentMatch = match;
-                            matches.Remove(match);
-                            currentMatch.DateTime = dateTime;
-                            currentMatch.MatchDay = matchDay;
-                            result.Add(currentMatch);
-                            // remove from group
-                            dayOfWeeks.Remove(dateTime);
-                            return GenerateMatches(result, matches, dayOfWeeks, matchDay);
-
-                        }
-                        else if (dateTime.DayOfWeek == DayOfWeek.Sunday)
-                        {
-                            var currentMatch = match;
-                            matches.Remove(match);
-                            currentMatch.DateTime = dateTime;
-                            currentMatch.MatchDay = matchDay;
-                            result.Add(currentMatch);
-                            dayOfWeeks.Remove(dateTime);
-                            return GenerateMatches(result, matches, dayOfWeeks, dateTime.Hour == 17 ? ++matchDay : matchDay);
-                        }
+                        // remove match from list
+                        var currentMatch = match;
+                        matches.Remove(match);
+                        // set dateTime of match and matchday
+                        currentMatch.DateTime = dateTime;
+                        currentMatch.MatchDay = matchDay;
+                        result.Add(currentMatch);
+                        // remove from group
+                        dateTimes.Remove(dateTime);
+                        // only if the date is sunday at 17:30 we have to increase the matchday, otherwise it's not necessary
+                        return GenerateMatches(result, matches, dateTimes, dateTime.DayOfWeek == DayOfWeek.Sunday && dateTime.Hour == 17 && dateTime.Minute == 30 ? ++matchDay : matchDay);
                     }
                 }
-                return result;
             }
-            else
+            return SetSaturdayMatches(matches,result,dateTimes);
+        }
+        /// <summary>
+        /// Set all left matches to the Saturday.
+        /// </summary>
+        /// <param name="matches"></param>
+        /// <param name="result"></param>
+        /// <param name="dateTimes"></param>
+        /// <returns></returns>
+        private List<Match> SetSaturdayMatches(List<Match> matches, List<Match> result, List<DateTime> dateTimes)
+        {
+            if (matches.IsEmpty()) return result;
+            var matchDay = 1;
+            foreach (var dateTime in dateTimes)
             {
-                return result;
+                if (matches.Any())
+                {
+                    // remove match from list
+                    var currentMatch = matches.First();
+                    matches.Remove(matches.First());
+                    // set dateTime of match and matchday
+                    currentMatch.DateTime = dateTime;
+                    currentMatch.MatchDay = matchDay;
+                    result.Add(currentMatch);
+                }
+                matchDay++;
             }
-
+            return SetSaturdayMatches(matches, result, dateTimes);
         }
 
         /// <summary>
@@ -244,29 +278,32 @@ namespace LigaManagerServer.Services
         /// <returns></returns>
         private List<DateTime> CreateDateTimes(DateTime beginn, DateTime end, List<DateTime> result)
         {
-            if (!beginn.Equals(end))
+            if (beginn.Equals(end)) return result;
+            switch (beginn.DayOfWeek)
             {
-                if (DayOfWeek.Friday == beginn.DayOfWeek)
-                {
+                case DayOfWeek.Friday:
                     result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 20,30,0));
-                }
-                else if (DayOfWeek.Sunday == beginn.DayOfWeek)
-                {
+                    break;
+                case DayOfWeek.Sunday:
                     result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 15, 30, 0));
                     result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 17, 30, 0));
-                }
-                else if (DayOfWeek.Saturday == beginn.DayOfWeek)
-                {
+                    break;
+                case DayOfWeek.Saturday:
                     result.Add(new DateTime(beginn.Year, beginn.Month, beginn.Day, 15, 30, 0));
-                }
-
-                return CreateDateTimes(beginn.AddDays(1), end, result);
+                    break;
+                case DayOfWeek.Monday:
+                    break;
+                case DayOfWeek.Tuesday:
+                    break;
+                case DayOfWeek.Wednesday:
+                    break;
+                case DayOfWeek.Thursday:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                return result;
-            }
 
+            return CreateDateTimes(beginn.AddDays(1), end, result);
         }
     }
 }

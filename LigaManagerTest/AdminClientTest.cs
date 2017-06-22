@@ -12,7 +12,7 @@ namespace LigaManagerTest
         public void GenerateMatchesTest()
         {
             var adminClient = new AdminClientServiceClient();
-            adminClient.GenerateMatches(adminClient.GetSeasons().First(), DateTime.Now, DateTime.Now.AddDays(60));
+            adminClient.GenerateMatches(adminClient.GetSeasons().First(), DateTime.Now, DateTime.Now.AddDays(180));
         }
     }
 }

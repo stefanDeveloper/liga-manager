@@ -79,6 +79,7 @@
     <Compile Include="Controllers\AddMatchWindowController.cs" />
     <Compile Include="Controllers\AddSeasonWindowController.cs" />
     <Compile Include="Controllers\AddTeamWindowController.cs" />
+    <Compile Include="Controllers\GenerateMatchesWindowController.cs" />
     <Compile Include="Controllers\MenuWindowController.cs" />
     <Compile Include="Framework\AdminClientHelper.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="ViewModels\AddSeasonWindowViewModel.cs" />
     <Compile Include="ViewModels\AddTeamWindowViewModel.cs" />
     <Compile Include="ViewModels\BettorWindowViewModel.cs" />
+    <Compile Include="ViewModels\GenerateMatchesWindowViewModel.cs" />
     <Compile Include="ViewModels\MatchesWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuWindowViewModel.cs" />
     <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
@@ -108,6 +110,9 @@
     </Compile>
     <Compile Include="Views\BettorWindow.xaml.cs">
       <DependentUpon>BettorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GenerateMatchesWindow.xaml.cs">
+      <DependentUpon>GenerateMatchesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -235,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BettorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GenerateMatchesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
