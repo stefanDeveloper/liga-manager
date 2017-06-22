@@ -3,10 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LigaManagerAdminClient.Views"
         mc:Ignorable="d"
-        Title="GenerateMatchesWindow" Height="300" Width="300">
+        Title="Spiele generieren" Height="300" Width="600">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Calendar x:Name="BeginCalendar" SelectedDate="{Binding SelectedBeginDate}" DisplayDate="{Binding SelectedBeginDate}" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Calendar x:Name="EndCalendar"  SelectedDate="{Binding SelectedEndDate}" DisplayDate="{Binding SelectedEndDate}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Grid Grid.Row="2" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="OkButton" Content="Ok" Grid.Column="1" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="75"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AbortButton" Content="Abbrechen" Command="{Binding CancelCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="75"/>
+        </Grid>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding SelectedSeason.Name}"  Margin="10,10,10,0" FontSize="18" FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -71,7 +71,7 @@ namespace LigaManagerAdminClient.Controllers
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
             var isAdded = await _adminClient.AddTeamAsync(showTeam);
-            var addedSeasons = addBettorWindow.Seasons.Where(x => x.IsAdded);
+            var addedSeasons = addBettorWindow.Seasons.FindAll(x => x.IsAdded);
             var allTeamsAsync = await _adminClient.GetAllTeamsAsync();
             var team = allTeamsAsync.ToList().Find(x => x.Equals(showTeam));
             if (addedSeasons.Any())
@@ -89,6 +89,8 @@ namespace LigaManagerAdminClient.Controllers
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             var seasons = await _adminClient.GetSeasonsAsync();
             var seasonToTeamRelation = await _adminClient.GetAllSeasonToTeamRelationAsync();
             var result = new List<SeasonCheckBox>();

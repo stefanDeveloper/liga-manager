@@ -77,7 +77,7 @@ namespace LigaManagerBettorClient.Controllers
             else if (Bet == null && Match.DateTime > DateTime.Now.AddMinutes(30))
             {
                 //add new bet
-                _viewModel.Bet = new Bet
+                Bet = new Bet
                 {
                     Match = _viewModel.Match,
                     DateTime = DateTime.Now,

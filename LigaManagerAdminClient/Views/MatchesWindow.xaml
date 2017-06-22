@@ -34,11 +34,13 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="0"/>
             <Button Command="{Binding AddCommand}" Content="Hinzufügen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="4"/>
             <Button Command="{Binding ChangeCommand}" Content="Ändern" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
             <Button Command="{Binding DeleteCommand}" Content="Löschen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="3"/>
+            <Button Command="{Binding GenerateMatchesCommand}" Content="Spiele Generieren" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="92" Grid.Column="5"/>
         </Grid>
         <Label Grid.Row="0" Content="Saison" FontWeight="Bold" HorizontalAlignment="Left" Margin="485,60,0,0" VerticalAlignment="Top" Width="50"/>
         <ComboBox Grid.Row="0" ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason.Name}" SelectedItem="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="540,60,0,0" VerticalAlignment="Top" Width="250" Height="26" />

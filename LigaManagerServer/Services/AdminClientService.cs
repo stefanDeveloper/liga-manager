@@ -175,13 +175,13 @@ namespace LigaManagerServer.Services
             }
         }
 
-        public void GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime)
+        public bool GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime)
         {
             lock (StaticLock)
             {
                 var seasonToTeamRelations = _seasonToTeamRelationService.GetAll();
                 var teamsOfSeason = seasonToTeamRelations.FindAll(x => x.Season.Equals(season));
-                
+
                 var dateTimes = CreateDateTimes(beginDateTime, endDateTime, new List<DateTime>());
                 var matchesOfSeason = new List<Match>();
                 foreach (var seasonToTeamRelation in teamsOfSeason)
@@ -195,17 +195,17 @@ namespace LigaManagerServer.Services
                             AwayTeam = teams.Team,
                             Season = seasonToTeamRelation.Season,
                         };
-                        
+
                         matchesOfSeason.Add(match);
                     }
                 }
                 var result = GenerateMatches(new List<Match>(), matchesOfSeason, dateTimes, 1);
-                result.Sort((x,y) => x.DateTime.CompareTo(y.DateTime));
+                result.Sort((x, y) => x.DateTime.CompareTo(y.DateTime));
                 var matches = _matchPersistenceService.GetAll();
                 var filteredResult = result.FindAll(x =>
                 {
                     var finded = matches.FindAll(y => x.Season.Equals(y.Season) && x.HomeTeam.Equals(y.HomeTeam) &&
-                                      x.AwayTeam.Equals(y.AwayTeam));
+                                                      x.AwayTeam.Equals(y.AwayTeam));
 
                     if (finded.IsEmpty())
                     {
@@ -213,8 +213,9 @@ namespace LigaManagerServer.Services
                     }
                     return false;
                 });
-                if (filteredResult.Any())
-                    filteredResult.ForEach(x => _matchPersistenceService.Add(x));
+                if (!filteredResult.Any()) return false;
+                filteredResult.ForEach(x => _matchPersistenceService.Add(x));
+                return true;
             }
         }
         /// <summary>

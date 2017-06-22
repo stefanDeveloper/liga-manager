@@ -44,6 +44,6 @@ namespace LigaManagerServer.Contracts
         bool DeleteSeasonToTeamRelation(SeasonToTeamRelation seasonToTeamRelation);
 
         [OperationContract]
-        void GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime);
+        bool GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime);
     }
 }

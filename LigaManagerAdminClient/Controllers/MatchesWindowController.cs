@@ -22,6 +22,8 @@ namespace LigaManagerAdminClient.Controllers
 
             #region View And ViewModel
             _view = new MatchesWindow();
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             var seasons = await _adminClient.GetSeasonsAsync();
             var matches = await _adminClient.GetMatchesAsync(seasons.FirstOrDefault());
             _viewModel = new MatchesWindowViewModel
@@ -33,6 +35,7 @@ namespace LigaManagerAdminClient.Controllers
                 AddCommand = new RelayCommand(ExecuteAddCommand),
                 DeleteCommand = new RelayCommand(ExecuteDeleteCommand),
                 ChangeCommand = new RelayCommand(ExecuteChangeCommand),
+                GenerateMatchesCommand = new RelayCommand(ExecuteGenerateCommand)
             };
             _view.DataContext = _viewModel;
             _viewModel.SelectionSeasonChanged += UpdateSeason;
@@ -80,7 +83,8 @@ namespace LigaManagerAdminClient.Controllers
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             var teams = await _adminClient.GetAllTeamsAsync();
             var homeTeams = teams.Where(x => !x.Name.ToUpper()
                 .Equals(_viewModel.SelectedMatch.AwayTeam.Name.ToUpper()));
@@ -122,6 +126,29 @@ namespace LigaManagerAdminClient.Controllers
             // delete bettor
             var isDeleted = _adminClient.DeleteMatch(_viewModel.SelectedMatch);
             UpdateModels(isDeleted, "Spiel konnte nicht gelöscht werden!", "Löschen fehlgeschlagen");
+        }
+
+        private async void ExecuteGenerateCommand(object obj)
+        {
+            var generateMatchesWindowController = new GenerateMatchesWindowController
+            {
+                Season = _viewModel.SelectedSeason,
+                EndDate = DateTime.Now.AddDays(30),
+                BeginDate = DateTime.Now
+            };
+            generateMatchesWindowController.ChooseDateIntervall();
+            var isSuccess = await _adminClient.GenerateMatchesAsync(_viewModel.SelectedSeason, generateMatchesWindowController.BeginDate,
+                generateMatchesWindowController.EndDate);
+            if (isSuccess)
+            {
+                MessageBox.Show("Spiele wurden erfolgreich erstellt!", "Erfolgreich",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten, Spiele konnten nicht erstellt werden!", "Fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         protected override async void ReloadModels()

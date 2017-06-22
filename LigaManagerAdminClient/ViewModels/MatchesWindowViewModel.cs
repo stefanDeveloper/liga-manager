@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
+using LigaManagerBettorClient.Frameworks;
 
 namespace LigaManagerAdminClient.ViewModels
 {
@@ -32,5 +33,7 @@ namespace LigaManagerAdminClient.ViewModels
                 }
             }
         }
+
+        public ICommand GenerateMatchesCommand { get; set; }
     }
 }

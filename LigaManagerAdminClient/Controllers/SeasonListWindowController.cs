@@ -21,7 +21,8 @@ namespace LigaManagerAdminClient.Controllers
             _adminClient = new AdminClientServiceClient();
 
             #region View And ViewModel
-
+            // Check if service is available
+            if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             _view = new SeasonWindow();
             var seasons = await _adminClient.GetSeasonsAsync();
             _viewModel = new SeasonWindowViewModel
