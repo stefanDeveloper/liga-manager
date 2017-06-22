@@ -136,7 +136,12 @@ namespace LigaManagerServer.Services
         public bool AddMatch(Match match)
         {
             lock (StaticLock)
-            {
+            { 
+                if (match.AwayTeam.Equals(match.HomeTeam)) return false;
+                var matches = _matchPersistenceService.GetAll();
+                var exists = matches.FindAll(x => x.Season.Equals(match.Season) && x.HomeTeam.Equals(match.HomeTeam) &&
+                                                   x.AwayTeam.Equals(match.AwayTeam));
+                if (exists.IsAny()) return false;
                 return _matchPersistenceService.Add(match);
             }
         }
@@ -145,6 +150,11 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                if (match.AwayTeam.Equals(match.HomeTeam)) return false;
+                var matches = _matchPersistenceService.GetAll();
+                var exists = matches.FindAll(x => x.Season.Equals(match.Season) && x.HomeTeam.Equals(match.HomeTeam) &&
+                                                  x.AwayTeam.Equals(match.AwayTeam));
+                if (exists.IsAny()) return false;
                 return _matchPersistenceService.Update(match);
             }
         }

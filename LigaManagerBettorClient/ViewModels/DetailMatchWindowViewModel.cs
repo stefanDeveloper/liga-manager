@@ -7,6 +7,7 @@ namespace LigaManagerBettorClient.ViewModels
     {
         public Match Match { get; set; }    
         public RelayCommand BetCommand { get; set; }
+        public RelayCommand DeleteBetCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
         public Bet Bet { get; set; }
     }

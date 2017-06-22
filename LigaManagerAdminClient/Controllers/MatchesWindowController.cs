@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
@@ -50,9 +51,14 @@ namespace LigaManagerAdminClient.Controllers
             var teams = await _adminClient.GetAllTeamsAsync();
             var addBettorWindow = new AddMatchWindowController
             {
-                Match = new Match(),
+                Match = new Match
+                {
+                    Season = _viewModel.SelectedSeason,
+                    DateTime = DateTime.Now
+                },
                 AwayTeams = teams.ToList(),
-                HomeTeams = teams.ToList()
+                HomeTeams = teams.ToList(),
+                
             };
 
             var showMatch = addBettorWindow.ShowMatch();

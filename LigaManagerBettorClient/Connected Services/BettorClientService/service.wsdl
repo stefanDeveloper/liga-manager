@@ -85,6 +85,12 @@
   <wsdl:message name="IBettorClientService_ChangeBet_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeBetResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettorClientService_RemoveBet_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBet" />
+  </wsdl:message>
+  <wsdl:message name="IBettorClientService_RemoveBet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBetResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettorClientService_GetBet_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBet" />
   </wsdl:message>
@@ -167,6 +173,10 @@
     <wsdl:operation name="ChangeBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/ChangeBet" message="tns:IBettorClientService_ChangeBet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/ChangeBetResponse" message="tns:IBettorClientService_ChangeBet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/RemoveBet" message="tns:IBettorClientService_RemoveBet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettorClientService/RemoveBetResponse" message="tns:IBettorClientService_RemoveBet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettorClientService/GetBet" message="tns:IBettorClientService_GetBet_InputMessage" />
@@ -301,6 +311,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangeBet">
       <soap:operation soapAction="http://tempuri.org/IBettorClientService/ChangeBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBet">
+      <soap:operation soapAction="http://tempuri.org/IBettorClientService/RemoveBet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

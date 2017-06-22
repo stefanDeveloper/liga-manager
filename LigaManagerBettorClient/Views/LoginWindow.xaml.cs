@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Text.RegularExpressions;
+using System.Windows.Controls;
 
 namespace LigaManagerBettorClient.Views
 {
@@ -10,6 +12,15 @@ namespace LigaManagerBettorClient.Views
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z\.]+$"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
         }
     }
 }

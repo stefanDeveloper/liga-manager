@@ -129,9 +129,6 @@
     <Compile Include="Views\TeamWindow.xaml.cs">
       <DependentUpon>TeamWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TimeControl.xaml.cs">
-      <DependentUpon>TimeControl.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\AdminClientService\Reference.cs">
@@ -264,10 +261,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TeamWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TimeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

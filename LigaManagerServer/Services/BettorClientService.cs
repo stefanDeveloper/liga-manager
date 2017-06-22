@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentNHibernate.Conventions;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
@@ -40,6 +41,19 @@ namespace LigaManagerServer.Services
                 if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
                     return false;
                 return _betPersistenceService.Update(bet);
+            }
+        }
+
+        public bool RemoveBet(Bet bet)
+        {
+            lock (StaticLock)
+            {
+                if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
+                    return false;
+                var bets = _betPersistenceService.GetAll();
+                var selectedBets = bets.FindAll(x => x.Bettor.Equals(bet.Bettor) && x.Match.Equals(bet.Match));
+                if (selectedBets.IsAny()) return false;
+                return _betPersistenceService.Delete(selectedBets.First());
             }
         }
 

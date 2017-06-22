@@ -32,6 +32,13 @@ namespace LigaManagerServer.Contracts
         [OperationContract]
         bool ChangeBet(Bet bet);
         /// <summary>
+        /// Removes a Bet. Consider that it's only available half an hour before the match.
+        /// </summary>
+        /// <param name="bet"></param>
+        /// <returns></returns>
+        [OperationContract]
+        bool RemoveBet(Bet bet);
+        /// <summary>
         /// Returns a bet of a specific match of an bettor.
         /// </summary>
         /// <param name="match"></param>

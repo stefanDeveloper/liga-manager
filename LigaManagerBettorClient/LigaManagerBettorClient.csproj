@@ -83,6 +83,7 @@
     <Compile Include="Frameworks\RelayCommand.cs" />
     <Compile Include="Frameworks\BettorClientHelper.cs" />
     <Compile Include="Frameworks\ViewModelBase.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BettorRankingWindowViewModel.cs" />
     <Compile Include="ViewModels\DetailMatchWindowViewModel.cs" />

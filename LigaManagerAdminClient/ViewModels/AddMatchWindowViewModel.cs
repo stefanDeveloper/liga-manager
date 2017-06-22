@@ -9,7 +9,8 @@ namespace LigaManagerAdminClient.ViewModels
     public class AddMatchWindowViewModel : ViewModelBase
     {
         public Match SelectedMatch { get; set; }
-        public DateTime DateTime { get; set; }
+        public int Hour { get; set; }
+        public int Minute { get; set; }
         public List<Team> AwayTeams { get; set; }
         public Team SelectedAwayTeam { get; set; }
         public List<Team> HomeTeams { get; set; }

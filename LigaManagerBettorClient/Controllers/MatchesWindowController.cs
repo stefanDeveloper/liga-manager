@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Data;
 using LigaManagerBettorClient.BettorClientService;
 using LigaManagerBettorClient.Frameworks;
+using LigaManagerBettorClient.Models;
 using LigaManagerBettorClient.ViewModels;
 using LigaManagerBettorClient.Views;
 
@@ -56,7 +57,7 @@ namespace LigaManagerBettorClient.Controllers
         }
 
 
-        public void ExecuteSelectedMatchCommand(object obj)
+        public async void ExecuteSelectedMatchCommand(object obj)
         {
             var viewModelSelectedMatch = _viewModel.SelectedMatch;
             var bet = _bettorClient.GetBet(viewModelSelectedMatch, _bettor);
@@ -65,23 +66,45 @@ namespace LigaManagerBettorClient.Controllers
                 Match = viewModelSelectedMatch,
                 Bet = bet
             };
-            var addedObject = detailMatchWindowController.ShowMatch();
+            var betState = detailMatchWindowController.ShowMatch();
 
-            if (addedObject == null) return;
+            if (betState == State.Abort) return;
             // At this point we do not know if the bettor still bet for the match, therefore we have to look if it it null or not.
-            var isSuccess = bet != null ? _bettorClient.ChangeBet(addedObject) : _bettorClient.AddBet(addedObject);
-            
+            bool isSuccess = false;
+            switch (betState)
+            {
+                case State.Changed:
+                    isSuccess = await _bettorClient.ChangeBetAsync(detailMatchWindowController.Bet);
+                    break;
+                case State.Added:
+                    detailMatchWindowController.Bet.Bettor = _bettor;
+                    isSuccess = await _bettorClient.AddBetAsync(detailMatchWindowController.Bet);
+                    break;
+                case State.Deleted:
+                    isSuccess = await _bettorClient.RemoveBetAsync(detailMatchWindowController.Bet);
+                    break;
+            }
+
             if (!isSuccess)
             {
                 MessageBox.Show(
                     "Der Tipp konnte nicht abgegeben werden! Bitte beachten Sie, dass Sie bis spätestens 30 Minuten vor Spielbeginn tippen können!",
                     "Tipp fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            else
+
+            switch (betState)
             {
-                MessageBox.Show("Der Tipp wurde erfolgreich abgegeben, viel Erfolg!", "Tipp erfolgreich",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                case State.Added:
+                case State.Changed:
+                    MessageBox.Show("Der Tipp wurde erfolgreich abgegeben, viel Erfolg!", "Tipp erfolgreich",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case State.Deleted:
+                    MessageBox.Show("Der Tipp wurde erfolgreich gelöscht!", "Tipp erfolgreich",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
             }
         }
     }

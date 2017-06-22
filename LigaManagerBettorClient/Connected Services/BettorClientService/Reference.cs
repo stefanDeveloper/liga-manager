@@ -758,6 +758,12 @@ namespace LigaManagerBettorClient.BettorClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/ChangeBet", ReplyAction="http://tempuri.org/IBettorClientService/ChangeBetResponse")]
         System.Threading.Tasks.Task<bool> ChangeBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/RemoveBet", ReplyAction="http://tempuri.org/IBettorClientService/RemoveBetResponse")]
+        bool RemoveBet(LigaManagerBettorClient.BettorClientService.Bet bet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/RemoveBet", ReplyAction="http://tempuri.org/IBettorClientService/RemoveBetResponse")]
+        System.Threading.Tasks.Task<bool> RemoveBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBettorClientService/GetBet", ReplyAction="http://tempuri.org/IBettorClientService/GetBetResponse")]
         LigaManagerBettorClient.BettorClientService.Bet GetBet(LigaManagerBettorClient.BettorClientService.Match match, LigaManagerBettorClient.BettorClientService.Bettor bettor);
         
@@ -918,6 +924,14 @@ namespace LigaManagerBettorClient.BettorClientService {
         
         public System.Threading.Tasks.Task<bool> ChangeBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet) {
             return base.Channel.ChangeBetAsync(bet);
+        }
+        
+        public bool RemoveBet(LigaManagerBettorClient.BettorClientService.Bet bet) {
+            return base.Channel.RemoveBet(bet);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveBetAsync(LigaManagerBettorClient.BettorClientService.Bet bet) {
+            return base.Channel.RemoveBetAsync(bet);
         }
         
         public LigaManagerBettorClient.BettorClientService.Bet GetBet(LigaManagerBettorClient.BettorClientService.Match match, LigaManagerBettorClient.BettorClientService.Bettor bettor) {

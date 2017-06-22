@@ -25,16 +25,16 @@ namespace LigaManagerAdminClient.Controllers
             _viewModel = new AddMatchWindowViewModel
             {
                  SelectedMatch = Match,
-                 DateTime = Match.DateTime,
                  SelectedAwayTeam = Match.AwayTeam,
                  SelectedHomeTeam = Match.HomeTeam,
+                 Minute = Match.DateTime.Minute,
+                 Hour = Match.DateTime.Hour,
                  HomeTeams = HomeTeams,
                  AwayTeams = AwayTeams,
                  OkCommand = new RelayCommand(ExecuteOkCommand),
                  CancelCommand = new RelayCommand(ExecuteCancelCommand)
                  
             };
-            _view.TimeControl.DateTimeValue = Match.DateTime;
             _view.DataContext = _viewModel;
             #endregion
 
@@ -44,7 +44,11 @@ namespace LigaManagerAdminClient.Controllers
         public void ExecuteOkCommand(object obj)
         {
             if (_view.AwayTeamComboBox.SelectedValue == null ||
-                _view.HomeTeamComboBox.SelectedValue == null)
+                _view.HomeTeamComboBox.SelectedValue == null ||
+                _view.HourTextBox.Text == string.Empty ||
+                _view.MinuteTextBox.Text == string.Empty ||
+                _view.HomeTeamScore.Text == string.Empty ||
+                _view.AwayTeamScore.Text == string.Empty)
             {
                 MessageBox.Show("Spiel konnte nicht hinzugefügt werden, da die Angaben nicht korrekt ausgefüllt sind!", "Hinzufügen fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
@@ -52,9 +56,7 @@ namespace LigaManagerAdminClient.Controllers
             }
             Match.AwayTeam = _viewModel.SelectedAwayTeam;
             Match.HomeTeam = _viewModel.SelectedHomeTeam;
-            Match.DateTime = new DateTime(year: _viewModel.DateTime.Year, month: _viewModel.DateTime.Month, day: _viewModel.DateTime.Day
-                , hour: _view.TimeControl.DateTimeValue.Value.Hour, minute: _view.TimeControl.DateTimeValue.Value.Minute, second: _view.TimeControl.DateTimeValue.Value.Second);
-
+            Match.DateTime = new DateTime(Match.DateTime.Year, Match.DateTime.Month, Match.DateTime.Day, _viewModel.Hour, _viewModel.Minute, 0);
             _view.DialogResult = true;
             _view.Close();
         }
