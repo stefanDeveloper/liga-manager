@@ -13,14 +13,16 @@ namespace LigaManagerBettorClient.Controllers
         private BettorRankingWindowViewModel _viewModel;
         private BettorClientServiceClient _bettorClient;
         private MainWindow _mainWindow;
+        private MenuWindowController _menuWindow;
         private Season _selectedSeason;
         private Bettor _bettor;
 
-        public void Initialize(MainWindow mainWindow, Season selectedSeason, Bettor bettor)
+        public void Initialize(MainWindow mainWindow, MenuWindowController menuWindow,  Season selectedSeason, Bettor bettor)
         {
             _view = new BettorRankingWindow();
             _bettorClient = new BettorClientServiceClient();
             _mainWindow = mainWindow;
+            _menuWindow = menuWindow;
             _selectedSeason = selectedSeason;
             _bettor = bettor;
 
@@ -56,8 +58,7 @@ namespace LigaManagerBettorClient.Controllers
 
         private void ExecuteBackCommand(object obj)
         {
-            var menuWindow = new MenuWindowController();
-            menuWindow.Initialize(_mainWindow,_bettor);
+            _menuWindow.Initialize(_mainWindow,_bettor);
         }
 
         private void UpdateMatchDay(object sender, string s)

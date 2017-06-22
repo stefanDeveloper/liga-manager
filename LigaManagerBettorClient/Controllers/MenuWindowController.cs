@@ -15,6 +15,8 @@ namespace LigaManagerBettorClient.Controllers
         private BettorClientServiceClient _bettorClient;
         private MenuWindow _view;
 
+        private Season _selectedSeason;
+
         public void Initialize(MainWindow mainWindow, Bettor bettor)
         {
             _view = new MenuWindow();
@@ -29,12 +31,12 @@ namespace LigaManagerBettorClient.Controllers
             {
                 Bettor = _bettor,
                 Seasons = new ObservableCollection<Season>(seasons.ToList()),
-                SelectedSeason = seasons.ToList().FirstOrDefault(),
+                SelectedSeason = _selectedSeason ?? seasons.FirstOrDefault(),
                 BettorRankingCommand = new RelayCommand(ExecuteBettorRankingCommand),
                 MatchesCommand = new RelayCommand(ExecuteMatchesCommand),
                 TeamsCommand = new RelayCommand(ExecuteTeamsCommand),
             };
-
+            _selectedSeason = _selectedSeason != null ? _viewModel.SelectedSeason : seasons.FirstOrDefault();
             _view.DataContext = _viewModel;
             #endregion
 
@@ -47,26 +49,24 @@ namespace LigaManagerBettorClient.Controllers
         public void ExecuteBettorRankingCommand(object obj)
         {
             var bettorRanking = new BettorRankingWindowController();
-            bettorRanking.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
+            _selectedSeason = _viewModel.SelectedSeason;
+            bettorRanking.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);
         }
 
         public void ExecuteMatchesCommand(object obj)
         {
             var matches = new MatchesWindowController();
-            matches.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
+            _selectedSeason = _viewModel.SelectedSeason;
+            matches.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);
         }
 
         public void ExecuteTeamsCommand(object obj)
         {
             var teamRankingWindowController = new TeamRankingWindowController();
-            teamRankingWindowController.Initialize(_mainWindow, _viewModel.SelectedSeason, _bettor);
+            _selectedSeason = _viewModel.SelectedSeason;
+            teamRankingWindowController.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);
         }
 
-        public void ExecuteBackCommand(object obj)
-        {
-            _view.DataContext = _viewModel;
-            _mainWindow.Content = _view;
-        }
         #endregion
     }
 }
