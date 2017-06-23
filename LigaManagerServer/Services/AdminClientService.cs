@@ -22,6 +22,9 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                var bettors = _bettorPersistenceService.GetAll();
+                var searchedBettors = bettors.FindAll(x => x.Nickname.ToUpper().Equals(bettor.Nickname.ToUpper()));
+                if (searchedBettors.Any()) return false;
                 return _bettorPersistenceService.Add(bettor);
             }
         }
@@ -30,6 +33,9 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                var bettors = _bettorPersistenceService.GetAll();
+                var searchedBettors = bettors.FindAll(x => x.Nickname.ToUpper().Equals(bettor.Nickname.ToUpper()));
+                if (searchedBettors.Any()) return false;
                 return _bettorPersistenceService.Update(bettor);
             }
         }
@@ -51,6 +57,9 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                var teams = _teamPersistenceService.GetAll();
+                var searchedTeams = teams.FindAll(x => x.Name.ToUpper().Equals(team.Name.ToUpper()));
+                if (searchedTeams.Any()) return false;
                 return _teamPersistenceService.Add(team);
             }
         }
@@ -59,6 +68,9 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                var teams = _teamPersistenceService.GetAll();
+                var searchedTeams = teams.FindAll(x => x.Name.ToUpper().Equals(team.Name.ToUpper()));
+                if (searchedTeams.Any()) return false;
                 return _teamPersistenceService.Update(team);
             }
         }
@@ -110,6 +122,8 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var seasons = _seasonPersistenceService.GetAll();
+                var searchedSeasons = seasons.FindAll(x => x.Name.ToUpper().Equals(season.Name.ToUpper()));
+                if (searchedSeasons.Any()) return false;
                 var max = seasons.Max(x => x.Sequence);
                 //increase season
                 season.Sequence = max + 1;
@@ -121,6 +135,9 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
+                var seasons = _seasonPersistenceService.GetAll();
+                var searchedSeasons = seasons.FindAll(x => x.Name.ToUpper().Equals(season.Name.ToUpper()));
+                if (searchedSeasons.Any()) return false;
                 return _seasonPersistenceService.Update(season);
             }
         }
@@ -141,7 +158,7 @@ namespace LigaManagerServer.Services
                 var matches = _matchPersistenceService.GetAll();
                 var exists = matches.FindAll(x => x.Season.Equals(match.Season) && x.HomeTeam.Equals(match.HomeTeam) &&
                                                    x.AwayTeam.Equals(match.AwayTeam));
-                if (exists.IsAny()) return false;
+                if (exists.Any()) return false;
                 return _matchPersistenceService.Add(match);
             }
         }
