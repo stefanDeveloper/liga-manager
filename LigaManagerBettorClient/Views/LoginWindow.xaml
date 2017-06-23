@@ -11,17 +11,24 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="77*"/>
             <RowDefinition Height="48*"/>
-            <RowDefinition Height="85*"/>
             <RowDefinition Height="70*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="85*"/>
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="0" Width="0"/>
-        <Button Content="Anmelden" Command="{Binding SignInCommand}" HorizontalAlignment="Left" Margin="160,25,0,0" VerticalAlignment="Top" Width="130" Grid.Row="3" Height="29"/>
-        <TextBox x:Name="LoginTextBox" MaxLength="50" TextChanged="OnTextChanged" TextAlignment="Left" HorizontalAlignment="Left" FontSize="18" Height="35" Margin="10,45,0,0" TextWrapping="Wrap" Text="{Binding Nickname}" VerticalAlignment="Top" Width="280" Grid.Row="2"/>
+        <Button Command="{Binding SignInCommand}" ToolTip="Anmelden" HorizontalAlignment="Left" Margin="195,10,0,0" VerticalAlignment="Top" Width="70" Grid.Row="3" Height="60">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/login.png" Height="50" Width="66" />
+            </StackPanel>
+        </Button>
+        <TextBox x:Name="LoginTextBox" MaxLength="50" TextChanged="OnTextChanged" TextAlignment="Left" HorizontalAlignment="Left" FontSize="18" Height="35" Margin="10,30,0,0" TextWrapping="Wrap" Text="{Binding Nickname}" VerticalAlignment="Top" Width="280" Grid.Row="2"/>
         <TextBlock Grid.Row="0" FontWeight="Bold"  HorizontalAlignment="Left" FontSize="24" Margin="10,30,0,0" TextWrapping="Wrap" Text="Liga Manager" VerticalAlignment="Top" Height="37" Width="280"/>
         <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="10,10,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Height="32" Width="136" Grid.Row="1"/>
-        <Button Content="Beenden" Command="{Binding CloseCommand}" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="130" Grid.Row="3" Height="29"/>
-        <Label Content="Nickanme" HorizontalAlignment="Left" Margin="5,19,0,0" Grid.Row="2" VerticalAlignment="Top" Width="130" Height="26"/>
+        <Button Command="{Binding CloseCommand}" ToolTip="Beenden" HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top" Width="70" Grid.Row="3" Height="60">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/exit.png" Height="50" Width="66" />
+            </StackPanel>
+        </Button>
+        <Label Content="Nickanme" HorizontalAlignment="Left" Margin="5,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="130" Height="26"/>
 
     </Grid>
 </Page>

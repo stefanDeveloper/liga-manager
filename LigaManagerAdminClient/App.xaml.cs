@@ -13,8 +13,10 @@ namespace LigaManagerAdminClient
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = new MainWindow();
-            mainWindow.Icon = BitmapFrame.Create(Application.GetResourceStream(new Uri("Data/Images/soccer.png", UriKind.Relative)).Stream);
+            var mainWindow = new MainWindow
+            {
+                ResizeMode = ResizeMode.NoResize
+            };
             var menuWindow = new MenuWindowController();
             menuWindow.Initialize(mainWindow);
         }

@@ -4,26 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Icon="../Data/Images/settings-4.png"
         Title="Spiele generieren" Height="300" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <Calendar x:Name="BeginCalendar" SelectedDate="{Binding SelectedBeginDate}" DisplayDate="{Binding SelectedBeginDate}" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Calendar x:Name="EndCalendar"  SelectedDate="{Binding SelectedEndDate}" DisplayDate="{Binding SelectedEndDate}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Calendar x:Name="BeginCalendar" SelectedDate="{Binding SelectedBeginDate}" DisplayDate="{Binding SelectedBeginDate}" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Grid.Row="1" Height="168" Width="179"/>
+        <Calendar x:Name="EndCalendar"  SelectedDate="{Binding SelectedEndDate}" DisplayDate="{Binding SelectedEndDate}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Height="168" Width="179"/>
         <Grid Grid.Row="2" Grid.Column="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="OkButton" Content="Ok" Grid.Column="1" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="OkButton" ToolTip="Ok" Grid.Column="1" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="60" Height="40">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/success.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -31,7 +36,11 @@
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="AbortButton" Content="Abbrechen" Command="{Binding CancelCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="AbortButton" ToolTip="Abbrechen" Command="{Binding CancelCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" Width="60" Height="40">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/error.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
         </Grid>
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding SelectedSeason.Name}"  Margin="10,10,10,0" FontSize="18" FontWeight="Bold"/>
     </Grid>

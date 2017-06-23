@@ -67,7 +67,7 @@ namespace LigaManagerBettorClient.Controllers
         private void ExecuteBetCommand(object obj)
         {
             _view.DialogResult = true;
-            if (Bet != null && Match.DateTime < DateTime.Now.AddMinutes(30))
+            if (Bet != null && Match.DateTime > DateTime.Now.AddMinutes(30))
             {
                 // set new DateTime of bet
                 Bet.DateTime = DateTime.Now;

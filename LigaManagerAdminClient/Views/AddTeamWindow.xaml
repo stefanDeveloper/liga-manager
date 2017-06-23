@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Mannschaft" Height="500" Width="500
-        ">
+        Icon="../Data/Images/group.png"
+        Title="Mannschaft" Height="500" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -29,9 +29,17 @@
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
                VerticalAlignment="Top" Width="80" Height="26"/>
         <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Team.Name}" VerticalAlignment="Top" Width="349"/>
-        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="3"
-                Grid.Column="0" VerticalAlignment="Top" Width="75" Height="22"/>
-        <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="239,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,0.455" Height="22"/>
+        <Button x:Name="CancelButton" ToolTip="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="35,10,0,0" Grid.Row="3"
+                Grid.Column="0" VerticalAlignment="Top" Width="60" Height="40">
+            <StackPanel>
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/error.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="OkButton" ToolTip="Ok" Command="{Binding OkCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="270,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="60" Height="40">
+            <StackPanel>
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/success.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
         <Label Content="Saison" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" Grid.Column="0"
             VerticalAlignment="Top" Width="80" Height="26"/>
 

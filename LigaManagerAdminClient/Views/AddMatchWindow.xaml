@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" Name="MatchWindow"
+        Icon="../Data/Images/football.png"
         Title="Spiel hinzufügen" Height="600" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -23,8 +24,17 @@
         <Label Content="Heimschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1"
                Grid.Column="0" Width="220"/>
         <Label Content="Auswärtsmannschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1" Width="220" Grid.Column="1"/>
-        <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Width="90" Height="22"/>
-        <Button x:Name="OkButton" Content="Ok" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="146,10,0,10" Grid.Row="4" VerticalAlignment="Top" Width="90" Height="22" Grid.Column="1"/>
+        <Button x:Name="CancelButton" ToolTip="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"  Width="60" Height="40">
+            <StackPanel>
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/error.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="OkButton" ToolTip="Ok" Command="{Binding OkCommand}" HorizontalAlignment="Left" Margin="180,10,0,0" Grid.Row="4"
+                Grid.Column="1" VerticalAlignment="Top" Width="60" Height="40">
+            <StackPanel>
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/success.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
         <Label Content="Datum" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Grid.Row="3"
             Grid.Column="1" Width="220" Margin="10,10,0,0"/>
         <Label Content="Uhrzeit" HorizontalAlignment="Left" HorizontalContentAlignment="Center"  Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="3"

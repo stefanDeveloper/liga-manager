@@ -18,6 +18,11 @@
         <DataGrid ItemsSource="{Binding Seasons}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedSeason}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" SelectionMode="Single" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1" >
+            <DataGrid.InputBindings>
+                <MouseBinding
+                    MouseAction="LeftDoubleClick"
+                    Command="{Binding ChangeCommand}"/>
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
                 <DataGridTextColumn Header="Beschreibung" Binding="{Binding Description}" />
@@ -31,10 +36,26 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="0"/>
-            <Button Command="{Binding AddCommand}" Content="Hinzufügen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="4"/>
-            <Button Command="{Binding ChangeCommand}" Content="Ändern" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
-            <Button Command="{Binding DeleteCommand}" Content="Löschen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="3"/>
+            <Button Command="{Binding BackCommand}" ToolTip="Zurück" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="0">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/left-arrow.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding AddCommand}" ToolTip="Hinzufügen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="4">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/plus.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding ChangeCommand}" ToolTip="Ändern" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="2">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/edit.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DeleteCommand}" ToolTip="Löschen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="3">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/trash.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
         </Grid>
     </Grid>
 </Page>

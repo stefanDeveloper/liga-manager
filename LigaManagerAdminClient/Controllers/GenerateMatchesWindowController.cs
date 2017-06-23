@@ -16,7 +16,7 @@ namespace LigaManagerAdminClient.Controllers
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public void ChooseDateIntervall()
+        public bool ChooseDateIntervall()
         {
             #region View And ViewModel
 
@@ -31,6 +31,8 @@ namespace LigaManagerAdminClient.Controllers
             };
             _view.DataContext = _viewModel;
             _view.ShowDialog();
+
+            return _view.DialogResult != null && (bool) _view.DialogResult;
 
             #endregion
 

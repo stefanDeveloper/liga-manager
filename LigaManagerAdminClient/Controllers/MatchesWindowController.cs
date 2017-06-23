@@ -136,18 +136,21 @@ namespace LigaManagerAdminClient.Controllers
                 EndDate = DateTime.Now.AddDays(30),
                 BeginDate = DateTime.Now
             };
-            generateMatchesWindowController.ChooseDateIntervall();
+            var isChoose = generateMatchesWindowController.ChooseDateIntervall();
+            if (!isChoose) return;
             var isSuccess = await _adminClient.GenerateMatchesAsync(_viewModel.SelectedSeason, generateMatchesWindowController.BeginDate,
                 generateMatchesWindowController.EndDate);
             if (isSuccess)
             {
                 MessageBox.Show("Spiele wurden erfolgreich erstellt!", "Erfolgreich",
                     MessageBoxButton.OK, MessageBoxImage.Information);
+                ReloadModels();
             }
             else
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten, Spiele konnten nicht erstellt werden!", "Fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                ReloadModels();
             }
         }
 

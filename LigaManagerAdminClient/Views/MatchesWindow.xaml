@@ -18,6 +18,11 @@
         <DataGrid ItemsSource="{Binding Matches}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True" SelectionMode="Single" AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1" >
+            <DataGrid.InputBindings>
+                <MouseBinding
+                    MouseAction="LeftDoubleClick"
+                    Command="{Binding ChangeCommand}"/>
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding DateTime, StringFormat=dd.MM.yyyy}" />
                 <DataGridTextColumn Header="Uhrzeit" Binding="{Binding DateTime, StringFormat=HH:mm}" />
@@ -36,13 +41,33 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="0"/>
-            <Button Command="{Binding AddCommand}" Content="Hinzufügen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="4"/>
-            <Button Command="{Binding ChangeCommand}" Content="Ändern" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="2"/>
-            <Button Command="{Binding DeleteCommand}" Content="Löschen" HorizontalAlignment="Left" Margin="20,15,0,10" VerticalAlignment="Top" Width="80" Grid.Column="3"/>
-            <Button Command="{Binding GenerateMatchesCommand}" Content="Spiele Generieren" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="92" Grid.Column="5"/>
+            <Button Command="{Binding BackCommand}" ToolTip="Zurück" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="0">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/left-arrow.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding AddCommand}" ToolTip="Hinzufügen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="4">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/plus.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding ChangeCommand}" ToolTip="Ändern" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="2">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/edit.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DeleteCommand}" ToolTip="Löschen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="3">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/trash.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding GenerateMatchesCommand}" ToolTip="Spiele generieren" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="5">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/settings-4.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
         </Grid>
-        <Label Grid.Row="0" Content="Saison" FontWeight="Bold" HorizontalAlignment="Left" Margin="485,60,0,0" VerticalAlignment="Top" Width="50"/>
-        <ComboBox Grid.Row="0" ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason.Name}" SelectedItem="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="540,60,0,0" VerticalAlignment="Top" Width="250" Height="26" />
+        <Label Grid.Row="0" Content="Saison" FontWeight="Bold" HorizontalAlignment="Left" Margin="475,60,0,0" VerticalAlignment="Top" Width="50"/>
+        <ComboBox Grid.Row="0" ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason.Name}" SelectedItem="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="530,60,0,0" VerticalAlignment="Top" Width="250" Height="26" />
     </Grid>
 </Page>
