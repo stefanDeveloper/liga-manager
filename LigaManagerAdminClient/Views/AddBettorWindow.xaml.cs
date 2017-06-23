@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LigaManagerAdminClient.Views
 {
@@ -28,7 +17,7 @@ namespace LigaManagerAdminClient.Views
         private void OnTextChangedNickname(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
-            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z\.]+$"))
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z-üÜ-äÄ-öÖ-ß\.]+$"))
             {
                 textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
             }
@@ -37,7 +26,7 @@ namespace LigaManagerAdminClient.Views
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
-            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[a-zA-Z\.]+$"))
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[a-zA-Z-üÜ-äÄ-öÖ-ß\.]+$"))
             {
                 textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
             }

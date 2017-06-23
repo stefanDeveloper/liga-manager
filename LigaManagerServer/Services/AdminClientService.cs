@@ -289,7 +289,7 @@ namespace LigaManagerServer.Services
         /// <returns></returns>
         private List<DateTime> CreateDateTimes(DateTime beginn, DateTime end, List<DateTime> result)
         {
-            if (beginn.Equals(end)) return result;
+            if (beginn.Date.Equals(end.Date)) return result;
             switch (beginn.DayOfWeek)
             {
                 case DayOfWeek.Friday:

@@ -46,7 +46,8 @@ namespace LigaManagerAdminClient.Controllers
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            BeginDate = _viewModel.SelectedBeginDate;
+            EndDate = _viewModel.SelectedEndDate;
             _view.DialogResult = true;
             _view.Close();
         }

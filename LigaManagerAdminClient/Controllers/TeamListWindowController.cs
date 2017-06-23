@@ -73,7 +73,7 @@ namespace LigaManagerAdminClient.Controllers
             var isAdded = await _adminClient.AddTeamAsync(showTeam);
             var addedSeasons = addBettorWindow.Seasons.FindAll(x => x.IsAdded);
             var allTeamsAsync = await _adminClient.GetAllTeamsAsync();
-            var team = allTeamsAsync.ToList().Find(x => x.Equals(showTeam));
+            var team = allTeamsAsync.ToList().Find(x => x.Name.ToUpper().Equals(showTeam.Name.ToUpper()));
             if (addedSeasons.Any())
             {
                 addedSeasons.ToList().ForEach(x => _adminClient.AddSeasonToTeamRelation(new SeasonToTeamRelation { Team = team, Season = x.Season }));

@@ -17,7 +17,7 @@ namespace LigaManagerBettorClient.Views
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
-            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z\.]+$"))
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z-üÜ-äÄ-öÖ-ß\.]+$"))
             {
                 textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
             }
