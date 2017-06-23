@@ -30,6 +30,11 @@
         </DataGrid>
         <ComboBox ItemsSource="{Binding MatchDays}"  SelectedItem="{Binding SelectedMatchDay}" x:Name="MatchDayComboBox" Grid.Row="0" HorizontalAlignment="Left" Margin="575,63,0,0" VerticalAlignment="Top" Width="165" Height="26"/>
         <Label Grid.Row="0" Content="Spieltag" HorizontalAlignment="Left" Margin="520,63,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80"/>
+        <Button Command="{Binding BackCommand}" ToolTip="Zurück" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" Width="60" Height="40"
+                Grid.Row="2" Grid.Column="0">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/left-arrow.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

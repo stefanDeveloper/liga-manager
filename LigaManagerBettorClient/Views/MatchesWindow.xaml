@@ -62,11 +62,17 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
         </DataGrid>
-        <Button Command="{Binding SelectedMatchCommand}" HorizontalAlignment="Left" Margin="730,10,0,0" VerticalAlignment="Top" Width="40" Grid.Row="2" Height="40">
-            <Button.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Data/Images/edit.png"/>
-            </Button.Background>
+        <Button Command="{Binding SelectedMatchCommand}" ToolTip="Ändern" HorizontalAlignment="Left" Margin="720,5,0,0" VerticalAlignment="Top" Width="60" Height="40"
+                Grid.Row="2" Grid.Column="0">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/edit.png" Height="31" Width="41" />
+            </StackPanel>
         </Button>
-        <Button Command="{Binding BackCommand}" Content="Zurück" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80"/>
+        <Button Command="{Binding BackCommand}" ToolTip="Zurück" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" Width="60" Height="40"
+                Grid.Row="2" Grid.Column="0">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/left-arrow.png" Height="31" Width="41" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

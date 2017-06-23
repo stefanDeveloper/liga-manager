@@ -80,7 +80,11 @@ namespace LigaManagerAdminClient.Controllers
 
             var showSeason = addSeasonWindow.ShowSeason();
             // it could be possible that the bettor is null
-            if (showSeason == null) return;
+            if (showSeason == null)
+            {
+                ReloadModels();
+                return;
+            }
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor

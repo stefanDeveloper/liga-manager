@@ -40,7 +40,7 @@ namespace LigaManagerAdminClient.Controllers
 
             return _view.ShowDialog() == true ? _viewModel.SelectedMatch : null;
         }
-
+        #region Execute Commands
         public void ExecuteOkCommand(object obj)
         {
             if (_view.AwayTeamComboBox.SelectedValue == null ||
@@ -66,5 +66,6 @@ namespace LigaManagerAdminClient.Controllers
             _view.DialogResult = false;
             _view.Close();
         }
+        #endregion
     }
 }

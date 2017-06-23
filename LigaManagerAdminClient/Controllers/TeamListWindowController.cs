@@ -110,7 +110,11 @@ namespace LigaManagerAdminClient.Controllers
 
             var showTeam = addBettorWindow.ShowTeam();
             // it could be possible that the bettor is null
-            if (showTeam == null) return;
+            if (showTeam == null)
+            {
+                ReloadModels();
+                return;
+            }
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor

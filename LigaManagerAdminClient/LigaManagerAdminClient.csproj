@@ -284,9 +284,6 @@
     <Resource Include="Data\Images\edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Images\id-card-5.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Data\Images\left-arrow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -297,13 +294,16 @@
     <Resource Include="Data\Images\success.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Images\group.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Data\Images\football.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Data\Images\calendar-5.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Data\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\group.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />

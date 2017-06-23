@@ -14,24 +14,36 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <ComboBox ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason.Name}" SelectedItem="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="60,30,0,0" VerticalAlignment="Top" Width="250" Grid.Row="1" Grid.Column="2" Height="26" />
+        <ComboBox ItemsSource="{Binding Seasons}" SelectedValue="{Binding SelectedSeason.Name}" SelectedItem="{Binding SelectedSeason}" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="240" Grid.Row="1" Grid.Column="2" Height="26" />
         <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold"  HorizontalAlignment="Left" FontSize="38" Margin="10,40,0,0" TextWrapping="Wrap" Text="Liga Manager" VerticalAlignment="Top" Height="70" Width="420" Grid.ColumnSpan="2"/>
-        <Button Command="{Binding MatchesCommand}" Content="Zur Spielübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="2" Grid.Column="0"
-                VerticalAlignment="Top" Width="125" Height="50"/>
-        <Button Command="{Binding BettorRankingCommand}" Content="Zur Rangliste" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="3" Grid.Column="0"
-                VerticalAlignment="Top" Width="125" Height="50"/>
-        <Button Command="{Binding TeamsCommand}" Content="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
-                VerticalAlignment="Top" Width="125" Height="50"/>
+        <Button Command="{Binding MatchesCommand}" ToolTip="Zur Spielübersicht" HorizontalAlignment="Left" Margin="30,10,0,0" Grid.Row="2" Grid.Column="0"
+                VerticalAlignment="Top" Width="125" Height="80">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/football.png" Height="72" Width="95" />
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding BettorRankingCommand}" ToolTip="Zur Rangliste" HorizontalAlignment="Left" Margin="30,10,0,0" Grid.Row="3" Grid.Column="0"
+                VerticalAlignment="Top" Width="125" Height="80">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/user.png" Height="69" Width="92" />
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding TeamsCommand}" ToolTip="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,10,0,0" Grid.Row="4" Grid.Column="0"
+                VerticalAlignment="Top" Width="125" Height="80">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/group.png" Height="71" Width="94" />
+            </StackPanel>
+        </Button>
         <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="135"/>
         <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="{Binding Bettor.Firstname}" HorizontalAlignment="Left" Margin="135,110,0,0" VerticalAlignment="Top" Height="30" Width="105"/>
-        <Label Content="Saison" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left" Margin="5,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Saison" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Height="26"/>
 
     </Grid>
 </Page>

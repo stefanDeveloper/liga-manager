@@ -28,7 +28,7 @@ namespace LigaManagerAdminClient.Controllers
 
             return _view.ShowDialog() == true ? _viewModel.Season : null;
         }
-
+        #region Execute Commands
         public void ExecuteOkCommand(object obj)
         {
             if (_view.NameTextBox.Text.Equals(string.Empty))
@@ -46,5 +46,6 @@ namespace LigaManagerAdminClient.Controllers
             _view.DialogResult = false;
             _view.Close();
         }
+        #endregion
     }
 }

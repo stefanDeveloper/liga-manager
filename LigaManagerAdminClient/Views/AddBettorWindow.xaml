@@ -29,9 +29,9 @@
                 <Image Source="/LigaManagerAdminClient;component/Data/Images/success.png" Height="31" Width="41" />
             </StackPanel>
         </Button>
-        <TextBox x:Name="NicknameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Bettor.Nickname, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" VerticalAlignment="Top" Width="172" />
-        <TextBox x:Name="FirstnameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Bettor.Firstname}" VerticalAlignment="Top" Width="172"/>
-        <TextBox x:Name="LastnameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Bettor.Lastname}" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="NicknameTextBox" TextChanged="OnTextChangedNickname" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Bettor.Nickname, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" VerticalAlignment="Top" Width="172" />
+        <TextBox x:Name="FirstnameTextBox" Grid.Column="1" TextChanged="OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Bettor.Firstname}" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="LastnameTextBox" Grid.Column="1" TextChanged="OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Bettor.Lastname}" VerticalAlignment="Top" Width="172"/>
         <Label Content="Nickname" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
                VerticalAlignment="Top" Width="80" Height="26"/>
         <Label Content="Vorname" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="2" Grid.Column="0"

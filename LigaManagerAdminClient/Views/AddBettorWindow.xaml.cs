@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,24 @@ namespace LigaManagerAdminClient.Views
         public AddBettorWindow()
         {
             InitializeComponent();
+        }
+
+        private void OnTextChangedNickname(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[0-9a-zA-Z\.]+$"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            if (textBox.Text != string.Empty && !Regex.IsMatch(textBox.Text, @"^[a-zA-Z\.]+$"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
         }
     }
 }

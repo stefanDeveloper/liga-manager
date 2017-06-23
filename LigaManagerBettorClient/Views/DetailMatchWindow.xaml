@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Icon="../Data/Images/football.png"
         Title="DetailMatchWindow" Height="600" Width="600" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +22,11 @@
         <Label Content="Am" FontSize="18" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="37"/>
         <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="85,25,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Match.DateTime, StringFormat=dd.MM.yyyy HH:mm}" VerticalAlignment="Top" Width="235" Height="24"/>
         <Button x:Name="BetButton" Command="{Binding BetCommand}" Content="Tipp abgeben" HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" Height="50"/>
-        <Button Content="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Right" Margin="0,20,10,0" Grid.Row="5" VerticalAlignment="Top" Width="175" Height="50"/>
+        <Button ToolTip="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Right" Margin="0,20,10,0" Grid.Row="5" VerticalAlignment="Top" Width="175" Height="50">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/error.png" Height="44" Width="58" />
+            </StackPanel>
+        </Button>
         <Label Content="Tipp" FontSize="24" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Height="45" Width="70" Grid.Row="3"/>
         <Label Content="Ergebnis" FontSize="18" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Row="2" VerticalAlignment="Top" Height="34" Width="78" Grid.RowSpan="2"/>
         <TextBlock x:Name="HomeTeamScoreTextBlock" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" FontSize="18" Text="{Binding Match.HomeTeamScore}" Height="23" Margin="140,30,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -29,8 +34,12 @@
         <TextBox x:Name="HomeTeamBet" Text="{Binding Bet.HomeTeamScore}" TextChanged="OnTextChanged"  TextAlignment="Center" HorizontalAlignment="Left"  Height="23" Margin="85,53,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="AwayTeamBet" Text="{Binding Bet.AwayTeamScore}" TextChanged="OnTextChanged"  TextAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="330,53,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Geändert am " HorizontalAlignment="Left" Margin="0,134,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Width="82"/>
-        
+
         <TextBlock HorizontalAlignment="Left" Margin="75,139,0,0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Bet.DateTime, StringFormat=dd.MM.yyyy HH:mm}" VerticalAlignment="Top" Height="16" Width="165"/>
-        <Button x:Name="DeleteBetButton" Command="{Binding DeleteBetCommand}" Content="Tipp löschen" HorizontalAlignment="Left" Margin="125,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" Height="50"/>
+        <Button x:Name="DeleteBetButton" Command="{Binding DeleteBetCommand}" ToolTip="Tipp löschen" HorizontalAlignment="Left" Margin="125,20,0,0" Grid.Row="5" VerticalAlignment="Top" Width="100" Height="50">
+            <StackPanel>
+                <Image Source="/LigaManagerBettorClient;component/Data/Images/trash.png" Height="44" Width="58" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

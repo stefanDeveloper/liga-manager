@@ -26,7 +26,12 @@ namespace LigaManagerAdminClient.Controllers
 
         protected abstract void ReloadModels();
 
-
+        /// <summary>
+        /// Updates the models if bool is true, otherwise an error message occur.
+        /// </summary>
+        /// <param name="isUpdated"></param>
+        /// <param name="errorMessage"></param>
+        /// <param name="errorHeader"></param>
         protected void UpdateModels(bool isUpdated, string errorMessage, string errorHeader)
         {
             if (isUpdated)
