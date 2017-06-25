@@ -341,4 +341,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddMatchDay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xmlElement" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/LigaManagerServer.Models" minOccurs="0" name="selectedSeason" nillable="true" type="q28:Season" />
+        <xs:element minOccurs="0" name="matchday" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMatchDayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMatchDayResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

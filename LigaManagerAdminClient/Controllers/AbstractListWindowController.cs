@@ -34,14 +34,11 @@ namespace LigaManagerAdminClient.Controllers
         /// <param name="errorHeader"></param>
         protected void UpdateModels(bool isUpdated, string errorMessage, string errorHeader)
         {
-            if (isUpdated)
-            {
-                ReloadModels();
-            }
-            else
+            if (!isUpdated)
             {
                 MessageBox.Show(errorMessage, errorHeader, MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            ReloadModels();
         }
     }
 }

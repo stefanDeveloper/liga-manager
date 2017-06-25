@@ -32,10 +32,6 @@ namespace LigaManagerAdminClient.Views
             {
                 textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
             }
-            if (textBox.Text != string.Empty && int.Parse(textBox.Text) > 24)
-            {
-                textBox.Text = "24";
-            }
         }
 
         private void OnHourChanged(object sender, TextChangedEventArgs e)

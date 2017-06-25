@@ -1,11 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Xml;
+using System.Xml.Linq;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
 using LigaManagerAdminClient.Views;
 using LigaManagerBettorClient.Frameworks;
+using Microsoft.Win32;
 
 namespace LigaManagerAdminClient.Controllers
 {
@@ -35,13 +39,64 @@ namespace LigaManagerAdminClient.Controllers
                 AddCommand = new RelayCommand(ExecuteAddCommand),
                 DeleteCommand = new RelayCommand(ExecuteDeleteCommand),
                 ChangeCommand = new RelayCommand(ExecuteChangeCommand),
-                GenerateMatchesCommand = new RelayCommand(ExecuteGenerateCommand)
+                GenerateMatchesCommand = new RelayCommand(ExecuteGenerateCommand),
+                LoadMatchDayCommand = new RelayCommand(ExecuteLoadMatchCommand)
             };
             _view.DataContext = _viewModel;
             _viewModel.SelectionSeasonChanged += UpdateSeason;
             #endregion
 
             MainWindow.Content = _view;
+        }
+
+        private async void ExecuteLoadMatchCommand(object obj)
+        {
+            // Create OpenFileDialog
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = ".xml",
+                Filter = "XML File (.xml)|*.xml",
+                Multiselect = false
+            };
+
+            // Display OpenFileDialog by calling ShowDialog method
+            bool? result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                var setMatchDay = new SetMatchDayWindowController();
+                var matchDay = setMatchDay.SetMatchDay();
+
+                if (matchDay == -1) return;
+
+
+                var isAdded = false;
+                try
+                {
+                    // Open document
+                    string filename = dlg.FileName;
+                    XmlDocument booksFromFile = new XmlDocument();
+                    booksFromFile.Load(dlg.InitialDirectory + dlg.FileName);
+                    isAdded = await _adminClient.AddMatchDayAsync(
+                        GetXElementFromXmlElement(booksFromFile.DocumentElement),
+                        _viewModel.SelectedSeason, matchDay);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                finally
+                {
+                    UpdateModels(isAdded, "Spieltag konnte nicht hinzugefügt werden! Die Datei entspricht nicht dem vorgegebenen Format!",
+                        "Hinzufügen fehlgeschlagen");
+                }
+            }
+        }
+
+        public XElement GetXElementFromXmlElement(XmlElement xmlElement)
+        {
+            return XElement.Load(xmlElement.CreateNavigator().ReadSubtree());
         }
 
         private void UpdateSeason(object sender, Season e)
@@ -86,16 +141,12 @@ namespace LigaManagerAdminClient.Controllers
             // Check if service is available
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             var teams = await _adminClient.GetAllTeamsAsync();
-            var homeTeams = teams.Where(x => !x.Name.ToUpper()
-                .Equals(_viewModel.SelectedMatch.AwayTeam.Name.ToUpper()));
-            var awayTeams = teams.Where(x => !x.Name.ToUpper()
-                .Equals(_viewModel.SelectedMatch.HomeTeam.Name.ToUpper()));
 
             var addBettorWindow = new AddMatchWindowController
             {
                 Match = _viewModel.SelectedMatch,
-                AwayTeams = awayTeams.ToList(),
-                HomeTeams = homeTeams.ToList()
+                AwayTeams = teams.ToList(),
+                HomeTeams = teams.ToList()
             };
 
             var showMatch = addBettorWindow.ShowMatch();

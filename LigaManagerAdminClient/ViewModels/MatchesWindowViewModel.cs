@@ -16,6 +16,7 @@ namespace LigaManagerAdminClient.ViewModels
         public ICommand AddCommand { get; set; }
         public ICommand ChangeCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand LoadMatchDayCommand { get; set; }
         private Season _selectedSeason;
         public event EventHandler<Season> SelectionSeasonChanged;
         public Season SelectedSeason

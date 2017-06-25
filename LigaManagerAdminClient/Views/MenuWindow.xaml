@@ -31,7 +31,7 @@
         <Button Command="{Binding SeasonCommand}" ToolTip="Zur Saisonübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="3" Grid.Column="0"
                 VerticalAlignment="Top"  Width="125" Height="70">
             <StackPanel>
-                <Image Source="/LigaManagerAdminClient;component/Data/Images/calendar-5.png" Height="65" Width="86" />
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/calendar.png" Height="65" Width="86" />
             </StackPanel>
         </Button>
         <Button Command="{Binding TeamCommand}" ToolTip="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
@@ -42,9 +42,9 @@
         </Button>
         <Label Grid.Row="0" FontWeight="Bold" Grid.Column="0" Content="Herzlich Willkommen " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="30" Width="140" Grid.RowSpan="2"/>
         <Button Command="{Binding MatchesCommand}" ToolTip="Zur Spielübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="5" Grid.Column="0"
-            VerticalAlignment="Top" Width="125" Height="70">
+                VerticalAlignment="Top" Width="125" Height="70">
             <StackPanel>
-                <Image Source="/LigaManagerAdminClient;component/Data/Images/football.png." Height="58" Width="85" />
+                <Image Source="/LigaManagerAdminClient;component/Data/Images/football.png" Height="65" Width="86" />
             </StackPanel>
         </Button>
     </Grid>

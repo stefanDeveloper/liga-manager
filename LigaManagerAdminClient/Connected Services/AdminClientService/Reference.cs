@@ -595,6 +595,12 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/GenerateMatches", ReplyAction="http://tempuri.org/IAdminClientService/GenerateMatchesResponse")]
         System.Threading.Tasks.Task<bool> GenerateMatchesAsync(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddMatchDay", ReplyAction="http://tempuri.org/IAdminClientService/AddMatchDayResponse")]
+        bool AddMatchDay(System.Xml.Linq.XElement xmlElement, LigaManagerAdminClient.AdminClientService.Season selectedSeason, int matchday);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminClientService/AddMatchDay", ReplyAction="http://tempuri.org/IAdminClientService/AddMatchDayResponse")]
+        System.Threading.Tasks.Task<bool> AddMatchDayAsync(System.Xml.Linq.XElement xmlElement, LigaManagerAdminClient.AdminClientService.Season selectedSeason, int matchday);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -822,6 +828,14 @@ namespace LigaManagerAdminClient.AdminClientService {
         
         public System.Threading.Tasks.Task<bool> GenerateMatchesAsync(LigaManagerAdminClient.AdminClientService.Season season, System.DateTime beginDateTime, System.DateTime endDateTime) {
             return base.Channel.GenerateMatchesAsync(season, beginDateTime, endDateTime);
+        }
+        
+        public bool AddMatchDay(System.Xml.Linq.XElement xmlElement, LigaManagerAdminClient.AdminClientService.Season selectedSeason, int matchday) {
+            return base.Channel.AddMatchDay(xmlElement, selectedSeason, matchday);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddMatchDayAsync(System.Xml.Linq.XElement xmlElement, LigaManagerAdminClient.AdminClientService.Season selectedSeason, int matchday) {
+            return base.Channel.AddMatchDayAsync(xmlElement, selectedSeason, matchday);
         }
     }
 }

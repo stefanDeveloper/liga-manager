@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.Xml;
 using LigaManagerServer.Models;
 
 namespace LigaManagerServer.Contracts
@@ -45,5 +46,8 @@ namespace LigaManagerServer.Contracts
 
         [OperationContract]
         bool GenerateMatches(Season season, DateTime beginDateTime, DateTime endDateTime);
+
+        [OperationContract]
+        bool AddMatchDay(XmlElement xmlElement, Season selectedSeason, int matchday);
     }
 }

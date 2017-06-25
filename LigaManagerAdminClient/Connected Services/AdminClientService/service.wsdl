@@ -157,6 +157,12 @@
   <wsdl:message name="IAdminClientService_GenerateMatches_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerateMatchesResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddMatchDay_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMatchDay" />
+  </wsdl:message>
+  <wsdl:message name="IAdminClientService_AddMatchDay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMatchDayResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAdminClientService">
     <wsdl:operation name="IsOpen">
       <wsdl:input wsaw:Action="http://tempuri.org/ILigaManagerService/IsOpen" message="tns:IAdminClientService_IsOpen_InputMessage" />
@@ -257,6 +263,10 @@
     <wsdl:operation name="GenerateMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/GenerateMatches" message="tns:IAdminClientService_GenerateMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/GenerateMatchesResponse" message="tns:IAdminClientService_GenerateMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMatchDay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminClientService/AddMatchDay" message="tns:IAdminClientService_AddMatchDay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminClientService/AddMatchDayResponse" message="tns:IAdminClientService_AddMatchDay_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAdminClientService" type="tns:IAdminClientService">
@@ -479,6 +489,15 @@
     </wsdl:operation>
     <wsdl:operation name="GenerateMatches">
       <soap:operation soapAction="http://tempuri.org/IAdminClientService/GenerateMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMatchDay">
+      <soap:operation soapAction="http://tempuri.org/IAdminClientService/AddMatchDay" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

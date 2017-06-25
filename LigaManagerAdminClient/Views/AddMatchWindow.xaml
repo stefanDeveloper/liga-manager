@@ -43,11 +43,15 @@
         <TextBox x:Name="AwayTeamScore" MaxLength="3" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="50,30,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedMatch.AwayTeamScore}" VerticalAlignment="Top" Width="120" ToolTip="Spieltip" UndoLimit="3"/>
         <TextBox x:Name="HomeTeamScore" MaxLength="3"  HorizontalContentAlignment="Center" TextChanged="OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="50,30,0,0" Grid.Row="2"
                  Grid.Column="0" TextWrapping="Wrap" Text="{Binding SelectedMatch.HomeTeamScore}" VerticalAlignment="Top" Width="120" ToolTip="Spieltip" UndoLimit="3"/>
-        <TextBox x:Name="MinuteTextBox" MaxLength="2" TextChanged="OnMinuteChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="128,99,0,0" Grid.Row="3"
+        <TextBox x:Name="MinuteTextBox" MaxLength="2" TextChanged="OnMinuteChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="128,49,0,0" Grid.Row="3"
                  Grid.Column="0" TextWrapping="Wrap" Text="{Binding Minute}" VerticalAlignment="Top" Width="55" UndoLimit="2"/>
-        <TextBox x:Name="HourTextBox" MaxLength="2" TextChanged="OnHourChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="60,99,0,0" Grid.Row="3"
+        <TextBox x:Name="HourTextBox" MaxLength="2" TextChanged="OnHourChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="60,49,0,0" Grid.Row="3"
                  Grid.Column="0" TextWrapping="Wrap" Text="{Binding Hour}" VerticalAlignment="Top" Width="55" UndoLimit="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="120,102,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,52,0,0" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top"/>
+        <Label Content="Spieltag" HorizontalAlignment="Left" HorizontalContentAlignment="Center"  Margin="10,113,0,0" VerticalAlignment="Top" Grid.Row="3"
+            Grid.Column="0" Width="220"/>
+        <TextBox x:Name="MatchDayTextBox" MaxLength="2" TextChanged="OnTextChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="90,144,0,0" Grid.Row="3"
+            Grid.Column="0" TextWrapping="Wrap" Text="{Binding SelectedMatch.MatchDay}" VerticalAlignment="Top" Width="55" UndoLimit="4"/>
 
     </Grid>
 </Window>

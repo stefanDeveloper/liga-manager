@@ -81,6 +81,7 @@
     <Compile Include="Controllers\AddTeamWindowController.cs" />
     <Compile Include="Controllers\GenerateMatchesWindowController.cs" />
     <Compile Include="Controllers\MenuWindowController.cs" />
+    <Compile Include="Controllers\SetMatchDayWindowController.cs" />
     <Compile Include="Framework\AdminClientHelper.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="ViewModels\MatchesWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuWindowViewModel.cs" />
     <Compile Include="ViewModels\SeasonWindowViewModel.cs" />
+    <Compile Include="ViewModels\SetMatchDayWindowViewModel.cs" />
     <Compile Include="ViewModels\TeamWindowViewModel.cs" />
     <Compile Include="Views\AddBettorWindow.xaml.cs">
       <DependentUpon>AddBettorWindow.xaml</DependentUpon>
@@ -125,6 +127,9 @@
     </Compile>
     <Compile Include="Views\SeasonWindow.xaml.cs">
       <DependentUpon>SeasonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetMatchDayWindow.xaml.cs">
+      <DependentUpon>SetMatchDayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeamWindow.xaml.cs">
       <DependentUpon>TeamWindow.xaml</DependentUpon>
@@ -222,10 +227,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Data\Images\Resources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\AddBettorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -266,6 +267,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SetMatchDayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TeamWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,9 +292,6 @@
     <Resource Include="Data\Images\left-arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Images\settings-4.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Data\Images\error.png" />
     <Resource Include="Data\Images\success.png" />
   </ItemGroup>
@@ -297,13 +299,19 @@
     <Resource Include="Data\Images\football.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Images\calendar-5.png" />
+    <Resource Include="Data\Images\calendar.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\Images\user.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\Images\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />

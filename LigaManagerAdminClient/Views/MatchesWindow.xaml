@@ -35,7 +35,8 @@
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
@@ -46,24 +47,29 @@
                     <Image Source="/LigaManagerAdminClient;component/Data/Images/left-arrow.png" Height="31" Width="41" />
                 </StackPanel>
             </Button>
-            <Button Command="{Binding AddCommand}" ToolTip="Hinzufügen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="4">
+            <Button Command="{Binding AddCommand}" ToolTip="Hinzufügen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="5">
                 <StackPanel>
                     <Image Source="/LigaManagerAdminClient;component/Data/Images/plus.png" Height="31" Width="41" />
                 </StackPanel>
             </Button>
-            <Button Command="{Binding ChangeCommand}" ToolTip="Ändern" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="2">
+            <Button Command="{Binding LoadMatchDayCommand}" ToolTip="Spieltag einlesen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="2">
+                <StackPanel>
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/folder.png" Height="31" Width="41" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding ChangeCommand}" ToolTip="Ändern" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40"  Grid.Column="3">
                 <StackPanel>
                     <Image Source="/LigaManagerAdminClient;component/Data/Images/edit.png" Height="31" Width="41" />
                 </StackPanel>
             </Button>
-            <Button Command="{Binding DeleteCommand}" ToolTip="Löschen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="3">
+            <Button Command="{Binding DeleteCommand}" ToolTip="Löschen" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="4">
                 <StackPanel>
                     <Image Source="/LigaManagerAdminClient;component/Data/Images/trash.png" Height="31" Width="41" />
                 </StackPanel>
             </Button>
-            <Button Command="{Binding GenerateMatchesCommand}" ToolTip="Spiele generieren" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="5">
+            <Button Command="{Binding GenerateMatchesCommand}" ToolTip="Spiele generieren" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="60" Height="40" Grid.Column="6">
                 <StackPanel>
-                    <Image Source="/LigaManagerAdminClient;component/Data/Images/settings-4.png" Height="31" Width="41" />
+                    <Image Source="/LigaManagerAdminClient;component/Data/Images/settings.png" Height="31" Width="41" />
                 </StackPanel>
             </Button>
         </Grid>
