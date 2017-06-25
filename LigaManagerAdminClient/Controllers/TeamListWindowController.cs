@@ -30,7 +30,6 @@ namespace LigaManagerAdminClient.Controllers
             _viewModel = new TeamWindowViewModel
             {
                 Teams = teams.ToList(),
-                SelectedTeam = teams.FirstOrDefault(),
                 BackCommand = new RelayCommand(ExecuteBackCommand),
                 AddCommand = new RelayCommand(ExecuteAddCommand),
                 DeleteCommand = new RelayCommand(ExecuteDeleteCommand),

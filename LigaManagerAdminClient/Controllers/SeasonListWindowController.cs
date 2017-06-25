@@ -32,7 +32,6 @@ namespace LigaManagerAdminClient.Controllers
                 DeleteCommand = new RelayCommand(ExecuteDeleteCommand),
                 ChangeCommand = new RelayCommand(ExecuteChangeCommand),
                 Seasons = seasons.ToList(),
-                SelectedSeason = seasons.ToList().FirstOrDefault()
             };
             _view.DataContext = _viewModel;
 

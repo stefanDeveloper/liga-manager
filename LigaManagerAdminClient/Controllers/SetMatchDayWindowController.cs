@@ -30,7 +30,7 @@ namespace LigaManagerAdminClient.Controllers
         #region Execute Commands
         public void ExecuteOkCommand(object obj)
         {
-            if (_view.MatchDayTextBox.Equals(string.Empty))
+            if (_view.MatchDayTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Spieltag ist leer!", "Kein Spieltag ausgewählt",
                     MessageBoxButton.OK, MessageBoxImage.Error);

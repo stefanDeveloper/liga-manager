@@ -18,7 +18,6 @@ namespace LigaManagerServer.Services
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
-
         private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService =
             new PersistenceService<SeasonToTeamRelation>();
 
@@ -38,7 +37,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var bettors = _bettorPersistenceService.GetAll();
-                var searchedBettors = bettors.FindAll(x => x.Nickname.ToUpper().Equals(bettor.Nickname.ToUpper()));
+                var searchedBettors = bettors.FindAll(x => x.Nickname.ToUpper().Equals(bettor.Nickname.ToUpper()) && x.Id != bettor.Id);
                 if (searchedBettors.Any()) return false;
                 return _bettorPersistenceService.Update(bettor);
             }
@@ -73,7 +72,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var teams = _teamPersistenceService.GetAll();
-                var searchedTeams = teams.FindAll(x => x.Name.ToUpper().Equals(team.Name.ToUpper()));
+                var searchedTeams = teams.FindAll(x => x.Name.ToUpper().Equals(team.Name.ToUpper()) && x.Id != team.Id);
                 if (searchedTeams.Any()) return false;
                 return _teamPersistenceService.Update(team);
             }
@@ -140,7 +139,7 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var seasons = _seasonPersistenceService.GetAll();
-                var searchedSeasons = seasons.FindAll(x => x.Name.ToUpper().Equals(season.Name.ToUpper()));
+                var searchedSeasons = seasons.FindAll(x => x.Name.ToUpper().Equals(season.Name.ToUpper()) && x.Id != season.Id);
                 if (searchedSeasons.Any()) return false;
                 return _seasonPersistenceService.Update(season);
             }

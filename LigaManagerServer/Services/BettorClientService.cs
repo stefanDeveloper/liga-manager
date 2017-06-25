@@ -13,6 +13,7 @@ namespace LigaManagerServer.Services
         private static readonly object StaticLock = new object();
         private readonly IPersistenceService<Bettor> _bettorPersistenceService = new PersistenceService<Bettor>();
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
+        private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
 
         public bool IsValidNickname(string name)
         {
@@ -28,7 +29,11 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
-                if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
+                var matches = _matchPersistenceService.GetAll();
+                var filteredMatches = matches.FindAll(x => x.AwayTeam.Equals(bet.Match.AwayTeam) && x.HomeTeam.Equals(bet.Match.HomeTeam) &&
+                                                   x.Season.Equals(bet.Match.Season));
+                if (filteredMatches.Count > 0) return false;
+                if (!(DateTime.Now.AddMinutes(30) < filteredMatches.First().DateTime))
                     return false;
                 return _betPersistenceService.Add(bet);
             }
@@ -38,7 +43,11 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
-                if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
+                var matches = _matchPersistenceService.GetAll();
+                var filteredMatches = matches.FindAll(x => x.AwayTeam.Equals(bet.Match.AwayTeam) && x.HomeTeam.Equals(bet.Match.HomeTeam) &&
+                                                           x.Season.Equals(bet.Match.Season));
+                if (filteredMatches.Count > 0) return false;
+                if (!(DateTime.Now.AddMinutes(30) < filteredMatches.First().DateTime))
                     return false;
                 return _betPersistenceService.Update(bet);
             }
