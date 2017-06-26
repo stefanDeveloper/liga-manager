@@ -7,6 +7,7 @@ using FluentNHibernate.Conventions;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
+using NHibernate.Util;
 
 namespace LigaManagerServer.Services
 {
@@ -183,7 +184,16 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
-                return _seasonToTeamRelationService.Delete(seasonToTeamRelation);
+                var isDeleted = _seasonToTeamRelationService.Delete(seasonToTeamRelation);
+                if (isDeleted)
+                {
+                    var matches = _matchPersistenceService.GetAll();
+                    var bets = _betPersistenceService.GetAll();
+                    matches.Where(x => x.HomeTeam.Equals(seasonToTeamRelation.Team) || x.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _matchPersistenceService.Delete(x));
+                    bets.Where(x => x.Match.HomeTeam.Equals(seasonToTeamRelation.Team) || x.Match.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _betPersistenceService.Delete(x));
+                    return true;
+                }
+                return false;
             }
         }
 
