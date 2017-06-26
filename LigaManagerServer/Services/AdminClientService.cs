@@ -93,11 +93,13 @@ namespace LigaManagerServer.Services
                 var seasonsOfTeam = seasonToTeamRelations.FindAll(x => x.Team.Equals(team));
                 seasonsOfTeam.ForEach(x => _seasonToTeamRelationService.Delete(x));
 
+                //delete bets of season
+                var bets = _betPersistenceService.GetAll();
+                bets.Where(x => x.Match.AwayTeam.Equals(team) || x.Match.HomeTeam.Equals(team)).ForEach(x => _betPersistenceService.Delete(x));
+
                 // delete  team
                 var isSuccess = _teamPersistenceService.Delete(team);
-                if (!isSuccess) return false;
-
-                return true;
+                return isSuccess;
             }
         }
 
@@ -114,6 +116,10 @@ namespace LigaManagerServer.Services
                 var matches = _matchPersistenceService.GetAll();
                 var matchesOfSeason = matches.FindAll(x => x.Season.Equals(season));
                 matchesOfSeason.ForEach(x => _matchPersistenceService.Delete(x));
+
+                //delete bets of season
+                var bets = _betPersistenceService.GetAll();
+                bets.Where(x => x.Match.Season.Equals(season)).ForEach(x => _betPersistenceService.Delete(x));
 
                 // delete season
                 var isSuccess = _seasonPersistenceService.Delete(season);
@@ -190,9 +196,11 @@ namespace LigaManagerServer.Services
             {
                 var isDeleted = _seasonToTeamRelationService.Delete(seasonToTeamRelation);
                 if (!isDeleted) return false;
+                // delete matches
                 var matches = _matchPersistenceService.GetAll();
-                var bets = _betPersistenceService.GetAll();
                 matches.Where(x => x.HomeTeam.Equals(seasonToTeamRelation.Team) || x.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _matchPersistenceService.Delete(x));
+                // delete bets
+                var bets = _betPersistenceService.GetAll();
                 bets.Where(x => x.Match.HomeTeam.Equals(seasonToTeamRelation.Team) || x.Match.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _betPersistenceService.Delete(x));
                 return true;
             }
