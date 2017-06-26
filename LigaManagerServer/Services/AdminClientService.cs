@@ -150,7 +150,11 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
-                return _matchPersistenceService.Delete(match);
+                var isDeletd =  _matchPersistenceService.Delete(match);
+                if (!isDeletd) return false;
+                var bets = _betPersistenceService.GetAll();
+                bets.Where(x => x.Match.Equals(match)).ForEach(x => _betPersistenceService.Delete(x));
+                return true;
             }
         }
 
@@ -185,15 +189,12 @@ namespace LigaManagerServer.Services
             lock (StaticLock)
             {
                 var isDeleted = _seasonToTeamRelationService.Delete(seasonToTeamRelation);
-                if (isDeleted)
-                {
-                    var matches = _matchPersistenceService.GetAll();
-                    var bets = _betPersistenceService.GetAll();
-                    matches.Where(x => x.HomeTeam.Equals(seasonToTeamRelation.Team) || x.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _matchPersistenceService.Delete(x));
-                    bets.Where(x => x.Match.HomeTeam.Equals(seasonToTeamRelation.Team) || x.Match.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _betPersistenceService.Delete(x));
-                    return true;
-                }
-                return false;
+                if (!isDeleted) return false;
+                var matches = _matchPersistenceService.GetAll();
+                var bets = _betPersistenceService.GetAll();
+                matches.Where(x => x.HomeTeam.Equals(seasonToTeamRelation.Team) || x.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _matchPersistenceService.Delete(x));
+                bets.Where(x => x.Match.HomeTeam.Equals(seasonToTeamRelation.Team) || x.Match.AwayTeam.Equals(seasonToTeamRelation.Team)).ForEach(x => _betPersistenceService.Delete(x));
+                return true;
             }
         }
 
