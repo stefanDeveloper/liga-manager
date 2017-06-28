@@ -98,7 +98,7 @@ namespace LigaManagerServer.Services
                 var allBets = GetAllBets();
                 var matches = GetMatches(season);
 
-                var filteredMatches = matches.Where(x => x.MatchDay == matchday && x.DateTime < DateTime.Now);
+                var filteredMatches = matches.Where(x => x.MatchDay <= matchday && x.DateTime < DateTime.Now);
                 var filteredBets = allBets.Where(x => matches.Contains(x.Match));
                 var result = CalucalteRankedBettors(filteredMatches.ToList(), bettors.ToList(), filteredBets.ToList());
                 return SetPlaceOfBettors(result);
@@ -137,7 +137,7 @@ namespace LigaManagerServer.Services
             {
                 var matches = GetMatches(season);
                 var seasonToTeamRelations = GetSeasonToTeamRelation(season);
-                var filteredMatches = matches.Where(x => x.MatchDay == matchday && x.DateTime < DateTime.Now);
+                var filteredMatches = matches.Where(x => x.MatchDay <= matchday && x.DateTime < DateTime.Now);
                 var result = CalucalteRankedTeams(filteredMatches.ToList(), seasonToTeamRelations.ToList());
 
                 return SetPlace(result);
