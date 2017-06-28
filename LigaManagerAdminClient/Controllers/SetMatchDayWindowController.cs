@@ -10,10 +10,11 @@ namespace LigaManagerAdminClient.Controllers
     {
         private SetMatchDayWindow _view;
         private SetMatchDayWindowViewModel _viewModel;
-        public int MatchDay { get; set; }
+        public int MatchDay { get; set; } = 1;
         public int SetMatchDay()
         {
             #region View and ViewModel
+
             _view = new SetMatchDayWindow();
             _viewModel = new SetMatchDayWindowViewModel
             {
@@ -34,12 +35,18 @@ namespace LigaManagerAdminClient.Controllers
             {
                 MessageBox.Show("Spieltag ist leer!", "Kein Spieltag ausgewählt",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            else
+
+            if (int.Parse(_view.MatchDayTextBox.Text) == 0)
             {
-                _view.DialogResult = true;
-                _view.Close();
+                MessageBox.Show("Spieltag ist 0!", "Kein Spieltag ausgewählt",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            
+            _view.DialogResult = true;
+            _view.Close();
             
         }
 

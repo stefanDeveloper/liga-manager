@@ -19,7 +19,7 @@ namespace LigaManagerBettorClient.Controllers
         private Bettor _bettor;
 
 
-        public void Initialize(MainWindow mainWindow, MenuWindowController menuWindow, Season selectedSeason, Bettor bettor)
+        public async void Initialize(MainWindow mainWindow, MenuWindowController menuWindow, Season selectedSeason, Bettor bettor)
         {
             _view = new TeamRankingWindow();
             _bettorClient = new BettorClientServiceClient();
@@ -29,9 +29,11 @@ namespace LigaManagerBettorClient.Controllers
             _bettor = bettor;
 
             #region View and ViewModel
-            var matches = _bettorClient.GetMatches(_selectedSeason);
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
+            var matches = await _bettorClient.GetMatchesAsync(_selectedSeason);
             var matchDays = new ObservableCollection<string> { "Aktuell" };
-            var rankedTeams = _bettorClient.GetAllRankedTeams(_selectedSeason);
+            var rankedTeams = await _bettorClient.GetAllRankedTeamsAsync(_selectedSeason);
             if (matches.Any())
             {
                 var max = matches.Max(x => x.MatchDay);
@@ -59,17 +61,19 @@ namespace LigaManagerBettorClient.Controllers
             _menuWindow.Initialize(_mainWindow, _bettor);
         }
         
-        private void UpdateMatchDay(object sender, string s)
+        private async  void UpdateMatchDay(object sender, string s)
         {
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
             var matchday = _view.MatchDayComboBox.SelectedIndex;
             if (matchday == 0)
             {
-                var rankedTeams = _bettorClient.GetAllRankedTeams(_selectedSeason);
+                var rankedTeams = await _bettorClient.GetAllRankedTeamsAsync(_selectedSeason);
                 _viewModel.Teams = rankedTeams.ToList();
             }
             else
             {
-                var rankedTeams = _bettorClient.GetRankedTeams(_selectedSeason, matchday);
+                var rankedTeams = await _bettorClient.GetRankedTeamsAsync(_selectedSeason, matchday);
                 _viewModel.Teams = rankedTeams.ToList();
             }
         }

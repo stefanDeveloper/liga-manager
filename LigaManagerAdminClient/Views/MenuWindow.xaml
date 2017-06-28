@@ -34,7 +34,7 @@
                 <Image Source="/LigaManagerAdminClient;component/Data/Images/calendar.png" Height="65" Width="86" />
             </StackPanel>
         </Button>
-        <Button Command="{Binding TeamCommand}" ToolTip="Zur Teamübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
+        <Button Command="{Binding TeamCommand}" ToolTip="Zur Mannschaftsübersicht" HorizontalAlignment="Left" Margin="30,20,0,0" Grid.Row="4" Grid.Column="0"
                 VerticalAlignment="Top" Width="125" Height="70">
             <StackPanel>
                 <Image Source="/LigaManagerAdminClient;component/Data/Images/group.png" Height="65" Width="86" />

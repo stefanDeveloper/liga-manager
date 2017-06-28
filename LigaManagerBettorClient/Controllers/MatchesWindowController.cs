@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using LigaManagerBettorClient.BettorClientService;
@@ -19,7 +20,7 @@ namespace LigaManagerBettorClient.Controllers
         private Season _selectedSeason;
         private Bettor _bettor;
 
-        public void Initialize(MainWindow mainWindow, MenuWindowController menuWindow, Season selectedSeason, Bettor bettor)
+        public async void Initialize(MainWindow mainWindow, MenuWindowController menuWindow, Season selectedSeason, Bettor bettor)
         {
             _view = new MatchesWindow();
             _bettorClient = new BettorClientServiceClient();
@@ -29,23 +30,16 @@ namespace LigaManagerBettorClient.Controllers
             _bettor = bettor;
 
             #region View and ViewModel
-            // Get all Matches and order them by DateTime
-            var matches = _bettorClient.GetMatches(_selectedSeason);
-            var sortedMatches = matches.ToList().OrderBy(a => a.DateTime).ToList();
-
-            // Group List by MatchDay's
-            var listCollectionView = new ListCollectionView(sortedMatches);
-            listCollectionView.GroupDescriptions?.Add(new PropertyGroupDescription("MatchDay"));
-
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
             _viewModel = new MatchesWindowViewModel
             {
                 SelectedSeason = _selectedSeason,
-                Matches = listCollectionView,
-                SelectedMatch = sortedMatches.FirstOrDefault(),
+                Matches = LoadModels(),
+                SelectedMatch = SortedMatches().FirstOrDefault(),
                 SelectedMatchCommand = new RelayCommand(ExecuteSelectedMatchCommand),
                 BackCommand = new RelayCommand(ExecuteBackCommand)
             };
-
             _view.DataContext = _viewModel;
             #endregion
 
@@ -57,7 +51,6 @@ namespace LigaManagerBettorClient.Controllers
             _menuWindow.Initialize(_mainWindow, _bettor);
         }
 
-
         public async void ExecuteSelectedMatchCommand(object obj)
         {
             var viewModelSelectedMatch = _viewModel.SelectedMatch;
@@ -68,6 +61,9 @@ namespace LigaManagerBettorClient.Controllers
                 Bet = bet
             };
             var betState = detailMatchWindowController.ShowMatch();
+
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
 
             if (betState == State.Abort) return;
             // At this point we do not know if the bettor still bet for the match, therefore we have to look if it it null or not.
@@ -107,6 +103,25 @@ namespace LigaManagerBettorClient.Controllers
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }
+        }
+
+        private ListCollectionView LoadModels()
+        {
+            List<Match> sortedMatches = SortedMatches();
+
+            // Group List by MatchDay's
+            var listCollectionView = new ListCollectionView(sortedMatches);
+            listCollectionView.GroupDescriptions?.Add(new PropertyGroupDescription("MatchDay"));
+
+            return listCollectionView;
+        }
+
+        private List<Match> SortedMatches()
+        {
+            // Get all Matches and order them by DateTime
+            var matches = _bettorClient.GetMatches(_selectedSeason);
+            var sortedMatches = matches.ToList().OrderBy(a => a.DateTime).ToList();
+            return sortedMatches;
         }
     }
 }

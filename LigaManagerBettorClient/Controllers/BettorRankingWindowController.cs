@@ -17,7 +17,7 @@ namespace LigaManagerBettorClient.Controllers
         private Season _selectedSeason;
         private Bettor _bettor;
 
-        public void Initialize(MainWindow mainWindow, MenuWindowController menuWindow,  Season selectedSeason, Bettor bettor)
+        public async void Initialize(MainWindow mainWindow, MenuWindowController menuWindow,  Season selectedSeason, Bettor bettor)
         {
             _view = new BettorRankingWindow();
             _bettorClient = new BettorClientServiceClient();
@@ -27,9 +27,11 @@ namespace LigaManagerBettorClient.Controllers
             _bettor = bettor;
 
             #region View and ViewModel
-            var matches = _bettorClient.GetMatches(_selectedSeason);
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
+            var matches = await _bettorClient.GetMatchesAsync(_selectedSeason);
             // get rankedbettors
-            var rankedBettors = _bettorClient.GetAllRankedBettors(_selectedSeason);
+            var rankedBettors = await _bettorClient.GetAllRankedBettorsAsync(_selectedSeason);
             // set list for match days
             var matchDays = new ObservableCollection<string> { "Aktuell" };
             if (matches.Any())
@@ -61,17 +63,17 @@ namespace LigaManagerBettorClient.Controllers
             _menuWindow.Initialize(_mainWindow,_bettor);
         }
 
-        private void UpdateMatchDay(object sender, string s)
+        private async void UpdateMatchDay(object sender, string s)
         {
             var matchday = _view.MatchDayComboBox.SelectedIndex;
             if (matchday == 0)
             {
-                var rankedBettors = _bettorClient.GetAllRankedBettors(_selectedSeason);
+                var rankedBettors = await _bettorClient.GetAllRankedBettorsAsync(_selectedSeason);
                 _viewModel.Bettors = rankedBettors.ToList();
             }
             else
             {
-                var rankedBettors = _bettorClient.GetRankedBettors(_selectedSeason, matchday);
+                var rankedBettors = await _bettorClient.GetRankedBettorsAsync(_selectedSeason, matchday);
                 _viewModel.Bettors = rankedBettors.ToList();
             }
             

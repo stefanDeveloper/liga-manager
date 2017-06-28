@@ -66,6 +66,11 @@ namespace LigaManagerBettorClient.Controllers
 
         private void ExecuteBetCommand(object obj)
         {
+            if (_view.AwayTeamBet.Text.Equals(string.Empty) || _view.HomeTeamBet.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Bitte füllen Sie ihren Tipp aus!", "Tipp abgeben", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _view.DialogResult = true;
             if (Bet != null && Match.DateTime > DateTime.Now.AddMinutes(30))
             {
@@ -85,6 +90,11 @@ namespace LigaManagerBettorClient.Controllers
                     HomeTeamScore = int.Parse(_view.HomeTeamBet.Text),
                 };
                 _state = State.Added;
+                _view.Close();
+            }
+            else
+            {
+                _state = State.Abort;
                 _view.Close();
             }
         }

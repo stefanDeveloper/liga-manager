@@ -46,22 +46,28 @@ namespace LigaManagerBettorClient.Controllers
         }
 
         #region ExecuteCommands
-        public void ExecuteBettorRankingCommand(object obj)
+        public async void ExecuteBettorRankingCommand(object obj)
         {
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
             var bettorRanking = new BettorRankingWindowController();
             _selectedSeason = _viewModel.SelectedSeason;
             bettorRanking.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);
         }
 
-        public void ExecuteMatchesCommand(object obj)
+        public async void ExecuteMatchesCommand(object obj)
         {
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
             var matches = new MatchesWindowController();
             _selectedSeason = _viewModel.SelectedSeason;
             matches.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);
         }
 
-        public void ExecuteTeamsCommand(object obj)
+        public async void ExecuteTeamsCommand(object obj)
         {
+            // Check if service is available
+            if (!await BettorClientHelper.IsAvailable(_bettorClient)) return;
             var teamRankingWindowController = new TeamRankingWindowController();
             _selectedSeason = _viewModel.SelectedSeason;
             teamRankingWindowController.Initialize(_mainWindow, this, _viewModel.SelectedSeason, _bettor);

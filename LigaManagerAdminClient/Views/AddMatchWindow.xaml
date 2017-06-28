@@ -21,7 +21,7 @@
         <Calendar x:Name="MatchDateCalendar" SelectedDate="{Binding SelectedMatch.DateTime}" DisplayDate="{Binding SelectedMatch.DateTime}" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Grid.Column="1" Height="165" Width="220" Margin="0,43,0,0"/>
         <ComboBox x:Name="HomeTeamComboBox" ItemsSource="{Binding HomeTeams}" SelectedValue="{Binding SelectedHomeTeam.Name}" SelectedItem="{Binding SelectedHomeTeam}" SelectedValuePath="Name" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Width="226" />
         <ComboBox x:Name="AwayTeamComboBox" ItemsSource="{Binding AwayTeams}" SelectedValue="{Binding SelectedAwayTeam.Name}" SelectedItem="{Binding SelectedAwayTeam}" SelectedValuePath="Name" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Grid.Column="1"/>
-        <Label Content="Heimschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1"
+        <Label Content="Heimmannschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1"
                Grid.Column="0" Width="220"/>
         <Label Content="Auswärtsmannschaft" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1" Width="220" Grid.Column="1"/>
         <Button x:Name="CancelButton" ToolTip="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"  Width="60" Height="40">

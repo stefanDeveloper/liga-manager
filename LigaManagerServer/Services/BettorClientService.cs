@@ -32,8 +32,8 @@ namespace LigaManagerServer.Services
                 var matches = _matchPersistenceService.GetAll();
                 var filteredMatches = matches.FindAll(x => x.AwayTeam.Equals(bet.Match.AwayTeam) && x.HomeTeam.Equals(bet.Match.HomeTeam) &&
                                                    x.Season.Equals(bet.Match.Season));
-                if (filteredMatches.Count > 0) return false;
-                if (!(DateTime.Now.AddMinutes(30) < filteredMatches.First().DateTime))
+                if (filteredMatches.IsEmpty()) return false;
+                if (DateTime.Now.AddMinutes(30) >= filteredMatches.First().DateTime)
                     return false;
                 return _betPersistenceService.Add(bet);
             }
@@ -46,8 +46,8 @@ namespace LigaManagerServer.Services
                 var matches = _matchPersistenceService.GetAll();
                 var filteredMatches = matches.FindAll(x => x.AwayTeam.Equals(bet.Match.AwayTeam) && x.HomeTeam.Equals(bet.Match.HomeTeam) &&
                                                            x.Season.Equals(bet.Match.Season));
-                if (filteredMatches.Count > 0) return false;
-                if (!(DateTime.Now.AddMinutes(30) < filteredMatches.First().DateTime))
+                if (filteredMatches.IsEmpty()) return false;
+                if (DateTime.Now.AddMinutes(30) >= filteredMatches.First().DateTime)
                     return false;
                 return _betPersistenceService.Update(bet);
             }
@@ -57,11 +57,11 @@ namespace LigaManagerServer.Services
         {
             lock (StaticLock)
             {
-                if (!(DateTime.Now.AddMinutes(30) < bet.Match.DateTime))
+                if (DateTime.Now.AddMinutes(30) >= bet.Match.DateTime)
                     return false;
                 var bets = _betPersistenceService.GetAll();
                 var selectedBets = bets.FindAll(x => x.Bettor.Equals(bet.Bettor) && x.Match.Equals(bet.Match));
-                if (selectedBets.IsAny()) return false;
+                if (selectedBets.IsEmpty()) return false;
                 return _betPersistenceService.Delete(selectedBets.First());
             }
         }

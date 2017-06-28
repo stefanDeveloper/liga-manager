@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Icon="../Data/Images/calendar.png"
         Title="Saison" Height="300" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,7 +33,7 @@
                 <Image Source="/LigaManagerAdminClient;component/Data/Images/success.png" Height="31" Width="41" />
             </StackPanel>
         </Button>
-        <TextBox x:Name="DescriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Season.Description}" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="DescriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="90" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Season.Description}" VerticalAlignment="Top" Width="172" Grid.RowSpan="3"/>
         <Label Content="Beschreibung" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="2" Grid.Column="0"
             VerticalAlignment="Top" Width="85"/>
 
