@@ -84,6 +84,7 @@
     <Compile Include="Controllers\SetMatchDayWindowController.cs" />
     <Compile Include="Framework\AdminClientHelper.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
+    <Compile Include="Framework\SetMinWidthToAutoAttachedBehaviour.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
     <Compile Include="Models\SeasonCheckBox.cs" />
     <Compile Include="Properties\Annotations.cs" />

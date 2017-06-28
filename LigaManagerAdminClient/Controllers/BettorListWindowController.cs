@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.ViewModels;
@@ -39,6 +41,7 @@ namespace LigaManagerAdminClient.Controllers
 
             MainWindow.Content = _view;
         }
+        
 
         #region ExecuteCommands
 

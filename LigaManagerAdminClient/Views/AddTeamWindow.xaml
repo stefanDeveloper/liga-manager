@@ -21,14 +21,14 @@
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
                   CanUserResizeRows="False" CanUserSortColumns="True" SelectionMode="Single" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="2" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" IsReadOnly="True"  />
-                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" IsReadOnly="True"  />
+                <DataGridTextColumn Header="Name" Binding="{Binding Season.Name}" IsReadOnly="True" MinWidth="100" MaxWidth="150"  />
+                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Season.Description}" IsReadOnly="True" MinWidth="100" MaxWidth="150"   />
                 <DataGridCheckBoxColumn Header="Hinzugefügt" Binding="{Binding IsAdded}" IsReadOnly="False"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="1" Grid.Column="0"
                VerticalAlignment="Top" Width="80" Height="26"/>
-        <TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Team.Name}" VerticalAlignment="Top" Width="349"/>
+        <TextBox x:Name="NameTextBox" MaxLength="300" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Team.Name}" VerticalAlignment="Top" Width="349"/>
         <Button x:Name="CancelButton" ToolTip="Abbrechen" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="35,10,0,0" Grid.Row="3"
                 Grid.Column="0" VerticalAlignment="Top" Width="60" Height="40">
             <StackPanel>

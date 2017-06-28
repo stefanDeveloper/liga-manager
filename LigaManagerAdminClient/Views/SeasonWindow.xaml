@@ -24,8 +24,8 @@
                     Command="{Binding ChangeCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="100" MaxWidth="150" />
+                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Description}" MinWidth="100" MaxWidth="300" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">

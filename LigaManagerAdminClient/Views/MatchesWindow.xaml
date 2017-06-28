@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LigaManagerAdminClient.Views"
+      xmlns:framework="clr-namespace:LigaManagerAdminClient.Framework"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="MatchWindow">
@@ -15,9 +16,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Spielübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="310"/>
-        <DataGrid ItemsSource="{Binding Matches}" 
+        <DataGrid x:Name="MatchesDataGrid" ItemsSource="{Binding Matches}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True" SelectionMode="Single" AutoGenerateColumns="False" SelectedItem="{Binding SelectedMatch}"
-                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1" >
+                  CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1" framework:SetMinWidthToAutoAttachedBehaviour.SetMinWidthToAuto="true">
             <DataGrid.InputBindings>
                 <MouseBinding
                     MouseAction="LeftDoubleClick"
@@ -26,8 +27,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding DateTime, StringFormat=dd.MM.yyyy}" />
                 <DataGridTextColumn Header="Uhrzeit" Binding="{Binding DateTime, StringFormat=HH:mm}" />
-                <DataGridTextColumn Header="Heim" Binding="{Binding HomeTeam.Name}" />
-                <DataGridTextColumn Header="Auswärts" Binding="{Binding AwayTeam.Name}" />
+                <DataGridTextColumn Header="Heim" Binding="{Binding HomeTeam.Name}"/>
+                <DataGridTextColumn Header="Auswärts" Binding="{Binding AwayTeam.Name}"/>
                 <DataGridTextColumn Header="Heimteam Punkte" Binding="{Binding HomeTeamScore}" />
                 <DataGridTextColumn Header="Auswärtsteam Punkte" Binding="{Binding AwayTeamScore}" />
             </DataGrid.Columns>

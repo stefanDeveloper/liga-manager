@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Tipperübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="310"/>
-        <DataGrid ItemsSource="{Binding Bettors}" 
+        <DataGrid x:Name="BettorDataGrid" ItemsSource="{Binding Bettors}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True" SelectionMode="Single" AutoGenerateColumns="False" SelectedItem="{Binding SelectedBettor}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.InputBindings>
@@ -23,9 +23,9 @@
                     Command="{Binding ChangeCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nickname" Binding="{Binding Nickname}" />
-                <DataGridTextColumn Header="Vorname" Binding="{Binding Firstname}" />
-                <DataGridTextColumn Header="Nachname" Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Nickname" Binding="{Binding Nickname}" MinWidth="100" MaxWidth="150"/>
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Firstname}" MinWidth="100" MaxWidth="150"/>
+                <DataGridTextColumn Header="Nachname" Binding="{Binding Lastname}" MinWidth="100" MaxWidth="150"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">

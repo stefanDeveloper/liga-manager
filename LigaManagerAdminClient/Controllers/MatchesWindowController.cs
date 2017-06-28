@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
 using LigaManagerAdminClient.AdminClientService;
@@ -46,7 +47,17 @@ namespace LigaManagerAdminClient.Controllers
             _viewModel.SelectionSeasonChanged += UpdateSeason;
             #endregion
 
+            _view.MatchesDataGrid.Loaded += SetMinWidths;
             MainWindow.Content = _view;
+        }
+
+        public void SetMinWidths(object source, EventArgs e)
+        {
+            foreach (var column in _view.MatchesDataGrid.Columns)
+            {
+                column.MinWidth = column.ActualWidth;
+                column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
         }
 
         private async void ExecuteLoadMatchCommand(object obj)

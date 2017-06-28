@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using LigaManagerAdminClient.AdminClientService;
 using LigaManagerAdminClient.Framework;
 using LigaManagerAdminClient.Models;
@@ -42,6 +44,7 @@ namespace LigaManagerAdminClient.Controllers
             MainWindow.Content = _view;
         }
 
+        
         #region ExecuteCommands
         protected override async void ExecuteAddCommand(object obj)
         {

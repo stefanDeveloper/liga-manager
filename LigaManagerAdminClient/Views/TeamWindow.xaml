@@ -15,7 +15,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Mannschaftsübersicht" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Margin="10,40,0,0" VerticalAlignment="Top" Height="75" Width="420" Grid.RowSpan="2"/>
-        <DataGrid ItemsSource="{Binding Teams}" 
+        <DataGrid x:Name="TeamDataGrid"  ItemsSource="{Binding Teams}" 
                   CanUserReorderColumns="True" CanUserResizeColumns="True"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedTeam}"
                   CanUserResizeRows="False" IsReadOnly="True" CanUserSortColumns="True" SelectionMode="Single" CanUserAddRows="false" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.InputBindings>
@@ -24,7 +24,7 @@
                     Command="{Binding ChangeCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" MinWidth="100" MaxWidth="150" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">
