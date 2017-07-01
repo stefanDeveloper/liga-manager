@@ -54,6 +54,12 @@ namespace LigaManagerBettorClient.Controllers
         public async void ExecuteSelectedMatchCommand(object obj)
         {
             var viewModelSelectedMatch = _viewModel.SelectedMatch;
+            if (viewModelSelectedMatch == null)
+            {
+                MessageBox.Show("Bitte wählen Sie ein Spiel aus!", "Kein Spiel ausgewählt",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             var bet = _bettorClient.GetBet(viewModelSelectedMatch, _bettor);
             var detailMatchWindowController = new DetailMatchWindowController
             {
@@ -88,6 +94,7 @@ namespace LigaManagerBettorClient.Controllers
                     "Der Tipp konnte nicht abgegeben werden! Bitte beachten Sie, dass Sie bis spätestens 30 Minuten vor Spielbeginn tippen können!",
                     "Tipp fehlgeschlagen",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                LoadModels();
                 return;
             }
 
@@ -103,6 +110,7 @@ namespace LigaManagerBettorClient.Controllers
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }
+            LoadModels();
         }
 
         private ListCollectionView LoadModels()
