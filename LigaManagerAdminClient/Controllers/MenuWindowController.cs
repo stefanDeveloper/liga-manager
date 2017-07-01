@@ -31,6 +31,7 @@ namespace LigaManagerAdminClient.Controllers
             _mainWindow.Show();
         }
 
+        #region Commands
         private void ExecuteBettorCommand(object obj)
         {
             var bettorWindow = new BettorListWindowController();
@@ -54,5 +55,6 @@ namespace LigaManagerAdminClient.Controllers
             var seasonWindow = new MatchesWindowController();
             seasonWindow.Initialize(_mainWindow);
         }
+        #endregion
     }
 }

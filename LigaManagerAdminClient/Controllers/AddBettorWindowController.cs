@@ -24,6 +24,7 @@ namespace LigaManagerAdminClient.Controllers
                 Bettor = Bettor
             };
             _view.DataContext = _viewModel;
+            _view.ResizeMode = ResizeMode.NoResize;
             #endregion
 
             return _view.ShowDialog() == true ? _viewModel.Bettor : null;

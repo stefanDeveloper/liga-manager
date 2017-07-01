@@ -28,6 +28,7 @@ namespace LigaManagerAdminClient.Controllers
                 Team = Team
             };
             _view.DataContext = _viewModel;
+            _view.ResizeMode = ResizeMode.NoResize;
             #endregion
 
             return _view.ShowDialog() == true ? _viewModel.Team : null;

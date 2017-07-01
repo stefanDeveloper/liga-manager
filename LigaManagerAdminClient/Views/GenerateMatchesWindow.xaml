@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Icon="../Data/Images/settings.png"
-        Title="Spiele generieren" Height="300" Width="600">
+        Title="Spiele generieren" Height="350" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="8*"/>

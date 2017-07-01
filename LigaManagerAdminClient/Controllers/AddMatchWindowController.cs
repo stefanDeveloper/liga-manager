@@ -36,6 +36,7 @@ namespace LigaManagerAdminClient.Controllers
                  
             };
             _view.DataContext = _viewModel;
+            _view.ResizeMode = ResizeMode.NoResize;
             #endregion
 
             return _view.ShowDialog() == true ? _viewModel.SelectedMatch : null;
@@ -54,6 +55,14 @@ namespace LigaManagerAdminClient.Controllers
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            // Check if Home and Away Team is equal.
+            if (_viewModel.SelectedHomeTeam.Name.ToUpper().Equals(_viewModel.SelectedAwayTeam.Name.ToUpper()))
+            {
+                MessageBox.Show("Spiel konnte nicht hinzugefügt werden, da die Mannschaft gegen sich selber spielt!", "Hinzufügen fehlgeschlagen",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            // Set Match
             Match.AwayTeam = _viewModel.SelectedAwayTeam;
             Match.HomeTeam = _viewModel.SelectedHomeTeam;
             Match.DateTime = new DateTime(Match.DateTime.Year, Match.DateTime.Month, Match.DateTime.Day, _viewModel.Hour, _viewModel.Minute, 0);

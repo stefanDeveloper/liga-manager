@@ -51,6 +51,7 @@ namespace LigaManagerAdminClient.Controllers
             // Add Season to choose
             var seasons = await _adminClient.GetSeasonsAsync();
             var result = new List<SeasonCheckBox>();
+            // Create SeasonCheckBox
             seasons.ToList().ForEach(x =>
             {
                 result.Add(new SeasonCheckBox
@@ -60,6 +61,7 @@ namespace LigaManagerAdminClient.Controllers
                     IsAdded = false
                 });
             });
+
             var addBettorWindow = new AddTeamWindowController
             {
                 Team = new Team(),

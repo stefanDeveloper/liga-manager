@@ -34,6 +34,15 @@ namespace LigaManagerAdminClient.Views
             }
         }
 
+        private void OnMatchDayChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            if (Regex.IsMatch(textBox.Text, "[^1-9]"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
+
         private void OnHourChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;

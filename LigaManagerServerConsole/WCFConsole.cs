@@ -2,6 +2,8 @@
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
+using LigaManagerServer.Contracts;
+using LigaManagerServer.Services;
 
 namespace LigaManagerServerConsole
 {
@@ -9,9 +11,9 @@ namespace LigaManagerServerConsole
     {
         public static void Main(string[] args)
         {
-            var baseAddress = new Uri("http://localhost:80/LigaManagerServer/");
+            var baseAddress = new Uri("http://localhost:80/LigaManagerServer/BettorClientService/");
             // Create the ServiceHost.
-            using (var serviceHost = new ServiceHost(typeof(Service), baseAddress))
+            using (var serviceHost = new ServiceHost(typeof(BettorClientService), baseAddress))
             {
                 // Enable metadata publishing.
                 var smb = new ServiceMetadataBehavior
@@ -20,6 +22,7 @@ namespace LigaManagerServerConsole
                     MetadataExporter = {PolicyVersion = PolicyVersion.Policy15}
                 };
                 serviceHost.Description.Behaviors.Add(smb);
+
 
                 // Open the ServiceHost to start listening for messages. Since
                 // no endpoints are explicitly configured, the runtime will create

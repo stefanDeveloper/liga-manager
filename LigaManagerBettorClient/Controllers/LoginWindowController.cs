@@ -40,6 +40,7 @@ namespace LigaManagerBettorClient.Controllers
             _mainWindow.Show();
         }
 
+        #region Commands
         private async void ExecuteSignInCommand(object obj)
         {
             // Check if service is available
@@ -66,5 +67,6 @@ namespace LigaManagerBettorClient.Controllers
         {
             _mainWindow.Close();
         }
+        #endregion
     }
 }

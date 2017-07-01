@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,6 +50,11 @@ namespace LigaManagerAdminClient.Controllers
             MainWindow.Content = _view;
         }
 
+        /// <summary>
+        /// Create Min Width of Columns
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         public void SetMinWidths(object source, EventArgs e)
         {
             foreach (var column in _view.MatchesDataGrid.Columns)
@@ -60,6 +64,7 @@ namespace LigaManagerAdminClient.Controllers
             }
         }
 
+        #region Commands
         private async void ExecuteLoadMatchCommand(object obj)
         {
             // Create OpenFileDialog
@@ -74,34 +79,31 @@ namespace LigaManagerAdminClient.Controllers
             bool? result = dlg.ShowDialog();
 
             // Get the selected file name and display in a TextBox
-            if (result == true)
+            if (result != true) return;
+            var setMatchDay = new SetMatchDayWindowController();
+            var matchDay = setMatchDay.SetMatchDay();
+
+            if (matchDay == -1) return;
+
+
+            var isAdded = false;
+            try
             {
-                var setMatchDay = new SetMatchDayWindowController();
-                var matchDay = setMatchDay.SetMatchDay();
-
-                if (matchDay == -1) return;
-
-
-                var isAdded = false;
-                try
-                {
-                    // Open document
-                    string filename = dlg.FileName;
-                    XmlDocument booksFromFile = new XmlDocument();
-                    booksFromFile.Load(dlg.InitialDirectory + dlg.FileName);
-                    isAdded = await _adminClient.AddMatchDayAsync(
-                        GetXElementFromXmlElement(booksFromFile.DocumentElement),
-                        _viewModel.SelectedSeason, matchDay);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-                finally
-                {
-                    UpdateModels(isAdded, "Spieltag konnte nicht hinzugefügt werden! Die Datei entspricht nicht dem vorgegebenen Format!",
-                        "Hinzufügen fehlgeschlagen");
-                }
+                // Open document
+                var booksFromFile = new XmlDocument();
+                booksFromFile.Load(dlg.InitialDirectory + dlg.FileName);
+                isAdded = await _adminClient.AddMatchDayAsync(
+                    GetXElementFromXmlElement(booksFromFile.DocumentElement),
+                    _viewModel.SelectedSeason, matchDay);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                UpdateModels(isAdded, "Spieltag konnte nicht hinzugefügt werden! Die Datei entspricht nicht dem vorgegebenen Format!",
+                    "Hinzufügen fehlgeschlagen");
             }
         }
 
@@ -117,16 +119,17 @@ namespace LigaManagerAdminClient.Controllers
 
         protected override async void ExecuteAddCommand(object obj)
         {
-            var teams = await _adminClient.GetAllTeamsAsync();
+            var teams = await _adminClient.GetSeasonToTeamRelationAsync(_viewModel.SelectedSeason);
             var addBettorWindow = new AddMatchWindowController
             {
                 Match = new Match
                 {
                     Season = _viewModel.SelectedSeason,
-                    DateTime = DateTime.Now
+                    DateTime = DateTime.Now,
+                    MatchDay = 1
                 },
-                AwayTeams = teams.ToList(),
-                HomeTeams = teams.ToList(),
+                AwayTeams = teams.Select(x => x.Team).ToList(),
+                HomeTeams = teams.Select(x => x.Team).ToList(),
                 
             };
 
@@ -137,7 +140,7 @@ namespace LigaManagerAdminClient.Controllers
             if (!await AdminClientHelper.IsAvailable(_adminClient)) return;
             // add bettor
             var isAdded = await _adminClient.AddMatchAsync(showMatch);
-            UpdateModels(isAdded, "Spiel konnte nicht hinzugefügt werden!",
+            UpdateModels(isAdded, "Spiel konnte nicht hinzugefügt werden, da es schon existiert!",
                 "Hinzufügen fehlgeschlagen");
         }
 
@@ -219,7 +222,7 @@ namespace LigaManagerAdminClient.Controllers
                 ReloadModels();
             }
         }
-
+        #endregion
         protected override async void ReloadModels()
         {
             var matches = await _adminClient.GetMatchesAsync(_viewModel.SelectedSeason);

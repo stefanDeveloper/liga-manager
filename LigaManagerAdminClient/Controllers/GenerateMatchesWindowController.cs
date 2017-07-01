@@ -30,6 +30,7 @@ namespace LigaManagerAdminClient.Controllers
                 OkCommand = new RelayCommand(ExecuteOkCommand)
             };
             _view.DataContext = _viewModel;
+            _view.ResizeMode = ResizeMode.NoResize;
             _view.ShowDialog();
 
             return _view.DialogResult != null && (bool) _view.DialogResult;
@@ -38,6 +39,7 @@ namespace LigaManagerAdminClient.Controllers
 
         }
 
+        #region Commands
         private void ExecuteOkCommand(object o)
         {
             if (_viewModel.SelectedEndDate < _viewModel.SelectedBeginDate)
@@ -46,6 +48,7 @@ namespace LigaManagerAdminClient.Controllers
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            // Set Model
             BeginDate = _viewModel.SelectedBeginDate;
             EndDate = _viewModel.SelectedEndDate;
             _view.DialogResult = true;
@@ -57,5 +60,6 @@ namespace LigaManagerAdminClient.Controllers
             _view.DialogResult = false;
             _view.Close();
         }
+        #endregion
     }
 }
