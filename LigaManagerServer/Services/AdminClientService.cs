@@ -8,19 +8,19 @@ using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
 using NHibernate.Util;
+using static LigaManagerServer.Lock.Lock;
+
 
 namespace LigaManagerServer.Services
 {
     public class AdminClientService : LigaManagerService, IAdminClientService
     {
-        private static readonly object StaticLock = new object();
         private readonly IPersistenceService<Bettor> _bettorPersistenceService = new PersistenceService<Bettor>();
         private readonly IPersistenceService<Team> _teamPersistenceService = new PersistenceService<Team>();
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();
-        private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService =
-            new PersistenceService<SeasonToTeamRelation>();
+        private readonly IPersistenceService<SeasonToTeamRelation> _seasonToTeamRelationService = new PersistenceService<SeasonToTeamRelation>();
 
         public bool AddBettor(Bettor bettor)
         {
@@ -222,6 +222,8 @@ namespace LigaManagerServer.Services
                 var teamsOfSeason = seasonToTeamRelations.FindAll(x => x.Season.Equals(season));
 
                 var dateTimes = CreateDateTimes(beginDateTime, endDateTime, new List<DateTime>());
+                // if no datetime could be found
+                if (dateTimes.IsEmpty()) return false;
                 var matchesOfSeason = new List<Match>();
                 foreach (var seasonToTeamRelation in teamsOfSeason)
                 {

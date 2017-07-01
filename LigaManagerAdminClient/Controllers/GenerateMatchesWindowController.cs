@@ -42,9 +42,9 @@ namespace LigaManagerAdminClient.Controllers
         #region Commands
         private void ExecuteOkCommand(object o)
         {
-            if (_viewModel.SelectedEndDate < _viewModel.SelectedBeginDate)
+            if (_viewModel.SelectedEndDate <= _viewModel.SelectedBeginDate)
             {
-                MessageBox.Show("Ende ist vor Beginn!", "Nicht zulässig",
+                MessageBox.Show("Zeitraum ist nicht zulässig, bitt wählen Sie eine gültigen Zeitraum!", "Nicht zulässig",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }

@@ -66,6 +66,7 @@
     <Compile Include="Contracts\ILigaManagerService.cs" />
     <Compile Include="Framework\Repository.cs" />
     <Compile Include="Interfaces\IPersistenceService.cs" />
+    <Compile Include="Lock\Lock.cs" />
     <Compile Include="Mappings\BaseMap.cs" />
     <Compile Include="Mappings\BetMap.cs" />
     <Compile Include="Mappings\BettorMap.cs" />

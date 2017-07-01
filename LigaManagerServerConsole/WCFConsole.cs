@@ -11,31 +11,37 @@ namespace LigaManagerServerConsole
     {
         public static void Main(string[] args)
         {
-            var baseAddress = new Uri("http://localhost:80/LigaManagerServer/BettorClientService/");
+            var bettorUrl = new Uri("http://localhost:80/BettorClientService/");
+            var adminUrl = new Uri("http://localhost:80/AdminClientService/");
             // Create the ServiceHost.
-            using (var serviceHost = new ServiceHost(typeof(BettorClientService), baseAddress))
+            using (var bettorHost = new ServiceHost(typeof(BettorClientService), bettorUrl))
+            using (var adminHost = new ServiceHost(typeof(BettorClientService), adminUrl))
             {
                 // Enable metadata publishing.
                 var smb = new ServiceMetadataBehavior
                 {
                     HttpGetEnabled = true,
-                    MetadataExporter = {PolicyVersion = PolicyVersion.Policy15}
+                    MetadataExporter = { PolicyVersion = PolicyVersion.Policy15 }
                 };
-                serviceHost.Description.Behaviors.Add(smb);
+                bettorHost.Description.Behaviors.Add(smb);
+                adminHost.Description.Behaviors.Add(smb);
 
 
                 // Open the ServiceHost to start listening for messages. Since
                 // no endpoints are explicitly configured, the runtime will create
                 // one endpoint per base address for each service contract implemented
                 // by the service.
-                serviceHost.Open();
+                bettorHost.Open();
+                adminHost.Open();
 
-                Console.WriteLine("The service is ready at {0}", baseAddress);
+                Console.WriteLine("The service is ready at {0}", bettorUrl);
+                Console.WriteLine("The service is ready at {0}", adminUrl);
                 Console.WriteLine("Press <Enter> to stop the service.");
                 Console.ReadLine();
 
                 // Close the ServiceHost.
-                serviceHost.Close();
+                bettorHost.Close();
+                adminHost.Open();
             }
         }
     }

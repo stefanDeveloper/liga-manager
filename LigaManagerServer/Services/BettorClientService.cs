@@ -5,12 +5,12 @@ using FluentNHibernate.Conventions;
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
+using static LigaManagerServer.Lock.Lock;
 
 namespace LigaManagerServer.Services
 {
     public class BettorClientService : LigaManagerService, IBettorClientService
     {
-        private static readonly object StaticLock = new object();
         private readonly IPersistenceService<Bettor> _bettorPersistenceService = new PersistenceService<Bettor>();
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Match> _matchPersistenceService = new PersistenceService<Match>();

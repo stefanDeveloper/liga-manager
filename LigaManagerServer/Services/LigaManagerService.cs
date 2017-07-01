@@ -2,13 +2,12 @@
 using LigaManagerServer.Contracts;
 using LigaManagerServer.Interfaces;
 using LigaManagerServer.Models;
-using NHibernate.Event;
+using static LigaManagerServer.Lock.Lock;
 
 namespace LigaManagerServer.Services
 {
     public class LigaManagerService : ILigaManagerService
     {
-        private static readonly object StaticLock = new object();
         private readonly IPersistenceService<Bettor> _bettorPersistenceService = new PersistenceService<Bettor>();
         private readonly IPersistenceService<Bet> _betPersistenceService = new PersistenceService<Bet>();
         private readonly IPersistenceService<Season> _seasonPersistenceService = new PersistenceService<Season>();
